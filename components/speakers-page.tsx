@@ -5,7 +5,7 @@ type Speaker = {
   role: string
   affiliation?: string
   bio: string
-  photo: string
+  photo?: string
   profileUrl?: string
 }
 
@@ -33,6 +33,56 @@ His research focuses on biomechanics, prosthetic design, and mechanical system m
 
 He is also a licensed professional engineer in Maryland, United States.`,
     profileUrl: "https://engineering.tcnj.edu/engineering-faculty/manish-paliwal/",
+  },
+  {
+    name: "Prof. K.P. Rajurkar",
+    role: "Emeritus Professor",
+    affiliation: "Department of Mechanical and Materials Engineering, University of Nebraska-Lincoln, USA",
+    photo: "/images/speakers/kprajurkar.png",
+    bio: `Prof. Dr. K. P. Rajurkar is an Emeritus Professor in the Department of Mechanical and Materials Engineering at University of Nebraska-Lincoln. He is internationally recognized for his pioneering contributions to advanced manufacturing processes, particularly in non-traditional machining, and precision engineering.
+
+His research has focused on electrical discharge machining (EDM), electrochemical machining (ECM), laser-assisted manufacturing, micro- and nano-manufacturing, hybrid machining processes, and intelligent manufacturing systems. Over the course of his distinguished academic career, he has made significant contributions to the development of advanced machining technologies and their industrial applications.`,
+    profileUrl: "https://engineering.unl.edu/mme/person/kp-rajurkar/",
+  },
+  {
+    name: "Dr. Murali Sundaram",
+    role: "Professor",
+    affiliation: "University of Cincinnati, Ohio, USA",
+    photo: "/images/speakers/muralisundaram.png",
+    bio: `Dr. Murali Sundaram is a Professor in the Department of Mechanical and Materials Engineering at the College of Engineering, University of Cincinnati. He has over 25 years of professional experience that includes ten years of industrial experience in precision manufacturing and three years of postdoctoral research experience in micro and nanomanufacturing. Dr. Sundaram is a recipient of a Faculty Early Career Development (CAREER) Award from the National Science Foundation.
+
+His research interests include Additive Manufacturing, Nano-Manufacturing, Nontraditional Machining, Micromachining, Hybrid Machining, CAD/CAM, Metrology and Process Simulation. Dr. Sundaram is advising/has co-advised over 25 graduate students (including 6 Ph.D. students) and several undergraduate students. He has authored five book chapters and over 100 refereed publications.
+
+Dr. Sundaram serves as Associate Editor of SME's Journal of Manufacturing Processes and is an International Editorial Review Board member of the International Journal of Manufacturing, Materials and Mechanical Engineering. Dr. Sundaram is a member of ASME and SME.`,
+    profileUrl: "https://researchdirectory.uc.edu/p/sundarmi",
+  },
+  {
+    name: "Prof. V.K. Jain",
+    role: "Formerly Professor",
+    affiliation: "IIT Kanpur, India",
+    photo: "/images/speakers/vkjain.png",
+    bio: `Prof. V.K. Jain has served as a Professor in the Department of Mechanical Engineering at Indian Institute of Technology Kanpur for over three decades and has more than four decades of teaching, research, and academic leadership experience.
+
+His research contributions are primarily in advanced and non-traditional manufacturing processes, micromachining, micromanufacturing, machining of advanced engineering materials, computer-aided manufacturing, and nano finishing technologies. He has authored several widely recognized books and has guided numerous M.Tech. and Ph.D. scholars in the field of manufacturing engineering.`,
+    profileUrl: "https://home.iitk.ac.in/~vkjain/",
+  },
+  {
+    name: "Ing. Tetjana Tomášková, Ph.D.",
+    role: "Faculty Member",
+    affiliation: "University of West Bohemia in Pilsen, Czech Republic",
+    photo: "/images/speakers/tetjana.png",
+    bio: `Prof. Tetjana Tomášková, Ing. Tetjana Tomášková, Ph.D. is a faculty member at the University of West Bohemia (Západočeská univerzita) in Pilsen, Czech Republic. She is notably associated with multiple departments across different faculties at the university. Her work focuses on technical education, STEM competency development, engineering materials, manufacturing technologies, and innovative approaches to project-based learning.
+
+She has contributed to curriculum development, teaching, and research aimed at enhancing technical and engineering education. She is actively involved in supervising student projects and theses while contributing to research and educational initiatives that promote practical engineering skills and technology-oriented learning.`,
+    profileUrl: "https://www.zcu.cz/en/Employees/person.html?personId=69987",
+  },
+  {
+    name: "Prof. M.S. Shunmugam",
+    role: "Formerly Professor",
+    affiliation: "IIT Madras, India",
+    bio: `Prof. M.S. Shunmugam has served as a Professor in the Department of Mechanical Engineering at Indian Institute of Technology Madras (IIT Madras) for over four decades. According to his profile on the IRINS system, he holds a Scopus ID 7006246829 and has authored over 140 publications between 1974 and 2024, including journal articles, book chapters, conference papers, and reviews.
+
+His research expertise lies in manufacturing processes and automation, covering areas such as robotics, metrology, gear manufacturing, BTA machining, centreless grinding, EDM, friction welding, inspection planning, computer applications in manufacturing, and quality control.`,
   },
 ]
 
@@ -75,28 +125,32 @@ export function SpeakersPageContent() {
                 } p-6 md:p-8 rounded-xl border border-border/10`}
               >
                 {/* Image */}
-                <div
-                  className={`flex justify-center ${
-                    i % 2 === 0
-                      ? "md:col-span-3"
-                      : "md:col-span-3 md:order-2"
-                  }`}
-                >
-                  <div className="w-full max-w-[240px] aspect-[3/4] overflow-hidden rounded-lg border border-border/60 bg-muted shadow-sm">
-                    <img
-                      src={sp.photo}
-                      alt={sp.name}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
+                {sp.photo && (
+                  <div
+                    className={`flex justify-center ${
+                      i % 2 === 0
+                        ? "md:col-span-3"
+                        : "md:col-span-3 md:order-2"
+                    }`}
+                  >
+                    <div className="w-full max-w-[240px] aspect-[3/4] overflow-hidden rounded-lg border border-border/60 bg-muted shadow-sm">
+                      <img
+                        src={sp.photo}
+                        alt={sp.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* Content */}
                 <div
                   className={`flex-grow text-left space-y-3 ${
-                    i % 2 === 0
-                      ? "md:col-span-9"
-                      : "md:col-span-9 md:order-1"
+                    sp.photo
+                      ? i % 2 === 0
+                        ? "md:col-span-9"
+                        : "md:col-span-9 md:order-1"
+                      : "md:col-span-12"
                   }`}
                 >
                   <div>
