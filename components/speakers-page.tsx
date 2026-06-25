@@ -87,6 +87,40 @@ const invitedSpeakers: Speaker[] = [
 She has contributed to curriculum development, teaching, and research aimed at enhancing technical and engineering education. She is actively involved in supervising student projects and theses while contributing to research and educational initiatives that promote practical engineering skills and technology-oriented learning.`,
     profileUrl: "https://www.zcu.cz/en/Employees/person.html?personId=69987",
   },
+  {
+    name: "Dr. I. A. Palani",
+    role: "Professor",
+    affiliation: "Department of Mechanical Engineering, IIT Indore",
+    photo: "/images/speakers/iapalani.png",
+    bio: `Dr. I. A. Palani is a Professor in Mechanical Engineering at IIT Indore. He earned his Doctorate from IIT Madras and conducted postdoctoral research at Kyushu University, Japan. Dr. Palani established the Mechatronics and Instrumentation Lab at IIT Indore, focusing on laser-assisted surface processing, micro-machining, and smart materials like shape memory alloys.
+
+With over 100 international journal publications and significant research funding, he collaborates with global institutions and industries such as Volvo and John Deere. Dr. Palani has received prestigious awards, including the Alumni Award for Research and Innovation.`,
+    profileUrl: "https://people.iiti.ac.in/~palaniia/",
+  },
+  {
+    name: "Dr. Ramesh Singh",
+    role: "Professor",
+    affiliation: "Department of Mechanical Engineering, IIT Bombay",
+    photo: "/images/speakers/rameshsingh.png",
+    bio: `Dr. Ramesh Singh is a Professor in the Department of Mechanical Engineering at Indian Institute of Technology Bombay.
+
+Prof. Singh earned his Ph.D. from Georgia Institute of Technology and M.S. from Tufts University. His research focuses on high-speed micromachining, laser-based materials processing, advanced manufacturing systems, precision finishing technologies, finite element modeling, and machine tool dynamics. He is recognized for pioneering the development of India's first high-speed micromachining center, capable of producing sub-micron features with nanometric accuracy.
+
+His work integrates advanced signal processing, machine learning, and manufacturing science for real-time process monitoring and chatter control in machining operations. Prof. Singh has made significant contributions to the fields of micro-manufacturing, laser processing, additive manufacturing, composite machining, and smart manufacturing systems. His research group collaborates with academia and industry to develop sustainable and high-performance manufacturing technologies for next-generation engineering applications.`,
+    profileUrl: "https://www.me.iitb.ac.in/~ramesh/",
+  },
+  {
+    name: "Dr. Muvvala Gopinath",
+    role: "Associate Professor",
+    affiliation: "Department of Mechanical & Aerospace Engineering, IIT Hyderabad",
+    photo: "/images/speakers/gopinath.png",
+    bio: `Dr. Muvvala Gopinath is an Associate Professor in the Department of Mechanical and Aerospace Engineering at Indian Institute of Technology Hyderabad. He earned his M.Tech. and Ph.D. from Indian Institute of Technology Kharagpur and subsequently served as a Senior Scientific Officer before joining IIT Hyderabad.
+
+Dr. Gopinath has established a strong research program in advanced manufacturing and materials processing, with particular emphasis on laser material processing, metal additive manufacturing, laser welding, underwater laser processing, friction stir welding, and surface engineering. His research focuses on developing innovative manufacturing technologies and understanding process–structure–property relationships through real-time monitoring and control of manufacturing processes.
+
+He leads research activities in laser-based manufacturing technologies, including laser cladding, laser surface modification, additive manufacturing, and joining of advanced engineering materials.`,
+    profileUrl: "https://iith.ac.in/mae/mgopinath/",
+  },
 ]
 
 export function SpeakersPageContent() {
