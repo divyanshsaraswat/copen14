@@ -67,6 +67,17 @@ His research contributions are primarily in advanced and non-traditional manufac
     profileUrl: "https://home.iitk.ac.in/~vkjain/",
   },
   {
+    name: "Prof. M.S. Shunmugam",
+    role: "Formerly Professor",
+    affiliation: "IIT Madras, India",
+    bio: `Prof. M.S. Shunmugam has served as a Professor in the Department of Mechanical Engineering at Indian Institute of Technology Madras (IIT Madras) for over four decades. According to his profile on the IRINS system, he holds a Scopus ID 7006246829 and has authored over 140 publications between 1974 and 2024, including journal articles, book chapters, conference papers, and reviews.
+
+His research expertise lies in manufacturing processes and automation, covering areas such as robotics, metrology, gear manufacturing, BTA machining, centreless grinding, EDM, friction welding, inspection planning, computer applications in manufacturing, and quality control.`,
+  },
+]
+
+const invitedSpeakers: Speaker[] = [
+  {
     name: "Ing. Tetjana Tomášková, Ph.D.",
     role: "Faculty Member",
     affiliation: "University of West Bohemia in Pilsen, Czech Republic",
@@ -75,14 +86,6 @@ His research contributions are primarily in advanced and non-traditional manufac
 
 She has contributed to curriculum development, teaching, and research aimed at enhancing technical and engineering education. She is actively involved in supervising student projects and theses while contributing to research and educational initiatives that promote practical engineering skills and technology-oriented learning.`,
     profileUrl: "https://www.zcu.cz/en/Employees/person.html?personId=69987",
-  },
-  {
-    name: "Prof. M.S. Shunmugam",
-    role: "Formerly Professor",
-    affiliation: "IIT Madras, India",
-    bio: `Prof. M.S. Shunmugam has served as a Professor in the Department of Mechanical Engineering at Indian Institute of Technology Madras (IIT Madras) for over four decades. According to his profile on the IRINS system, he holds a Scopus ID 7006246829 and has authored over 140 publications between 1974 and 2024, including journal articles, book chapters, conference papers, and reviews.
-
-His research expertise lies in manufacturing processes and automation, covering areas such as robotics, metrology, gear manufacturing, BTA machining, centreless grinding, EDM, friction welding, inspection planning, computer applications in manufacturing, and quality control.`,
   },
 ]
 
@@ -191,15 +194,85 @@ export function SpeakersPageContent() {
         </section>
 
         {/* Invited Speakers */}
-        {/* <section className="mt-20 text-center">
-          <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary uppercase">
+        <section className="mt-20">
+          <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary uppercase text-center">
             Invited Speakers
           </h2>
           <div className="mx-auto mt-3 h-[2px] w-24 bg-muted" />
-          <p className="mt-8 text-lg text-gray-500 italic">
-            To be announced
-          </p>
-        </section> */}
+
+          <div className="mt-12 space-y-12">
+            {invitedSpeakers.map((sp, i) => (
+              <div
+                key={i}
+                className={`grid grid-cols-1 md:grid-cols-12 gap-8 items-center ${
+                  i % 2 === 1 ? "md:bg-secondary/20" : ""
+                } p-6 md:p-8 rounded-xl border border-border/10`}
+              >
+                {/* Image */}
+                {sp.photo && (
+                  <div
+                    className={`flex justify-center ${
+                      i % 2 === 0
+                        ? "md:col-span-3"
+                        : "md:col-span-3 md:order-2"
+                    }`}
+                  >
+                    <div className="w-full max-w-[240px] aspect-[3/4] overflow-hidden rounded-lg border border-border/60 bg-muted shadow-sm">
+                      <img
+                        src={sp.photo}
+                        alt={sp.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Content */}
+                <div
+                  className={`flex-grow text-left space-y-3 ${
+                    sp.photo
+                      ? i % 2 === 0
+                        ? "md:col-span-9"
+                        : "md:col-span-9 md:order-1"
+                      : "md:col-span-12"
+                  }`}
+                >
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground">
+                      {sp.name}
+                    </h3>
+                    <p className="text-primary font-semibold text-sm md:text-base mt-1">
+                      {sp.role}
+                    </p>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-0.5">
+                      {sp.affiliation}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4 text-muted-foreground leading-relaxed text-sm md:text-base">
+                    {sp.bio.split("\n\n").map((para, idx) => (
+                      <p key={idx}>{para.trim()}</p>
+                    ))}
+                  </div>
+
+                  {sp.profileUrl && (
+                    <div className="pt-2">
+                      <a
+                        href={sp.profileUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-xs font-semibold bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                      >
+                        <Globe className="w-3.5 h-3.5" />
+                        View Profile
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     </div>
   )
