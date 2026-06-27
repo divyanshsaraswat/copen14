@@ -58,8 +58,8 @@ Dr. Sundaram serves as Associate Editor of SME's Journal of Manufacturing Proces
   },
   {
     name: "Prof. V.K. Jain",
-    role: "Formerly Professor",
-    affiliation: "IIT Kanpur, India",
+    role: "Professor",
+    affiliation: "Formerly at IIT Kanpur, India",
     photo: "/images/speakers/vkjain.png",
     bio: `Prof. V.K. Jain has served as a Professor in the Department of Mechanical Engineering at Indian Institute of Technology Kanpur for over three decades and has more than four decades of teaching, research, and academic leadership experience.
 
@@ -68,8 +68,8 @@ His research contributions are primarily in advanced and non-traditional manufac
   },
   {
     name: "Prof. M.S. Shunmugam",
-    role: "Formerly Professor",
-    affiliation: "IIT Madras, India",
+    role: "Professor",
+    affiliation: "Formerly at IIT Madras, India",
     bio: `Prof. M.S. Shunmugam has served as a Professor in the Department of Mechanical Engineering at Indian Institute of Technology Madras (IIT Madras) for over four decades. According to his profile on the IRINS system, he holds a Scopus ID 7006246829 and has authored over 140 publications between 1974 and 2024, including journal articles, book chapters, conference papers, and reviews.
 
 His research expertise lies in manufacturing processes and automation, covering areas such as robotics, metrology, gear manufacturing, BTA machining, centreless grinding, EDM, friction welding, inspection planning, computer applications in manufacturing, and quality control.`,
@@ -120,6 +120,14 @@ Dr. Gopinath has established a strong research program in advanced manufacturing
 
 He leads research activities in laser-based manufacturing technologies, including laser cladding, laser surface modification, additive manufacturing, and joining of advanced engineering materials.`,
     profileUrl: "https://iith.ac.in/mae/mgopinath/",
+  },
+  {
+    name: "Dr. G.L. Samuel",
+    role: "Professor",
+    affiliation: "Department of Mechanical Engineering, IIT Madras",
+    photo: "/images/speakers/samuel.png",
+    bio: `Dr. G.L. Samuel is working as a professor in the Department of Mechanical Engineering, at IIT Madras. He completed his PhD from IIT Madras and worked as a Post Doctoral fellow at Kyungpook National University, South Korea. His research interests are in the areas of Micromachining, Metrology, and Computer Aided Inspection. He has numerous publications in well-reputed national and international journals. He has also served in several administrative posts in the department and has won numerous awards for his proficiency in guideship.`,
+    profileUrl: "https://home.iitm.ac.in/samuelgl/about.html",
   },
 ]
 
