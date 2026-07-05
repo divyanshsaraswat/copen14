@@ -59,7 +59,8 @@ export function Header() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Committee", href: "/committee" },
-        { name: "Call for Papers", href: "/call-for-papers" },
+    { name: "Call for Papers", href: "/call-for-papers" },
+    { name: "Publications", href: "/publications" },
     { name: "Sponsors", href: "/sponsors" },
     { name: "Speakers", href: "/speakers" },
     { name: "MNIT Jaipur ", href: "/about/mnit-jaipur" },

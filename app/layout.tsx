@@ -22,6 +22,9 @@ export const metadata: Metadata = {
   description:
     "The 14th International Conference on Precision, Meso, Micro and Nano Engineering (COPEN 14), hosted by MNIT Jaipur, December 18–20, 2026.",
   generator: "scasys",
+  icons: {
+    icon: "/favicon.ico",
+  },
 }
 
 export default function RootLayout({

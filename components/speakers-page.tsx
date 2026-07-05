@@ -129,6 +129,16 @@ He leads research activities in laser-based manufacturing technologies, includin
     bio: `Dr. G.L. Samuel is working as a professor in the Department of Mechanical Engineering, at IIT Madras. He completed his PhD from IIT Madras and worked as a Post Doctoral fellow at Kyungpook National University, South Korea. His research interests are in the areas of Micromachining, Metrology, and Computer Aided Inspection. He has numerous publications in well-reputed national and international journals. He has also served in several administrative posts in the department and has won numerous awards for his proficiency in guideship.`,
     profileUrl: "https://home.iitm.ac.in/samuelgl/about.html",
   },
+  {
+    name: "Giriraj Maheshwari",
+    role: "AVP/ Business Head - Railways",
+    affiliation: "National Engineering Industries Ltd. (NBC Bearings)",
+    photo: "/images/speakers/giriraj.jpeg",
+    bio: `Mr. Giriraj Maheshwari is the Assistant Vice President (AVP) and Business Head of the Railways division at National Engineering Industries Limited (NEIL - NBC Bearings), a part of the CK Birla Group. He holds a Bachelor of Technology in Mechanical Engineering from Malaviya National Institute of Technology (MNIT), Jaipur.
+
+With decades of professional experience in advanced engineering, sales, marketing, and rail product strategy, he drives new business development and product innovation for bearings and components in the Indian Railways. He is a prominent speaker at major national and international railway forums, promoting precision technology and 'Make in India' initiatives.`,
+    profileUrl: "https://www.linkedin.com/in/giriraj-maheshwari-94133345/",
+  },
 ]
 
 export function SpeakersPageContent() {
