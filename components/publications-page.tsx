@@ -15,7 +15,7 @@ const supportingJournals: Journal[] = [
     publisher: "Wiley",
     indexing: "SCOPUS",
     metrics: "Cite Score = 1.5 (Scopus)",
-    photo: "/images/publications/wiley.jpg",
+    photo: "/images/publications/wiley.png",
     color: "from-amber-700 to-yellow-900",
   },
   {
