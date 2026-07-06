@@ -100,13 +100,6 @@ export function PublicationsPageContent() {
 
         {/* Supporting Journals Section */}
         <section className="border-t border-border/40 pt-16">
-          <div className="text-center mb-12">
-            <p className="mx-auto max-w-3xl text-blue-800/90 text-sm md:text-base font-serif italic font-medium leading-relaxed">
-              "The following reputed journals have kindly agreed to consider high-quality papers presented at the conference for publication:"
-            </p>
-            <div className="mx-auto mt-4 h-[2px] w-24 bg-muted" />
-          </div>
-
           {/* Grid of Journal Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {supportingJournals.map((journal, i) => (
