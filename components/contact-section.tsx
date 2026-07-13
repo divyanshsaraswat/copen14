@@ -138,28 +138,18 @@ export function ContactSection() {
             {/* Joint Secretaries */}
             <Card className="hover:shadow-lg transition-transform hover:-translate-y-1 bg-white/90 backdrop-blur-sm">
               <CardContent className="p-8">
-                <h4 className="font-semibold text-xl text-primary mb-3">
+                <h4 className="font-semibold text-xl text-primary mb-4">
                   Joint Organizing Secretaries
                 </h4>
-                <ul className="space-y-4">
-                  <li>
-                    <p className="font-medium text-lg">Dr. Anup Malik</p>
-                    <p className="text-muted-foreground text-sm">
-                      Assistant Professor, Mechanical Engineering
-                    </p>
-                  </li>
-                  <li>
-                    <p className="font-medium text-lg">Dr. Pankaj Kumar Gupta</p>
-                    <p className="text-muted-foreground text-sm">
-                      Associate Professor, Mechanical Engineering
-                    </p>
-                  </li>
-                  <li>
-                    <p className="font-medium text-lg">Dr. Tapas Bajpai</p>
-                    <p className="text-muted-foreground text-sm">
-                      Assistant Professor, Mechanical Engineering
-                    </p>
-                  </li>
+                <ul className="space-y-2 text-foreground">
+                  <li className="font-medium text-[16px] md:text-[17px]">Dr. Pankaj Kumar Gupta</li>
+                  <li className="font-medium text-[16px] md:text-[17px]">Dr. Anup Malik</li>
+                  <li className="font-medium text-[16px] md:text-[17px]">Dr. Tapas Bajpai</li>
+                  <li className="font-medium text-[16px] md:text-[17px]">Dr. Naresh Kumar Raghuwanshi</li>
+                  <li className="font-medium text-[16px] md:text-[17px]">Dr. Surendra Singh Godara</li>
+                  <li className="font-medium text-[16px] md:text-[17px]">Dr. Dinesh Kumar Rathore</li>
+                  <li className="font-medium text-[16px] md:text-[17px]">Dr. Yashwant Koli</li>
+                  <li className="font-medium text-[16px] md:text-[17px]">Dr. Preeti Gulia</li>
                 </ul>
               </CardContent>
             </Card>

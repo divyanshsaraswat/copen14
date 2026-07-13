@@ -139,6 +139,16 @@ He leads research activities in laser-based manufacturing technologies, includin
 With decades of professional experience in advanced engineering, sales, marketing, and rail product strategy, he drives new business development and product innovation for bearings and components in the Indian Railways. He is a prominent speaker at major national and international railway forums, promoting precision technology and 'Make in India' initiatives.`,
     profileUrl: "https://www.linkedin.com/in/giriraj-maheshwari-94133345/",
   },
+  {
+    name: "Dr. J. Ramkumar",
+    role: "Professor",
+    affiliation: "Department of Mechanical Engineering, IIT Kanpur",
+    photo: "/images/speakers/ramkumar.png",
+    bio: `Prof. J. Ramkumar is a Professor in the Department of Mechanical Engineering at the Indian Institute of Technology (IIT) Kanpur. He obtained his M.Tech. and Ph.D. from IIT Madras and has been a faculty member at IIT Kanpur since 2003. Prof. Ramkumar leads pioneering research in micro/nano manufacturing, advanced laser-based machining, precision finishing processes, composite machining, and product development. His work emphasizes translating engineering innovations into practical solutions for healthcare, manufacturing, and assistive technologies.
+
+With more than 300 research publications, 90+ patents, and extensive collaborations with academia and industry, he has made significant contributions to manufacturing science and innovation. Prof. Ramkumar has received several prestigious honors, including the Young Scientist Award from the Department of Atomic Energy, the IEI Young Engineers Award, and currently holds the Satish Chandra Agrawal Chair Professorship at IIT Kanpur.`,
+    profileUrl: "https://home.iitk.ac.in/~jrkumar/",
+  },
 ]
 
 export function SpeakersPageContent() {

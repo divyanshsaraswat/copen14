@@ -70,8 +70,12 @@ function FeesTable() {
               </tr>
               <tr>
                 <td className="border px-4 py-2 font-semibold">Students</td>
-                <td className="border px-4 py-2">₹8,000/-</td>
-                <td className="border px-4 py-2">₹9,000/-</td>
+                <td className="border px-4 py-2">
+                  <span className="line-through text-slate-400 mr-1.5">₹8,000/-</span> ₹4,000/-
+                </td>
+                <td className="border px-4 py-2">
+                  <span className="line-through text-slate-400 mr-1.5">₹9,000/-</span> ₹4,500/-
+                </td>
               </tr>
               <tr>
                 <td className="border px-4 py-2 font-semibold">Accompanying Persons</td>

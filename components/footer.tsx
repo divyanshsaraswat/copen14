@@ -23,7 +23,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/about" className="text-white/80 hover:text-white transition-colors">
-                  About
+                  About Us
                 </Link>
               </li>
               <li>
@@ -48,7 +48,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/contact" className="text-white/80 hover:text-white transition-colors">
-                  Contact
+                  Contact Us
                 </Link>
               </li>
               <li>
@@ -71,8 +71,19 @@ export function Footer() {
             <p className="text-sm text-white/80">Rajasthan, India</p>
           </div>
         </div>
-        <div className="border-t border-white/20 pt-8 text-center text-sm text-white/80">
+        <div className="border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/80 gap-4">
           <p>© {currentYear} COPEN 14. All rights reserved. | Hosted by MNIT Jaipur</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
+            <Link href="/privacy-policy" className="text-white/80 hover:text-white transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/refund-policy" className="text-white/80 hover:text-white transition-colors">
+              Refund & Cancellation
+            </Link>
+            <Link href="/terms-and-conditions" className="text-white/80 hover:text-white transition-colors">
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

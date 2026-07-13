@@ -115,14 +115,14 @@ export default function CallForPapersPage() {
               <span className="font-semibold">
                 Full Paper Submission Last Date:
               </span>{" "}
-              <span className="font-semibold text-destructive">31/07/2026</span>
+              <span className="font-semibold text-destructive">31/08/2026</span>
             </p>
 
             <p className="text-lg">
               <span className="font-semibold">
                 Early Bird Registration End Date:
               </span>{" "}
-              <span className="font-semibold text-destructive">31/08/2026</span>
+              <span className="font-semibold text-destructive">30/09/2026</span>
             </p>
 
             <p className="text-lg">
