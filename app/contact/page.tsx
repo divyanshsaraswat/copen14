@@ -26,7 +26,7 @@ export default function ContactPage() {
             {/* Prof. Harlal Singh Mali */}
             <div className="bg-white/90 rounded-2xl shadow-lg p-8 flex flex-col items-center text-center transition hover:shadow-xl">
               <Image
-                src="/images/CoP.png"
+                src="/images/co-pat.png"
                 alt="Prof. Harlal Singh Mali"
                 width={260}
                 height={320}
