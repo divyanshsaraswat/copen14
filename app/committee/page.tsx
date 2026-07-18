@@ -1,9 +1,10 @@
-import type React from "react";
+import React from "react";
 import Image from "next/image";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 type Person = {
   name: string;
@@ -11,6 +12,8 @@ type Person = {
   title?: string;
   affiliation?: string;
   profileUrl?: string;
+  profileUrls?: { label: string; url: string }[];
+  viewMoreUrl?: string;
   image?: string;
   phone?: string;
 };
@@ -70,11 +73,29 @@ function ProfileCard({
         <a
           href={person.profileUrl}
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
           className="mt-3 inline-block text-sm font-medium text-primary underline underline-offset-4"
         >
           View profile
         </a>
+      )}
+
+      {person.profileUrls && person.profileUrls.length > 0 && (
+        <div className="mt-3 flex flex-wrap justify-center items-center gap-2">
+          {person.profileUrls.map((p, idx) => (
+            <React.Fragment key={p.url}>
+              {idx > 0 && <span className="text-muted-foreground text-sm">|</span>}
+              <a
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium text-primary underline underline-offset-4"
+              >
+                {p.label}
+              </a>
+            </React.Fragment>
+          ))}
+        </div>
       )}
 
       {person.phone && (
@@ -88,6 +109,16 @@ function ProfileCard({
           </a>
         </div>
       )}
+
+      {person.viewMoreUrl && (
+        <div className="mt-4 flex justify-center">
+          <Button asChild variant="outline" size="sm" className="w-full max-w-[150px]">
+            <a href={person.viewMoreUrl} download>
+              View More
+            </a>
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
@@ -95,13 +126,16 @@ function ProfileCard({
 export default function CommitteePage() {
   // Advisory Committee
   const advisoryChair: Person = {
-    name: "Key Industrial Partner",
+    name: "Sh. Rohit Saboo",
     role: "Chairman",
-    title: "",
-    affiliation: "",
-    profileUrl:
-      "https://www.linkedin.com/in/ravi-raghavan-3334558/?originalSubdomain=in",
-    image: "/images/committee/ravi-raghavan.jpg",
+    title: "President & Chief Executive Officer",
+    affiliation: "National Engineering Industries Ltd-NBC Bearings, CKA Birla Group",
+    image: "/images/committee/rohitsaboo.jpg",
+    profileUrls: [
+      { label: "NBC Bearings", url: "https://www.nbcbearings.com/our-team/" },
+      { label: "LinkedIn", url: "https://www.linkedin.com/in/rohitsaboonbc/" },
+    ],
+    viewMoreUrl: "/rohitsaboo.docx",
   };
   const advisoryCoChair: Person = {
     name: "Dr. V. Radhakrishnan",
