@@ -23,6 +23,16 @@ He also supervises PhD scholars at Luleå University of Technology and serves as
     profileUrl: "https://france.additive-aerospace-summit.com/component/content/article?layout=edit&id=30&Itemid=101",
   },
   {
+    name: "Dr. Srinivasan Chandrasekar",
+    role: "Professor, Edwardson School of Industrial Engineering",
+    affiliation: "Purdue University, USA",
+    photo: "/images/speakers/srinivasanchandrashekhar.png",
+    bio: `Srinivasan Chandrasekar is a Professor in the Schools of Industrial Engineering and Materials Engineering (courtesy) at Purdue University, where he also directs the Center for Materials Processing and Tribology. His research and teaching interests are in manufacturing, materials processing, fracture, and tribology. The current research focus is on chemo mechanical effects in surface plasticity and environment-assisted cracking; forming of plant leaf materials for food ware; machining-based methods for the production of specialty metals for energy applications; and evolution of surface topography in manufacturing processes.
+
+Dr. Chandrasekar is a Fellow of the ASME, the American Association for Advancement of Science (AAAS), and InSIS (Indian Society for Structural Integrity). Notable awards include the R&D 100 award (2010), ASME Milton C Shaw Manufacturing Medal (2019); and the Anders Gustaf Ekeberg Tantalum prize (2021), awarded by the world trade body for tantalum and niobium. His solution of a 350-year-old problem on fracture of glass spheres (Prince Rupert’s drops, the Purdue video on the topic has received 65 M+ views, https://www.youtube.com/watch?v=lt-zvsGvtqg) is included in Philosophical Magazine’s list of all-time best papers (Science in the Making) appearing in the journal between 1798 and 1998. Dr Chandrasekar has published ~ 200 journal articles and holds 19 US and International patents (several licensed).`,
+    profileUrl: "https://engineering.purdue.edu/IE/people/ptProfile?resource_id=9203",
+  },
+  {
     name: "Prof. Manish Paliwal",
     role: "Professor of Mechanical Engineering",
     affiliation: "The College of New Jersey, USA",
@@ -55,6 +65,14 @@ His research interests include Additive Manufacturing, Nano-Manufacturing, Nontr
 
 Dr. Sundaram serves as Associate Editor of SME's Journal of Manufacturing Processes and is an International Editorial Review Board member of the International Journal of Manufacturing, Materials and Mechanical Engineering. Dr. Sundaram is a member of ASME and SME.`,
     profileUrl: "https://researchdirectory.uc.edu/p/sundarmi",
+  },
+  {
+    name: "Dr. N. Ramesh Babu",
+    role: "Professor, Department of Mechanical Engineering",
+    affiliation: "IIT Madras, India",
+    photo: "/images/speakers/rameshbabu.png",
+    bio: `Professor N. Ramesh Babu boasts a distinguished academic record. He earned his Ph.D. from the IIT Madras in 1990, preceded by a Master's degree with distinction from the IISc Bangalore (1980) and a Bachelor's degree with first-rank honors from JNTU Hyderabad (1978). Professor Babu's career trajectory at IIT Madras exemplifies a continuous commitment to excellence. Currently, he holds the prestigious V Balaraman Institute Chair Professorship. His research interest includes Manufacturing Technology, Grinding, Abrasive Waterjet Machining, Sheet metal fabrication, Laser Beam Machining, CNC, PLCs & Robotics, and Precision Machine Tool development etc. His publications include many International Journal Papers and National/International Conference Papers.`,
+    profileUrl: "https://home.iitm.ac.in/nrbabu/about.html",
   },
   {
     name: "Prof. V.K. Jain",
