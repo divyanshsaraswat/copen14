@@ -67,6 +67,14 @@ Dr. Sundaram serves as Associate Editor of SME's Journal of Manufacturing Proces
     profileUrl: "https://researchdirectory.uc.edu/p/sundarmi",
   },
   {
+    name: "Dr. Srinidhi Nagaraja",
+    role: "Senior Technical Fellow",
+    affiliation: "G. RAU Inc., California, USA",
+    photo: "/images/speakers/nagaraja.jpeg",
+    bio: `Srinidhi Nagaraja is an accomplished engineering, regulatory, and research leader with extensive expertise in medical devices, biomedical engineering, and product development. Based in Silver Spring, Maryland, USA, he has built a distinguished career spanning industry, research, and regulatory science, including a decade of service with the U.S. Food and Drug Administration (FDA). He earned his PhD from the Georgia Institute of Technology, where he specialised in biomedical engineering and medical device technologies. His research interests encompass medical device design and development, biomaterials, Nitinol-based implants, biomechanics, orthopaedic and cardiovascular devices, regulatory science, and translational biomedical engineering. His work has significantly enhanced the understanding of implant behaviour, biomaterial performance, and medical device safety, contributing to improved clinical outcomes and regulatory practices.`,
+    profileUrl: "https://www.linkedin.com/in/srinidhi-nagaraja-8609537/",
+  },
+  {
     name: "Dr. N. Ramesh Babu",
     role: "Professor, Department of Mechanical Engineering",
     affiliation: "IIT Madras, India",
