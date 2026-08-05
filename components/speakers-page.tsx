@@ -183,6 +183,14 @@ With more than 300 research publications, 90+ patents, and extensive collaborati
     bio: `Dr. Akshay Dvivedi is a Professor in the Department of Mechanical and Industrial Engineering at IIT Roorkee. He completed his M.Tech and PhD from IIT Roorkee. His research interests include advanced and hybrid micromachining, unconventional machining processes, metal matrix composites, product design and development, medical and assistive devices, concurrent engineering, and quality management. He has published extensively in reputed national and international journals and has contributed numerous book chapters. Dr. Dvivedi has also filed several patents, many of which have been granted, reflecting the translational impact of his research. He has served in important administrative roles within the institute and has received multiple awards for his excellence in teaching, research, and innovation.`,
     profileUrl: "https://iitr.ac.in/Departments/Mechanical%20and%20Industrial%20Engineering%20Department/People/Faculty/100549.html",
   },
+  {
+    name: "Dr. C.P. Paul",
+    role: "Professor & Head, Laser Additive Manufacturing Laboratory",
+    affiliation: "Raja Ramanna Centre for Advanced Technology (RRCAT), Indore",
+    photo: "/images/speakers/cppaul.png",
+    bio: `Dr. Christ P. Paul leads a research group in Laser Additive Manufacturing (LAM) at RRCAT with 25 years of experience in developing LAM systems and applications in engineering and prosthesis. His research focuses on next-generation AM systems, advanced materials, innovative products, and comprehensive characterisation techniques. He promotes LAM technology in India through national collaborations and has contributed to 28 book chapters and over 120 research papers.`,
+    profileUrl: "https://www.rrcat.gov.in/hrd/HBNI%20Faculty%20Profile%20CPPaul.pdf",
+  },
 ]
 
 export function SpeakersPageContent() {
