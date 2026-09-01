@@ -1,19 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import {
   ExternalLink,
   Handshake,
-  ChevronDown,
-  ChevronUp,
   CheckCircle2,
   Building2,
   ArrowRight,
   Crown,
   Award,
   Info,
-  LayoutGrid,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -106,7 +103,7 @@ export const ALL_SPONSOR_TIERS: SponsorTierData[] = [
       },
       {
         id: "unnati",
-        name: "Unnati-5d",
+        name: "Unnati-Sd",
         category: "Exhibition Stall (12' × 8')",
         stallSize: "12' × 8'",
         logo: "/images/sponsors/unnati.jpeg",
@@ -173,6 +170,81 @@ export const ALL_SPONSOR_TIERS: SponsorTierData[] = [
   },
 ];
 
+type OpportunityTier = {
+  title: string;
+  amount: string;
+  accentColor: string;
+  badge?: string;
+  points: string[];
+};
+
+const OPPORTUNITY_TIERS: OpportunityTier[] = [
+  {
+    title: "Platinum Sponsorship",
+    amount: "₹ 10,00,000/- + 18% GST",
+    accentColor: "border-amber-500 bg-amber-500/5 text-amber-600",
+    badge: "Most Prestigious",
+    points: [
+      "Organisation Head or nominee as Chairperson of COPEN14",
+      "Chairperson to deliver Inaugural Key Talk and dais sharing with Chief Guest",
+      "30-minute plenary talk for all 500+ participants",
+      "Two exhibition stalls (12’ × 8’) at most prominent location",
+      "One full-page advertisement in the Conference Souvenir",
+      "Company logo on conference website, dais, and publicity banners",
+      "Free registration for one delegate at VIP Guest House with complete hospitality",
+      "Six conference registrations including food and accommodation",
+    ],
+  },
+  {
+    title: "Diamond Sponsorship",
+    amount: "₹ 7,00,000/- + 18% GST",
+    accentColor: "border-indigo-500 bg-indigo-500/5 text-indigo-600",
+    points: [
+      "Inaugural session sponsorship",
+      "20-minute keynote / introduction talk",
+      "Name and logo on dais, banners, brochures, and conference website",
+      "One full-page advertisement in conference souvenir / proceedings",
+      "Two exhibition stalls (12’ × 8’ and 8’ × 8’)",
+      "Four conference registrations including food and accommodation",
+    ],
+  },
+  {
+    title: "Gold Sponsorship",
+    amount: "₹ 5,00,000/- + 18% GST",
+    accentColor: "border-yellow-600 bg-yellow-500/5 text-yellow-600",
+    points: [
+      "20-minute keynote / introduction talk",
+      "Name and logo on dais, banners, brochures, and conference website",
+      "One full-page advertisement in conference souvenir / proceedings",
+      "Two exhibition stalls (8’ × 8’)",
+      "Three conference registrations including food and accommodation",
+    ],
+  },
+  {
+    title: "Silver Sponsorship",
+    amount: "₹ 3,00,000/- + 18% GST",
+    accentColor: "border-slate-400 bg-slate-500/5 text-slate-600",
+    points: [
+      "10-minute keynote / introduction talk",
+      "Name and logo on dais, banners, brochures, and conference website",
+      "One full-page advertisement in conference souvenir / proceedings",
+      "One exhibition stall (12’ × 8’)",
+      "Two conference registrations including food and accommodation",
+    ],
+  },
+  {
+    title: "Bronze Sponsorship",
+    amount: "₹ 2,00,000/- + 18% GST",
+    accentColor: "border-amber-800 bg-amber-900/5 text-amber-800",
+    points: [
+      "Name and logo on dais, banners, brochures, and conference website",
+      "One full-page advertisement in conference souvenir / proceedings",
+      "One exhibition stall (8’ × 8’)",
+      "One conference registration including food and accommodation",
+    ],
+  },
+];
+
 function SponsorLogoDisplay({ name, logo }: { name: string; logo?: string }) {
   const [imgError, setImgError] = useState(false);
 
@@ -209,27 +281,9 @@ function SponsorLogoDisplay({ name, logo }: { name: string; logo?: string }) {
 }
 
 export function SponsorsPageContent() {
-  const [showOpportunities, setShowOpportunities] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.location.hash === "#sponsorship-opportunities") {
-      setShowOpportunities(true);
-    }
-  }, []);
-
-  const toggleOpportunities = () => {
-    setShowOpportunities((prev) => !prev);
-    if (!showOpportunities) {
-      setTimeout(() => {
-        const el = document.getElementById("sponsorship-opportunities");
-        if (el) el.scrollIntoView({ behavior: "smooth" });
-      }, 100);
-    }
-  };
-
   return (
     <div className="container mx-auto px-6 md:px-12 py-12 max-w-7xl space-y-16">
-      {/* Sponsors Showcase List with Info Accordion per Tier */}
+      {/* 1. Confirmed Sponsors Showcase List */}
       <section className="space-y-16">
         {ALL_SPONSOR_TIERS.filter((tier) => tier.sponsors.length > 0).map((tier) => (
           <div key={tier.id} className="space-y-6">
@@ -264,7 +318,7 @@ export function SponsorsPageContent() {
                     </span>
                   </AccordionTrigger>
                   <AccordionContent className="pt-3">
-                    {/* Formatted Info & Benefits Box (Matching Screenshot) */}
+                    {/* Formatted Info & Benefits Box */}
                     <div className="p-6 rounded-xl bg-blue-50/70 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/40 space-y-4">
                       <div className="text-base md:text-lg">
                         <span className="font-semibold text-foreground">Amount: </span>
@@ -288,7 +342,7 @@ export function SponsorsPageContent() {
                 </AccordionItem>
               </Accordion>
 
-              {/* Sponsors Cards Grid (Grouped by Stall Category for Exhibition Stalls) */}
+              {/* Sponsors Cards Grid */}
               <div className="pt-4 space-y-8">
                 {tier.id === "exhibition-stall-sponsorship" ? (
                   <div className="space-y-8">
@@ -303,46 +357,98 @@ export function SponsorsPageContent() {
                         </Badge>
                       </div>
 
-                      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center items-center">
-                        {tier.sponsors
-                          .filter((s) => s.stallSize === "12' × 8'" || !s.stallSize)
-                          .map((sponsor) => (
-                            <Card
-                              key={sponsor.id}
-                              className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full max-w-sm mx-auto"
-                            >
-                              <CardContent className="p-0 flex flex-col items-center justify-between h-full w-full">
-                                <SponsorLogoDisplay name={sponsor.name} logo={sponsor.logo} />
-                                <div className="p-6 flex flex-col flex-grow items-center justify-between text-center space-y-4 w-full">
-                                  <div className="space-y-2 flex flex-col items-center justify-center">
-                                    <Badge variant="secondary" className="text-xs font-semibold">
-                                      {sponsor.category}
-                                    </Badge>
-                                    <h5 className="font-bold text-base md:text-lg text-foreground leading-snug group-hover:text-primary transition-colors text-center">
-                                      {sponsor.name}
-                                    </h5>
-                                    {sponsor.description && (
-                                      <p className="text-xs text-muted-foreground line-clamp-2 text-center">
-                                        {sponsor.description}
-                                      </p>
-                                    )}
-                                  </div>
+                      <div className="space-y-8">
+                        {/* Row 1: Interface Design (Unchanged) */}
+                        <div className="flex justify-center items-center w-full">
+                          {tier.sponsors
+                            .filter((s) => s.id === "interface-design")
+                            .map((sponsor) => (
+                              <Card
+                                key={sponsor.id}
+                                className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full max-w-sm mx-auto"
+                              >
+                                <CardContent className="p-0 flex flex-col items-center justify-between h-full w-full">
+                                  <SponsorLogoDisplay name={sponsor.name} logo={sponsor.logo} />
+                                  <div className="p-6 flex flex-col flex-grow items-center justify-between text-center space-y-4 w-full">
+                                    <div className="space-y-2 flex flex-col items-center justify-center">
+                                      <Badge variant="secondary" className="text-xs font-semibold">
+                                        {sponsor.category}
+                                      </Badge>
+                                      <h5 className="font-bold text-base md:text-lg text-foreground leading-snug group-hover:text-primary transition-colors text-center">
+                                        {sponsor.name}
+                                      </h5>
+                                      {sponsor.description && (
+                                        <p className="text-xs text-muted-foreground line-clamp-2 text-center">
+                                          {sponsor.description}
+                                        </p>
+                                      )}
+                                    </div>
 
-                                  <div className="pt-2 w-full flex justify-center items-center">
-                                    <a
-                                      href={sponsor.href || "#"}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-md text-xs font-semibold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 w-full"
-                                    >
-                                      <span>View Details</span>
-                                      <ExternalLink className="w-3.5 h-3.5" />
-                                    </a>
+                                    <div className="pt-2 w-full flex justify-center items-center">
+                                      <a
+                                        href={sponsor.href || "#"}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-md text-xs font-semibold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 w-full"
+                                      >
+                                        <span>View Details</span>
+                                        <ExternalLink className="w-3.5 h-3.5" />
+                                      </a>
+                                    </div>
                                   </div>
-                                </div>
-                              </CardContent>
-                            </Card>
-                          ))}
+                                </CardContent>
+                              </Card>
+                            ))}
+                        </div>
+
+                        {/* Row 2: Tequity & Unnati-Sd (Smaller Cards in Next Row) */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center items-center max-w-xl mx-auto">
+                          {tier.sponsors
+                            .filter((s) => s.id !== "interface-design")
+                            .map((sponsor) => (
+                              <Card
+                                key={sponsor.id}
+                                className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full max-w-[280px] mx-auto"
+                              >
+                                <CardContent className="p-0 flex flex-col items-center justify-between h-full w-full">
+                                  <div className="w-full h-28 flex items-center justify-center p-3 bg-white dark:bg-muted/10 rounded-t-lg group-hover:bg-muted/20 transition-colors">
+                                    <img
+                                      src={sponsor.logo}
+                                      alt={`${sponsor.name} logo`}
+                                      className="max-h-20 max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                  </div>
+                                  <div className="p-4 flex flex-col flex-grow items-center justify-between text-center space-y-3 w-full">
+                                    <div className="space-y-1.5 flex flex-col items-center justify-center">
+                                      <Badge variant="secondary" className="text-[11px] font-semibold py-0.5 px-2">
+                                        {sponsor.category}
+                                      </Badge>
+                                      <h5 className="font-bold text-sm text-foreground leading-snug group-hover:text-primary transition-colors text-center">
+                                        {sponsor.name}
+                                      </h5>
+                                      {sponsor.description && (
+                                        <p className="text-[11px] text-muted-foreground line-clamp-2 text-center">
+                                          {sponsor.description}
+                                        </p>
+                                      )}
+                                    </div>
+
+                                    <div className="pt-1 w-full flex justify-center items-center">
+                                      <a
+                                        href={sponsor.href || "#"}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md text-[11px] font-semibold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 w-full"
+                                      >
+                                        <span>View Details</span>
+                                        <ExternalLink className="w-3 h-3" />
+                                      </a>
+                                    </div>
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            ))}
+                        </div>
                       </div>
                     </div>
 
@@ -425,60 +531,130 @@ export function SponsorsPageContent() {
         ))}
       </section>
 
-      {/* 3. Banner & Become a Sponsor CTA — Placed AFTER all sponsors */}
-      <section className="space-y-8 pt-8">
-        <div className="flex flex-col md:flex-row items-center justify-between bg-card border border-border/60 rounded-2xl p-6 md:p-8 shadow-sm gap-6">
-          <div className="space-y-2 text-center md:text-left">
-            <h3 className="text-2xl md:text-3xl font-serif font-bold text-foreground">
-              Partner & Sponsor COPEN 14
-            </h3>
-            <p className="text-muted-foreground text-sm md:text-base max-w-2xl">
-              Showcase your precision engineering innovations to 500+ global delegates, academic leaders, and industry executives.
-            </p>
+      {/* 2. Partner & Sponsor COPEN 14 — ALWAYS VISIBLE Opportunities Details */}
+      <section id="sponsorship-opportunities" className="space-y-8 pt-8">
+        <div className="bg-card border border-border/70 rounded-2xl p-6 md:p-10 shadow-sm space-y-10">
+          {/* Section Header Banner */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border/60 pb-8">
+            <div className="space-y-2 text-center md:text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-primary/10 text-primary uppercase">
+                Sponsorship Opportunities
+              </div>
+              <h3 className="text-3xl md:text-4xl font-serif font-extrabold text-foreground tracking-tight">
+                Partner & Sponsor COPEN 14
+              </h3>
+              <p className="text-muted-foreground text-base max-w-3xl leading-relaxed">
+                Showcase your precision engineering innovations to 500+ global delegates, academic leaders, and industry executives. Explore all available sponsorship packages below.
+              </p>
+            </div>
+
+            <Link href="/contact" className="shrink-0 self-center md:self-auto">
+              <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-md font-semibold gap-2">
+                <Handshake className="w-5 h-5" />
+                <span>Become a Sponsor</span>
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </Link>
           </div>
 
-          <Button
-            onClick={toggleOpportunities}
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-md font-semibold gap-2 transition-all cursor-pointer shrink-0"
-          >
-            <Handshake className="w-5 h-5" />
-            <span>{showOpportunities ? "Hide Opportunities" : "Become a Sponsor"}</span>
-            {showOpportunities ? (
-              <ChevronUp className="w-4 h-4" />
-            ) : (
-              <ChevronDown className="w-4 h-4" />
-            )}
-          </Button>
-        </div>
+          {/* All Sponsorship Tiers (Always Visible) */}
+          <div className="space-y-8">
+            <h4 className="text-2xl font-serif font-bold text-primary flex items-center gap-2">
+              <Award className="w-6 h-6 text-primary" />
+              Sponsorship Packages & Benefits
+            </h4>
 
-        {/* Expandable Overview Section */}
-        {showOpportunities && (
-          <div id="sponsorship-opportunities" className="animate-in fade-in-50 duration-300">
-            <div className="bg-secondary/20 border border-primary/20 rounded-2xl p-6 md:p-10">
-              <div className="text-center max-w-3xl mx-auto mb-10">
-                <Badge variant="outline" className="mb-3 border-primary/40 text-primary font-semibold">
-                  Sponsorship Overview
-                </Badge>
-                <h3 className="text-3xl md:text-4xl font-serif font-extrabold text-primary">
-                  Quick Inquiry & Contact
-                </h3>
-                <p className="mt-3 text-muted-foreground text-base md:text-lg">
-                  Reach out to the COPEN 14 organizing committee to reserve your sponsorship tier or exhibition stall.
-                </p>
-              </div>
+            <div className="grid grid-cols-1 gap-6">
+              {OPPORTUNITY_TIERS.map((tier, idx) => (
+                <div
+                  key={idx}
+                  className="bg-background rounded-xl border border-border/80 p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+                    {/* Left Column: Title & Amount */}
+                    <div className="md:col-span-4 space-y-2">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h5 className="text-xl font-bold text-foreground">
+                          {tier.title}
+                        </h5>
+                        {tier.badge && (
+                          <Badge className="bg-primary text-primary-foreground text-xs">
+                            {tier.badge}
+                          </Badge>
+                        )}
+                      </div>
+                      <p className="text-lg md:text-xl font-extrabold text-red-600">
+                        {tier.amount}
+                      </p>
+                    </div>
 
-              <div className="text-center pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Link href="/contact">
-                  <Button size="lg" className="font-semibold gap-2">
-                    <span>Contact Organizing Committee</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Button>
-                </Link>
+                    {/* Right Column: Benefits Bullet Points */}
+                    <div className="md:col-span-8">
+                      <span className="font-semibold text-sm text-muted-foreground block mb-2">
+                        Benefits:
+                      </span>
+                      <ul className="grid grid-cols-1 gap-2.5">
+                        {tier.points.map((pt, pIdx) => (
+                          <li key={pIdx} className="flex items-start gap-2.5 text-sm md:text-base text-foreground/90 leading-relaxed">
+                            <CheckCircle2 className="w-4.5 h-4.5 text-primary shrink-0 mt-0.5" />
+                            <span>{pt}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Exhibition Stall Packages (Always Visible) */}
+            <div className="mt-10 bg-background rounded-xl border border-border/80 p-6 md:p-8 shadow-sm space-y-6">
+              <h4 className="text-xl md:text-2xl font-serif font-bold text-primary flex items-center gap-2">
+                <Building2 className="w-6 h-6 text-primary" />
+                Exhibition Stall Packages
+              </h4>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-6 rounded-xl border border-border/60 bg-muted/20 space-y-2">
+                  <span className="font-bold text-lg text-foreground block">
+                    12’ × 8’ Exhibition Stall
+                  </span>
+                  <span className="text-red-600 font-extrabold text-xl block">
+                    ₹ 1,00,000/- + 18% GST
+                  </span>
+                  <p className="text-sm text-muted-foreground pt-2 leading-relaxed">
+                    Includes quarter-page advertisement in conference souvenir and free registration for four delegates with complete food & hostel accommodation.
+                  </p>
+                </div>
+
+                <div className="p-6 rounded-xl border border-border/60 bg-muted/20 space-y-2">
+                  <span className="font-bold text-lg text-foreground block">
+                    6’ × 8’ Exhibition Stall
+                  </span>
+                  <span className="text-red-600 font-extrabold text-xl block">
+                    ₹ 50,000/- + 18% GST
+                  </span>
+                  <p className="text-sm text-muted-foreground pt-2 leading-relaxed">
+                    Includes quarter-page advertisement in conference souvenir and free registration for two delegates with complete food & hostel accommodation.
+                  </p>
+                </div>
               </div>
             </div>
+
+            {/* Inquiry Callout */}
+            <div className="text-center pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-border/40">
+              <p className="text-sm md:text-base text-muted-foreground">
+                Interested in reserving a sponsorship package or exhibition stall?
+              </p>
+              <Link href="/contact">
+                <Button className="font-semibold gap-2">
+                  <span>Contact Organizing Committee</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
-        )}
+        </div>
       </section>
     </div>
   );

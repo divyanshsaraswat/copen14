@@ -115,7 +115,10 @@ export default function CallForPapersPage() {
               <span className="font-semibold">
                 Full Paper Submission Last Date:
               </span>{" "}
-              <span className="font-semibold text-destructive">31/08/2026</span>
+              <span className="line-through text-muted-foreground mr-2 font-semibold">
+                31/08/2026
+              </span>
+              <span className="font-semibold text-destructive">15/09/2026</span>
             </p>
 
             <p className="text-lg">
