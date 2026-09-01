@@ -401,33 +401,33 @@ export function SponsorsPageContent() {
                             ))}
                         </div>
 
-                        {/* Row 2: Tequity & Unnati-Sd (Smaller Cards in Next Row) */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 justify-center items-center max-w-xl mx-auto">
+                        {/* Row 2: Tequity & Unnati-Sd (Smaller Cards Side-by-Side on Mobile & Desktop) */}
+                        <div className="grid grid-cols-2 gap-3 sm:gap-6 justify-center items-center max-w-sm sm:max-w-xl mx-auto">
                           {tier.sponsors
                             .filter((s) => s.id !== "interface-design")
                             .map((sponsor) => (
                               <Card
                                 key={sponsor.id}
-                                className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full max-w-[280px] mx-auto"
+                                className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full max-w-[170px] sm:max-w-[280px] mx-auto"
                               >
                                 <CardContent className="p-0 flex flex-col items-center justify-between h-full w-full">
-                                  <div className="w-full h-28 flex items-center justify-center p-3 bg-white dark:bg-muted/10 rounded-t-lg group-hover:bg-muted/20 transition-colors">
+                                  <div className="w-full h-20 sm:h-28 flex items-center justify-center p-2 sm:p-3 bg-white dark:bg-muted/10 rounded-t-lg group-hover:bg-muted/20 transition-colors">
                                     <img
                                       src={sponsor.logo}
                                       alt={`${sponsor.name} logo`}
-                                      className="max-h-20 max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-105"
+                                      className="max-h-14 sm:max-h-20 max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-105"
                                     />
                                   </div>
-                                  <div className="p-4 flex flex-col flex-grow items-center justify-between text-center space-y-3 w-full">
-                                    <div className="space-y-1.5 flex flex-col items-center justify-center">
-                                      <Badge variant="secondary" className="text-[11px] font-semibold py-0.5 px-2">
+                                  <div className="p-2.5 sm:p-4 flex flex-col flex-grow items-center justify-between text-center space-y-2 sm:space-y-3 w-full">
+                                    <div className="space-y-1 sm:space-y-1.5 flex flex-col items-center justify-center">
+                                      <Badge variant="secondary" className="text-[10px] sm:text-[11px] font-semibold py-0.5 px-1.5 sm:px-2">
                                         {sponsor.category}
                                       </Badge>
-                                      <h5 className="font-bold text-sm text-foreground leading-snug group-hover:text-primary transition-colors text-center">
+                                      <h5 className="font-bold text-xs sm:text-sm text-foreground leading-snug group-hover:text-primary transition-colors text-center">
                                         {sponsor.name}
                                       </h5>
                                       {sponsor.description && (
-                                        <p className="text-[11px] text-muted-foreground line-clamp-2 text-center">
+                                        <p className="text-[10px] sm:text-[11px] text-muted-foreground line-clamp-2 text-center leading-tight">
                                           {sponsor.description}
                                         </p>
                                       )}
@@ -438,10 +438,10 @@ export function SponsorsPageContent() {
                                         href={sponsor.href || "#"}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md text-[11px] font-semibold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 w-full"
+                                        className="inline-flex items-center justify-center gap-1 sm:gap-1.5 px-2 py-1 sm:px-3 sm:py-1.5 rounded-md text-[10px] sm:text-[11px] font-semibold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 w-full"
                                       >
                                         <span>View Details</span>
-                                        <ExternalLink className="w-3 h-3" />
+                                        <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                                       </a>
                                     </div>
                                   </div>
