@@ -124,6 +124,25 @@ function ProfileCard({
 }
 
 export default function CommitteePage() {
+  // Inaugural Session
+  const chiefGuest: Person = {
+    name: "Sh. Satish Kumar",
+    role: "Chief Guest",
+    title: "Chairman and Chief Executive Officer, Railway Board",
+    affiliation: "Ministry of Railways, Govt of India",
+    image: "/images/speakers/satishkumar.png",
+    profileUrl: "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2050631&reg=48&lang=2",
+  };
+
+  const guestOfHonor: Person = {
+    name: "Sh. Manoj Jain",
+    role: "Guest of Honor",
+    title: "Chairman & Managing Director",
+    affiliation: "Bharat Electronics Limited (BEL)",
+    image: "/images/speakers/manojjain.jpg",
+    profileUrl: "https://www.belop-india.in/mr_manoj_jain.html",
+  };
+
   // Advisory Committee
   const advisoryChair: Person = {
     name: "Sh. Rohit Saboo",
@@ -492,6 +511,25 @@ export default function CommitteePage() {
                  {" "}
         </div>
         <div className="container py-10 md:py-14 mx-auto px-4 max-w-6xl">
+          {/* Inaugural Session */}
+          <div className="mb-14 border-b pb-12">
+            <SectionTitle>Inaugural Session</SectionTitle>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-center text-xl md:text-2xl font-serif font-bold text-primary mb-4">
+                  Chief Guest
+                </h3>
+                <ProfileCard person={chiefGuest} center />
+              </div>
+              <div>
+                <h3 className="text-center text-xl md:text-2xl font-serif font-bold text-primary mb-4">
+                  Guest of Honor
+                </h3>
+                <ProfileCard person={guestOfHonor} center />
+              </div>
+            </div>
+          </div>
+
           <SectionTitle>Advisory Committee</SectionTitle>
           <div className="grid md:grid-cols-2 gap-8 mb-8">
             <ProfileCard person={advisoryChair} />

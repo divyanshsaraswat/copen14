@@ -9,6 +9,39 @@ type Speaker = {
   profileUrl?: string
 }
 
+const inauguralSpeakers: Speaker[] = [
+  {
+    name: "Sh. Satish Kumar",
+    role: "Chairman and Chief Executive Officer, Railway Board",
+    affiliation: "Ministry of Railways, Govt of India",
+    photo: "/images/speakers/satishkumar.png",
+    bio: `Shri Satish Kumar is the Chairman and Chief Executive Officer (CEO) of the Railway Board, Ministry of Railways, Government of India. He is a distinguished senior officer of the 1986 batch of the Indian Railway Service of Mechanical Engineers (IRSME) with nearly four decades of rich experience in Indian Railways.
+
+Prior to taking over as Chairman & CEO of the Railway Board, Shri Satish Kumar served as the General Manager of North Central Railway, Prayagraj, and as Member (Traction and Rolling Stock) of the Railway Board. He has been instrumental in spearheading major modernisation projects, digital transformational initiatives, rolling stock innovations, passenger amenity enhancements, and sustainable rail transportation across the country.`,
+    profileUrl: "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2050631&reg=48&lang=2",
+  },
+  {
+    name: "Sh. Manoj Jain",
+    role: "Chairman & Managing Director",
+    affiliation: "Bharat Electronics Limited (BEL)",
+    photo: "/images/speakers/manojjain.jpg",
+    bio: `Shri Manoj Jain is the Chairman & Managing Director (CMD) of Bharat Electronics Limited (BEL), a Navratna Defence Public Sector Undertaking under the Ministry of Defence, Government of India. He holds a Bachelor's degree in Electronics Engineering from REC Jaipur (now MNIT Jaipur), where he graduated as a Gold Medalist.
+
+Shri Manoj Jain joined BEL in August 1991 as a Probationary Engineer and has served over three decades in research, development, and strategic management. He previously served as Director (R&D), General Manager of the Electronic Warfare & Avionics Strategic Business Unit at BEL's Bangalore Complex, and Head of the Product Development & Innovation Centre (PD&IC). His technical leadership encompasses the development of military digital multiplexers, defence networks, radar systems, and driving self-reliance (Aatmanirbhar Bharat) in advanced defence electronics.`,
+    profileUrl: "https://www.belop-india.in/mr_manoj_jain.html",
+  },
+  {
+    name: "Sh. Rohit Saboo",
+    role: "President & Chief Executive Officer",
+    affiliation: "National Engineering Industries Ltd-NBC Bearings, CKA Birla Group",
+    photo: "/images/committee/rohitsaboo.jpg",
+    bio: `Shri Rohit Saboo is the President and Chief Executive Officer of National Engineering Industries Ltd. (NEI), the manufacturer of NBC Bearings and a member of the CK Birla Group. He holds an Engineering degree from Birla Institute of Technology, Ranchi, an MBA from Rochester Institute of Technology, NY, and completed the Senior Executive Program at Columbia University.
+
+Having been associated with the CK Birla Group for over 27 years, Shri Rohit Saboo previously served as Vice President (R&D and Manufacturing) at NEI before assuming the leadership role as President and CEO. Under his direction, India's leading bearings manufacturer has expanded its global footprint across 30+ countries and established state-of-the-art manufacturing facilities, driving innovation, operational excellence, and precision engineering for automotive, railway, aerospace, and industrial sectors.`,
+    profileUrl: "https://www.nbcbearings.com/our-team/",
+  },
+]
+
 const keynoteSpeakers: Speaker[] = [
   {
     name: "Prof. Dr.-Ing. Frank Brückner",
@@ -216,8 +249,89 @@ export function SpeakersPageContent() {
 
       {/* Main Content */}
       <div className="container mx-auto px-6 md:px-12 py-16">
-        {/* Keynote Speakers */}
+        {/* Inaugural Speakers */}
         <section>
+          <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary uppercase text-center">
+            Inaugural Speakers
+          </h2>
+          <div className="mx-auto mt-3 h-[2px] w-24 bg-muted" />
+
+          <div className="mt-12 space-y-12">
+            {inauguralSpeakers.map((sp, i) => (
+              <div
+                key={i}
+                className={`grid grid-cols-1 md:grid-cols-12 gap-8 items-center ${
+                  i % 2 === 1 ? "md:bg-secondary/20" : ""
+                } p-6 md:p-8 rounded-xl border border-border/10`}
+              >
+                {/* Image */}
+                {sp.photo && (
+                  <div
+                    className={`flex justify-center ${
+                      i % 2 === 0
+                        ? "md:col-span-3"
+                        : "md:col-span-3 md:order-2"
+                    }`}
+                  >
+                    <div className="w-full max-w-[240px] aspect-[3/4] overflow-hidden rounded-lg border border-border/60 bg-muted shadow-sm">
+                      <img
+                        src={sp.photo}
+                        alt={sp.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  </div>
+                )}
+
+                {/* Content */}
+                <div
+                  className={`flex-grow text-left space-y-3 ${
+                    sp.photo
+                      ? i % 2 === 0
+                        ? "md:col-span-9"
+                        : "md:col-span-9 md:order-1"
+                      : "md:col-span-12"
+                  }`}
+                >
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground">
+                      {sp.name}
+                    </h3>
+                    <p className="text-primary font-semibold text-sm md:text-base mt-1">
+                      {sp.role}
+                    </p>
+                    <p className="text-xs md:text-sm text-muted-foreground mt-0.5">
+                      {sp.affiliation}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4 text-muted-foreground leading-relaxed text-sm md:text-base">
+                    {sp.bio.split("\n\n").map((para, idx) => (
+                      <p key={idx}>{para.trim()}</p>
+                    ))}
+                  </div>
+
+                  {sp.profileUrl && (
+                    <div className="pt-2">
+                      <a
+                        href={sp.profileUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-xs font-semibold bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                      >
+                        <Globe className="w-3.5 h-3.5" />
+                        View Profile
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Keynote Speakers */}
+        <section className="mt-20">
           <h2 className="text-2xl md:text-3xl font-serif font-bold text-primary uppercase text-center">
             Keynote Speakers
           </h2>
