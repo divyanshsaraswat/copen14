@@ -129,6 +129,7 @@ His research contributions are primarily in advanced and non-traditional manufac
     name: "Prof. M.S. Shunmugam",
     role: "Professor",
     affiliation: "Formerly at IIT Madras, India",
+    photo: "/images/speakers/shunmugam.jpeg",
     bio: `Prof. M.S. Shunmugam has served as a Professor in the Department of Mechanical Engineering at Indian Institute of Technology Madras (IIT Madras) for over four decades. According to his profile on the IRINS system, he holds a Scopus ID 7006246829 and has authored over 140 publications between 1974 and 2024, including journal articles, book chapters, conference papers, and reviews.
 
 His research expertise lies in manufacturing processes and automation, covering areas such as robotics, metrology, gear manufacturing, BTA machining, centreless grinding, EDM, friction welding, inspection planning, computer applications in manufacturing, and quality control.`,
