@@ -177,7 +177,7 @@ function FeesTable() {
 
       {/* Exclusive of GST right below title */}
       <p className="text-sm text-slate-500 mb-6 text-center">
-        *All fees are exclusive of GST
+        *All fees include 18% GST. The total payable amount is shown after the "=" sign.
       </p>
 
       {/* National Delegates */}
@@ -189,35 +189,55 @@ function FeesTable() {
           <table className="min-w-full border border-gray-300 text-center">
             <thead className="bg-muted/40">
               <tr>
-                <th className="border px-4 py-2 font-semibold">Category</th>
-                <th className="border px-4 py-2 font-semibold">Early Bird</th>
-                <th className="border px-4 py-2 font-semibold">Regular Registration</th>
+                <th className="border px-4 py-3 font-semibold">Category</th>
+                <th className="border px-4 py-3 font-semibold">Early Bird</th>
+                <th className="border px-4 py-3 font-semibold">Regular Registration</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="border px-4 py-2 font-semibold">Industries</td>
-                <td className="border px-4 py-2">₹14,000/-</td>
-                <td className="border px-4 py-2">₹15,000/-</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2 font-semibold">Academicians</td>
-                <td className="border px-4 py-2">₹10,000/-</td>
-                <td className="border px-4 py-2">₹11,000/-</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2 font-semibold">Students</td>
-                <td className="border px-4 py-2">
-                  <span className="line-through text-slate-400 mr-1.5">₹8,000/-</span> ₹4,000/-
+                <td className="border px-4 py-3 font-semibold">Industries</td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">₹14,000 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= ₹16,520</span>
                 </td>
-                <td className="border px-4 py-2">
-                  <span className="line-through text-slate-400 mr-1.5">₹9,000/-</span> ₹4,500/-
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">₹15,000 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= ₹17,700</span>
                 </td>
               </tr>
+              <tr className="bg-muted/10">
+                <td className="border px-4 py-3 font-semibold">Academicians</td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">₹10,000 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= ₹11,800</span>
+                </td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">₹11,000 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= ₹12,980</span>
+                </td>
+              </tr>
               <tr>
-                <td className="border px-4 py-2 font-semibold">Accompanying Persons</td>
-                <td className="border px-4 py-2">₹3,000/-</td>
-                <td className="border px-4 py-2">₹4,000/-</td>
+                <td className="border px-4 py-3 font-semibold">Students</td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">₹4,000 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
+                </td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">₹4,500 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= ₹5,310</span>
+                </td>
+              </tr>
+              <tr className="bg-muted/10">
+                <td className="border px-4 py-3 font-semibold">Accompanying Persons</td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">₹3,000 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= ₹3,540</span>
+                </td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">₹4,000 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -233,31 +253,55 @@ function FeesTable() {
           <table className="min-w-full border border-gray-300 text-center">
             <thead className="bg-muted/40">
               <tr>
-                <th className="border px-4 py-2 font-semibold">Category</th>
-                <th className="border px-4 py-2 font-semibold">Early Bird</th>
-                <th className="border px-4 py-2 font-semibold">Regular Registration</th>
+                <th className="border px-4 py-3 font-semibold">Category</th>
+                <th className="border px-4 py-3 font-semibold">Early Bird</th>
+                <th className="border px-4 py-3 font-semibold">Regular Registration</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="border px-4 py-2 font-semibold">Industries</td>
-                <td className="border px-4 py-2">USD 300</td>
-                <td className="border px-4 py-2">USD 350</td>
+                <td className="border px-4 py-3 font-semibold">Industries</td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">USD 300 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= USD 354</span>
+                </td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">USD 350 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= USD 413</span>
+                </td>
+              </tr>
+              <tr className="bg-muted/10">
+                <td className="border px-4 py-3 font-semibold">Academicians</td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">USD 200 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= USD 236</span>
+                </td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">USD 250 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= USD 295</span>
+                </td>
               </tr>
               <tr>
-                <td className="border px-4 py-2 font-semibold">Academicians</td>
-                <td className="border px-4 py-2">USD 200</td>
-                <td className="border px-4 py-2">USD 250</td>
+                <td className="border px-4 py-3 font-semibold">Students</td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">USD 100 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= USD 118</span>
+                </td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">USD 125 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
+                </td>
               </tr>
-              <tr>
-                <td className="border px-4 py-2 font-semibold">Students</td>
-                <td className="border px-4 py-2">USD 100</td>
-                <td className="border px-4 py-2">USD 125</td>
-              </tr>
-              <tr>
-                <td className="border px-4 py-2 font-semibold">Accompanying Persons</td>
-                <td className="border px-4 py-2">USD 100</td>
-                <td className="border px-4 py-2">USD 125</td>
+              <tr className="bg-muted/10">
+                <td className="border px-4 py-3 font-semibold">Accompanying Persons</td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">USD 100 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= USD 118</span>
+                </td>
+                <td className="border px-4 py-3">
+                  <span className="text-muted-foreground">USD 125 + 18% GST</span>
+                  <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
+                </td>
               </tr>
             </tbody>
           </table>
