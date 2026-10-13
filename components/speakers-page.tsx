@@ -225,6 +225,16 @@ With more than 300 research publications, 90+ patents, and extensive collaborati
     bio: `Dr. Christ P. Paul leads a research group in Laser Additive Manufacturing (LAM) at RRCAT with 25 years of experience in developing LAM systems and applications in engineering and prosthesis. His research focuses on next-generation AM systems, advanced materials, innovative products, and comprehensive characterisation techniques. He promotes LAM technology in India through national collaborations and has contributed to 28 book chapters and over 120 research papers.`,
     profileUrl: "https://www.rrcat.gov.in/hrd/HBNI%20Faculty%20Profile%20CPPaul.pdf",
   },
+  {
+    name: "Dr. Chuan-Pu Liu",
+    role: "Chair Professor",
+    affiliation: "Department of Materials Science and Engineering, National Cheng Kung University, Taiwan",
+    photo: "/images/speakers/chuanpuliu.jpg",
+    bio: `Prof. Chuan-Pu Liu is a Chair Professor in the Department of Materials Science and Engineering at National Cheng Kung University (NCKU), Taiwan. His research focuses on semiconductor nanowires and thin films, quantum dots, atomic-scale imaging and modelling using transmission electron microscopy (TEM), nanodevices, piezotronics and thermoelectric devices, lithium-ion batteries, and gas and chemical sensors. He has made significant contributions to materials science and nanotechnology, with over 250 refereed journal publications and an impressive portfolio of 14 Taiwanese patents and 5 US patents.
+
+Prof. Liu has received several prestigious honours in recognition of his research excellence and industry–academia collaborations. These include the Research Excellence Award from Taiwan's Ministry of Science and Technology (2014 and 2017), Fellowship of the Materials Research Society of Taiwan (2018), the Best Technology Paper Award on Green Energy from the Far Eastern Y. Z. Hsu Science and Technology Memorial Foundation (2019), and the Industry–Academic Collaboration Excellence Award from NCKU (2019–2023).`,
+    profileUrl: "https://researchoutput.ncku.edu.tw/en/persons/chuan-pu-liu/",
+  },
 ]
 
 export function SpeakersPageContent() {
