@@ -235,6 +235,19 @@ With more than 300 research publications, 90+ patents, and extensive collaborati
 Prof. Liu has received several prestigious honours in recognition of his research excellence and industry–academia collaborations. These include the Research Excellence Award from Taiwan's Ministry of Science and Technology (2014 and 2017), Fellowship of the Materials Research Society of Taiwan (2018), the Best Technology Paper Award on Green Energy from the Far Eastern Y. Z. Hsu Science and Technology Memorial Foundation (2019), and the Industry–Academic Collaboration Excellence Award from NCKU (2019–2023).`,
     profileUrl: "https://researchoutput.ncku.edu.tw/en/persons/chuan-pu-liu/",
   },
+  {
+    name: "Prof. Alakesh Manna",
+    role: "Professor",
+    affiliation: "Formerly at Punjab Engineering College (Deemed to be University), Chandigarh",
+    photo: "/images/speakers/manna.jpg",
+    bio: `Prof. Alakesh Manna is a distinguished academician and researcher who served in the Department of Mechanical Engineering at Punjab Engineering College (Deemed to be University), Chandigarh. His academic and research expertise encompasses design, conventional, advanced, and micro-manufacturing; micro-machining; nano-finishing; hybrid machining processes; and the fabrication and characterization of composite materials and ceramics.
+
+Prof. Manna has published 279 research papers and 23 book chapters and has guided 24 Ph.D. (Engineering) scholars. He has authored two textbooks: A Textbook of Reliability and Maintenance Engineering and A Textbook of Manufacturing Science and Technology. His outstanding academic and research contributions have been recognized through several prestigious awards and honours, including the Prof. D. N. Trikha Excellence in Research Publication Award (2010); the Best Research Paper Award at the World Congress on Engineering, London (2016); the Best Research Paper Award at the International Conference on Design and Manufacturing Technologies (ICDMT-2024); recognition among the World’s Top 2% Most-Cited Scientists, along with lifetime career achievement recognition covering the period from 2002 to 2025; the Best Teacher Award for excellence in teaching on three occasions; and the Best Research Paper Award from The Institution of Engineers (India) on two occasions.
+
+Throughout his academic career, Prof. Manna has made significant contributions to the advancement of manufacturing science and technology, with particular emphasis on conventional and non-conventional machining processes, electrochemical machining, laser-assisted machining, and the fabrication and processing of conductive and non-conductive materials, metal matrix composites, and ceramics. His research has focused on the development and optimization of precision manufacturing techniques and the enhancement of the surface characteristics of engineering materials.
+
+In addition to his scholarly contributions, Prof. Manna has played an important role in engineering education, practical manufacturing research, and the advancement of precision engineering and modern manufacturing technologies. His contributions are reflected in his extensive research publications, patents, textbooks, academic mentorship, and supervision of research scholars. Through these endeavours, he has demonstrated a sustained commitment to advancing scientific knowledge, promoting technological innovation, and strengthening the integration of academic research with practical engineering applications.`,
+  },
 ]
 
 export function SpeakersPageContent() {
