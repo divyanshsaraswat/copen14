@@ -8,7 +8,19 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, CheckCircle2, Copy, Check } from "lucide-react"
+import { ExternalLink, CheckCircle2, Copy, Check, ArrowRight } from "lucide-react"
+
+function PayButton() {
+  return (
+    <a
+      href="#payment-details"
+      className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#0e3b79] hover:bg-[#0b2f61] text-white text-xs font-semibold whitespace-nowrap shadow-sm transition-colors shrink-0"
+    >
+      <span>Pay Now</span>
+      <ArrowRight className="w-3.5 h-3.5" />
+    </a>
+  )
+}
 
 function Hero() {
   return (
@@ -80,7 +92,7 @@ function RegistrationProcessSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {/* Stage 1: Payment */}
-        <Card className="border border-border/80 shadow-sm hover:shadow-md transition-shadow bg-card flex flex-col justify-between">
+        <Card id="payment-details" className="scroll-mt-24 border border-border/80 shadow-sm hover:shadow-md transition-shadow bg-card flex flex-col justify-between">
           <CardContent className="p-6 md:p-8 space-y-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-lg shrink-0">
@@ -198,45 +210,85 @@ function FeesTable() {
               <tr>
                 <td className="border px-4 py-3 font-semibold">Industries</td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">₹14,000 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= ₹16,520</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">₹14,000 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= ₹16,520</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">₹15,000 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= ₹17,700</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">₹15,000 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= ₹17,700</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
               </tr>
               <tr className="bg-muted/10">
                 <td className="border px-4 py-3 font-semibold">Academicians</td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">₹10,000 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= ₹11,800</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">₹10,000 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= ₹11,800</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">₹11,000 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= ₹12,980</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">₹11,000 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= ₹12,980</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
               </tr>
               <tr>
                 <td className="border px-4 py-3 font-semibold">Students</td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">₹4,000 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">₹4,000 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">₹4,500 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= ₹5,310</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">₹4,500 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= ₹5,310</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
               </tr>
               <tr className="bg-muted/10">
                 <td className="border px-4 py-3 font-semibold">Accompanying Persons</td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">₹3,000 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= ₹3,540</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">₹3,000 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= ₹3,540</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">₹4,000 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">₹4,000 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -262,45 +314,85 @@ function FeesTable() {
               <tr>
                 <td className="border px-4 py-3 font-semibold">Industries</td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">USD 300 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= USD 354</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">USD 300 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= USD 354</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">USD 350 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= USD 413</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">USD 350 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= USD 413</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
               </tr>
               <tr className="bg-muted/10">
                 <td className="border px-4 py-3 font-semibold">Academicians</td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">USD 200 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= USD 236</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">USD 200 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= USD 236</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">USD 250 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= USD 295</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">USD 250 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= USD 295</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
               </tr>
               <tr>
                 <td className="border px-4 py-3 font-semibold">Students</td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">USD 100 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= USD 118</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">USD 100 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= USD 118</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">USD 125 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">USD 125 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
               </tr>
               <tr className="bg-muted/10">
                 <td className="border px-4 py-3 font-semibold">Accompanying Persons</td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">USD 100 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= USD 118</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">USD 100 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= USD 118</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
                 <td className="border px-4 py-3">
-                  <span className="text-muted-foreground">USD 125 + 18% GST</span>
-                  <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex-grow text-center">
+                      <span className="text-muted-foreground">USD 125 + 18% GST</span>
+                      <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
+                    </div>
+                    <PayButton />
+                  </div>
                 </td>
               </tr>
             </tbody>
