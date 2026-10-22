@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { Mail, Phone, Globe, MapPin } from "lucide-react"
 
 export default function ContactPage() {
   return (
@@ -21,7 +22,7 @@ export default function ContactPage() {
 
       {/* Contact Section */}
       <section className="bg-secondary/20 py-16">
-        <div className="container mx-auto px-4 max-w-6xl">
+        <div className="container mx-auto px-4 max-w-6xl space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Prof. Harlal Singh Mali */}
             <div className="bg-white/90 rounded-2xl shadow-lg p-8 flex flex-col items-center text-center transition hover:shadow-xl">
@@ -82,8 +83,120 @@ export default function ContactPage() {
             </div>
           </div>
 
+          {/* Conference Secretariat & Venue Address */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Conference Secretariat */}
+            <div className="bg-white/90 rounded-2xl shadow-lg p-6 md:p-8 flex flex-col justify-between transition hover:shadow-xl">
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold text-center text-primary mb-8">
+                  Conference Secretariat
+                </h3>
+
+                <div className="space-y-6">
+                  {/* Email */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0 mt-0.5">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="font-semibold text-foreground text-sm md:text-base">Email</h4>
+                      <div className="text-sm text-muted-foreground flex flex-col space-y-1">
+                        <a href="mailto:copen14@mnit.ac.in" className="hover:text-primary transition-colors">
+                          copen14@mnit.ac.in
+                        </a>
+                        <a href="mailto:harlal.singh@mnit.ac.in" className="hover:text-primary transition-colors">
+                          harlal.singh@mnit.ac.in
+                        </a>
+                        <a href="mailto:anup.mech@mnit.ac.in" className="hover:text-primary transition-colors">
+                          anup.mech@mnit.ac.in
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Phone */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0 mt-0.5">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="font-semibold text-foreground text-sm md:text-base">Phone</h4>
+                      <div className="text-sm text-muted-foreground flex flex-col space-y-1">
+                        <a href="tel:+919549654561" className="hover:text-primary transition-colors">
+                          +91 95496 54561 (Dr. Harlal Singh Mali)
+                        </a>
+                        <a href="tel:+919549650950" className="hover:text-primary transition-colors">
+                          +91 95496 50950 (Dr. Anup Malik)
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Website */}
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0 mt-0.5">
+                      <Globe className="w-5 h-5" />
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="font-semibold text-foreground text-sm md:text-base">Website</h4>
+                      <div className="text-sm text-muted-foreground">
+                        <a
+                          href="https://www.mnit.ac.in"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:text-primary transition-colors"
+                        >
+                          www.mnit.ac.in
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Venue Address */}
+            <div className="bg-white/90 rounded-2xl shadow-lg p-6 md:p-8 flex flex-col justify-between transition hover:shadow-xl">
+              <div>
+                <h3 className="text-xl md:text-2xl font-bold text-center text-primary mb-8">
+                  Venue Address
+                </h3>
+
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 shrink-0 mt-0.5">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1 text-sm">
+                    <p className="font-semibold text-foreground leading-snug">
+                      VLTC - Vivekananda Lecture Theatre Complex,
+                    </p>
+                    <p className="font-semibold text-foreground leading-snug">
+                      Malaviya National Institute of Technology
+                    </p>
+                    <p className="text-muted-foreground">
+                      JLN Marg, Jaipur Rajasthan 302017
+                    </p>
+                    <p className="text-muted-foreground">
+                      India
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-xl overflow-hidden border border-border/50 shadow-sm mt-4">
+                <Image
+                  src="/images/vltc.jpg"
+                  alt="VLTC - Vivekananda Lecture Theatre Complex, MNIT Jaipur"
+                  width={700}
+                  height={466}
+                  className="w-full h-48 md:h-56 object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+
           {/* General Contact */}
-          <div className="text-center mt-14">
+          <div className="text-center pt-6">
             <p className="text-lg text-gray-700 font-medium">
               For general queries, contact us at:
             </p>
