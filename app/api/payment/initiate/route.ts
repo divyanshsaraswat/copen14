@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { PG, MOCK_MODE, amountFor, computeHash, type Category, type Tier } from "@/lib/icici-pg"
+import { PG, MOCK_MODE, amountFor, usdAmountFor, usdToInr, computeHash, type Category, type Tier } from "@/lib/icici-pg"
+import { db } from "@/lib/db"
 
 function txnDateNow(): string {
   const d = new Date()
@@ -9,19 +10,29 @@ function txnDateNow(): string {
 
 export async function POST(req: NextRequest) {
   const body = await req.json()
-  const { category, tier, name, email, mobile } = body as {
+  const { category, tier, name, email, mobile, international } = body as {
     category: Category
     tier: Tier
     name: string
     email: string
     mobile: string
+    international?: boolean
   }
 
   let amount: number
+  let usdAmount: number | undefined
   try {
-    amount = amountFor(category, tier)
+    if (international) {
+      usdAmount = usdAmountFor(category, tier)
+      amount = await usdToInr(usdAmount)
+    } else {
+      amount = amountFor(category, tier)
+    }
   } catch {
-    return NextResponse.json({ error: "Invalid category/tier" }, { status: 400 })
+    return NextResponse.json(
+      { error: international ? "Currency conversion unavailable, please try again" : "Invalid category/tier" },
+      { status: international ? 502 : 400 },
+    )
   }
   if (!name || !email || !mobile) {
     return NextResponse.json({ error: "Missing payer details" }, { status: 400 })
@@ -47,6 +58,14 @@ export async function POST(req: NextRequest) {
     addlParam2: tier,
   }
   params.secureHash = computeHash(params)
+
+  const client = await db()
+  await client.execute({
+    sql: `INSERT INTO registrations
+      (merchant_txn_no, name, email, mobile, category, tier, international, amount_inr, usd_amount)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    args: [merchantTxnNo, name, email, mobile, category, tier, international ? 1 : 0, amount, usdAmount ?? null],
+  })
 
   if (MOCK_MODE) {
     // No real bank call: hand the signed request straight to our own mock

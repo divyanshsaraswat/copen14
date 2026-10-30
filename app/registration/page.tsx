@@ -23,9 +23,9 @@ import type { Category, Tier } from "@/lib/icici-pg"
 const PAY_LINK_CLASS =
   "inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#0e3b79] hover:bg-[#0b2f61] text-white text-xs font-semibold whitespace-nowrap shadow-sm transition-colors shrink-0"
 
-// National Delegates (INR) only — wired to ICICI PG. International Delegates
-// (USD) keeps the plain anchor below until currency support is confirmed.
-function PayButton(props: { category?: Category; tier?: Tier }) {
+// International Delegates (USD) are converted to INR server-side before
+// hitting ICICI PG, since the gateway only documents currencyCode=356 (INR).
+function PayButton(props: { category?: Category; tier?: Tier; international?: boolean }) {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -49,7 +49,14 @@ function PayButton(props: { category?: Category; tier?: Tier }) {
       const res = await fetch("/api/payment/initiate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ category: props!.category, tier: props!.tier, name, email, mobile }),
+        body: JSON.stringify({
+          category: props!.category,
+          tier: props!.tier,
+          name,
+          email,
+          mobile,
+          international: props!.international,
+        }),
       })
       const data = await res.json()
       if (!res.ok || !data.redirectUrl) {
@@ -87,6 +94,11 @@ function PayButton(props: { category?: Category; tier?: Tier }) {
             <Label htmlFor="pay-mobile">Mobile Number</Label>
             <Input id="pay-mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
           </div>
+          {props.international && (
+            <p className="text-xs text-muted-foreground">
+              You will be charged the INR equivalent at today's exchange rate.
+            </p>
+          )}
           {error && <p className="text-sm text-red-600">{error}</p>}
         </div>
         <DialogFooter>
@@ -397,7 +409,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">USD 300 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= USD 354</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="industries" tier="early" international />
                   </div>
                 </td>
                 <td className="border px-4 py-3">
@@ -406,7 +418,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">USD 350 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= USD 413</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="industries" tier="regular" international />
                   </div>
                 </td>
               </tr>
@@ -418,7 +430,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">USD 200 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= USD 236</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="academicians" tier="early" international />
                   </div>
                 </td>
                 <td className="border px-4 py-3">
@@ -427,7 +439,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">USD 250 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= USD 295</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="academicians" tier="regular" international />
                   </div>
                 </td>
               </tr>
@@ -439,7 +451,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">USD 100 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= USD 118</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="students" tier="early" international />
                   </div>
                 </td>
                 <td className="border px-4 py-3">
@@ -448,7 +460,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">USD 125 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="students" tier="regular" international />
                   </div>
                 </td>
               </tr>
@@ -460,7 +472,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">USD 100 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= USD 118</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="accompanying" tier="early" international />
                   </div>
                 </td>
                 <td className="border px-4 py-3">
@@ -469,7 +481,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">USD 125 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="accompanying" tier="regular" international />
                   </div>
                 </td>
               </tr>

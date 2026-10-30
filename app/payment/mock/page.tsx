@@ -20,6 +20,12 @@ function buildResponse(req: Record<string, string>, outcome: "success" | "failur
     responseCode: outcome === "success" ? "000" : "115",
     respDescription: outcome === "success" ? "SUCCESS" : "Simulated failure",
     paymentID: txnID,
+    amount: req.amount,
+    paymentMode: "CARD",
+    customerEmailID: req.customerEmailID,
+    customerMobileNo: req.customerMobileNo,
+    addlParam1: req.addlParam1,
+    addlParam2: req.addlParam2,
   }
   return { ...base, secureHash: computeHash(base) }
 }

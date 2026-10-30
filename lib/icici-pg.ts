@@ -28,10 +28,48 @@ export const PRICING = {
 export type Category = keyof typeof PRICING
 export type Tier = "early" | "regular"
 
+export const CATEGORY_LABELS: Record<Category, string> = {
+  industries: "Industries",
+  academicians: "Academicians",
+  students: "Students",
+  accompanying: "Accompanying Persons",
+}
+
+export const TIER_LABELS: Record<Tier, string> = {
+  early: "Early Bird",
+  regular: "Regular Registration",
+}
+
 export function amountFor(category: Category, tier: Tier): number {
   const row = PRICING[category]
   if (!row) throw new Error(`Unknown category: ${category}`)
   return row[tier]
+}
+
+// International Delegates, GST-inclusive, as shown on /registration (USD)
+export const PRICING_USD = {
+  industries: { early: 354, regular: 413 },
+  academicians: { early: 236, regular: 295 },
+  students: { early: 118, regular: 147.5 },
+  accompanying: { early: 118, regular: 147.5 },
+} as const
+
+export function usdAmountFor(category: Category, tier: Tier): number {
+  const row = PRICING_USD[category]
+  if (!row) throw new Error(`Unknown category: ${category}`)
+  return row[tier]
+}
+
+// ICICI PG's currencyCode field only ever documents the value 356 (INR) —
+// no other value appears anywhere in the spec. So USD amounts get converted
+// to INR here (via Frankfurter's free, keyless ECB rate API) and charged in
+// INR; the gateway never sees USD. If the rate lookup fails, the caller
+// should surface an error rather than guess a rate.
+export async function usdToInr(usd: number): Promise<number> {
+  const res = await fetch("https://api.frankfurter.dev/v1/latest?base=USD&symbols=INR")
+  if (!res.ok) throw new Error("Currency conversion unavailable")
+  const data = (await res.json()) as { rates: { INR: number } }
+  return Math.round(usd * data.rates.INR * 100) / 100
 }
 
 // Spec: concat non-empty param VALUES in ascending key order, HMAC-SHA256, hex, lowercase.
