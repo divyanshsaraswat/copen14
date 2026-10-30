@@ -106,15 +106,15 @@ function PayButton(props: { category?: Category; tier?: Tier; international?: bo
                 : `₹${PRICING[props.category][props.tier].toLocaleString("en-IN")}`}
             </p>
           </div>
-          <div>
+          <div className="space-y-1.5">
             <Label htmlFor="pay-name">Full Name</Label>
             <Input id="pay-name" value={name} onChange={(e) => setName(e.target.value)} />
           </div>
-          <div>
+          <div className="space-y-1.5">
             <Label htmlFor="pay-email">Email</Label>
             <Input id="pay-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
-          <div>
+          <div className="space-y-1.5">
             <Label htmlFor="pay-mobile">Mobile Number</Label>
             <Input id="pay-mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
           </div>
