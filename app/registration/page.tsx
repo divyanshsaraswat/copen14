@@ -129,7 +129,15 @@ function PayButton(props: { category?: Category; tier?: Tier; international?: bo
                     })}
                   </span>{" "}
                   at the live rate of 1 USD = ₹{rate.toFixed(2)}, sourced from{" "}
-                  <span className="font-medium">{rateSource}</span>.
+                  <a
+                    href="https://www.exchangerate-api.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium underline hover:text-foreground"
+                  >
+                    {rateSource}
+                  </a>
+                  .
                 </>
               ) : (
                 "Fetching today's exchange rate…"

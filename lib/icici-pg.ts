@@ -69,16 +69,17 @@ export function usdAmountFor(category: Category, tier: Tier): number {
 
 // ICICI PG's currencyCode field only ever documents the value 356 (INR) —
 // no other value appears anywhere in the spec. So USD amounts get converted
-// to INR here (via Frankfurter's free, keyless ECB rate API) and charged in
-// INR; the gateway never sees USD. If the rate lookup fails, the caller
-// should surface an error rather than guess a rate.
-export const RATE_SOURCE = "frankfurter.dev"
+// to INR here (via ExchangeRate-API) and charged in INR; the gateway never
+// sees USD. If the rate lookup fails, the caller should surface an error
+// rather than guess a rate.
+export const RATE_SOURCE = "ExchangeRate-API"
 
 export async function getUsdInrRate(): Promise<number> {
-  const res = await fetch("https://api.frankfurter.dev/v1/latest?base=USD&symbols=INR")
+  const res = await fetch(`https://v6.exchangerate-api.com/v6/${process.env.EXCHANGERATE_API_KEY}/latest/USD`)
   if (!res.ok) throw new Error("Currency conversion unavailable")
-  const data = (await res.json()) as { rates: { INR: number } }
-  return data.rates.INR
+  const data = (await res.json()) as { result: string; conversion_rates?: { INR: number } }
+  if (data.result !== "success" || !data.conversion_rates) throw new Error("Currency conversion unavailable")
+  return data.conversion_rates.INR
 }
 
 export async function usdToInr(usd: number): Promise<number> {
