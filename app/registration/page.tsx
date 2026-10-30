@@ -8,17 +8,95 @@ import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ExternalLink, CheckCircle2, Copy, Check, ArrowRight } from "lucide-react"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { ExternalLink, CheckCircle2, Copy, Check, ArrowRight, Loader2 } from "lucide-react"
+import type { Category, Tier } from "@/lib/icici-pg"
 
-function PayButton() {
+const PAY_LINK_CLASS =
+  "inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#0e3b79] hover:bg-[#0b2f61] text-white text-xs font-semibold whitespace-nowrap shadow-sm transition-colors shrink-0"
+
+// National Delegates (INR) only — wired to ICICI PG. International Delegates
+// (USD) keeps the plain anchor below until currency support is confirmed.
+function PayButton(props: { category?: Category; tier?: Tier }) {
+  const [open, setOpen] = useState(false)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [mobile, setMobile] = useState("")
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  if (!props.category || !props.tier) {
+    return (
+      <a href="#payment-details" className={PAY_LINK_CLASS}>
+        <span>Pay Now</span>
+        <ArrowRight className="w-3.5 h-3.5" />
+      </a>
+    )
+  }
+
+  async function handlePay() {
+    setLoading(true)
+    setError(null)
+    try {
+      const res = await fetch("/api/payment/initiate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ category: props!.category, tier: props!.tier, name, email, mobile }),
+      })
+      const data = await res.json()
+      if (!res.ok || !data.redirectUrl) {
+        setError(data.error ?? "Could not start payment. Please try again.")
+        return
+      }
+      window.location.href = data.redirectUrl
+    } catch {
+      setError("Network error. Please try again.")
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
-    <a
-      href="#payment-details"
-      className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#0e3b79] hover:bg-[#0b2f61] text-white text-xs font-semibold whitespace-nowrap shadow-sm transition-colors shrink-0"
-    >
-      <span>Pay Now</span>
-      <ArrowRight className="w-3.5 h-3.5" />
-    </a>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <button type="button" onClick={() => setOpen(true)} className={PAY_LINK_CLASS}>
+        <span>Pay Now</span>
+        <ArrowRight className="w-3.5 h-3.5" />
+      </button>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Registration Payment Details</DialogTitle>
+        </DialogHeader>
+        <div className="space-y-3 py-2">
+          <div>
+            <Label htmlFor="pay-name">Full Name</Label>
+            <Input id="pay-name" value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
+          <div>
+            <Label htmlFor="pay-email">Email</Label>
+            <Input id="pay-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div>
+            <Label htmlFor="pay-mobile">Mobile Number</Label>
+            <Input id="pay-mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
+          </div>
+          {error && <p className="text-sm text-red-600">{error}</p>}
+        </div>
+        <DialogFooter>
+          <Button onClick={handlePay} disabled={loading || !name || !email || !mobile}>
+            {loading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+            Proceed to Pay
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   )
 }
 
@@ -215,7 +293,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">₹14,000 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= ₹16,520</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="industries" tier="early" />
                   </div>
                 </td>
                 <td className="border px-4 py-3">
@@ -224,7 +302,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">₹15,000 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= ₹17,700</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="industries" tier="regular" />
                   </div>
                 </td>
               </tr>
@@ -236,7 +314,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">₹10,000 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= ₹11,800</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="academicians" tier="early" />
                   </div>
                 </td>
                 <td className="border px-4 py-3">
@@ -245,7 +323,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">₹11,000 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= ₹12,980</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="academicians" tier="regular" />
                   </div>
                 </td>
               </tr>
@@ -257,7 +335,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">₹4,000 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="students" tier="early" />
                   </div>
                 </td>
                 <td className="border px-4 py-3">
@@ -266,7 +344,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">₹4,500 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= ₹5,310</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="students" tier="regular" />
                   </div>
                 </td>
               </tr>
@@ -278,7 +356,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">₹3,000 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= ₹3,540</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="accompanying" tier="early" />
                   </div>
                 </td>
                 <td className="border px-4 py-3">
@@ -287,7 +365,7 @@ function FeesTable() {
                       <span className="text-muted-foreground">₹4,000 + 18% GST</span>
                       <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
                     </div>
-                    <PayButton />
+                    <PayButton category="accompanying" tier="regular" />
                   </div>
                 </td>
               </tr>
