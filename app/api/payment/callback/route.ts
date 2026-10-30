@@ -28,21 +28,13 @@ export async function POST(req: NextRequest) {
     })
   }
 
+  // The bank never echoes the registrant's name (only email/mobile), and query
+  // params are user-tamperable anyway — the result pages look up the
+  // authoritative record from the DB by merchantTxnNo instead of trusting
+  // forwarded fields.
   const origin = req.nextUrl.origin
   const dest = new URL(ok ? "/registration/payment-success" : "/registration/payment-failed", origin)
-  dest.searchParams.set("txnID", params.txnID ?? "")
-  dest.searchParams.set("merchantTxnNo", params.merchantTxnNo ?? "")
-  if (ok) {
-    // Fields the bank echoes back on a successful payment response (spec ch.7)
-    // — used to render the receipt, not persisted anywhere yet.
-    dest.searchParams.set("amount", params.amount ?? "")
-    dest.searchParams.set("paymentDateTime", params.paymentDateTime ?? "")
-    dest.searchParams.set("paymentMode", params.paymentMode ?? "")
-    dest.searchParams.set("customerEmailID", params.customerEmailID ?? "")
-    dest.searchParams.set("customerMobileNo", params.customerMobileNo ?? "")
-    dest.searchParams.set("category", params.addlParam1 ?? "")
-    dest.searchParams.set("tier", params.addlParam2 ?? "")
-  }
+  dest.searchParams.set("ref", params.merchantTxnNo ?? "")
   if (!valid) dest.searchParams.set("reason", "hash-mismatch")
 
   return NextResponse.redirect(dest, { status: 303 })

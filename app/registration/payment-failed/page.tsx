@@ -6,9 +6,9 @@ import { XCircle } from "lucide-react"
 export default async function PaymentFailedPage({
   searchParams,
 }: {
-  searchParams: Promise<{ txnID?: string; merchantTxnNo?: string; reason?: string }>
+  searchParams: Promise<{ ref?: string; reason?: string }>
 }) {
-  const { txnID, merchantTxnNo } = await searchParams
+  const { ref } = await searchParams
   return (
     <>
       <Header />
@@ -18,10 +18,9 @@ export default async function PaymentFailedPage({
         <p className="text-muted-foreground mb-6">
           Your payment could not be completed. No amount has been charged, or it will be reversed automatically.
         </p>
-        {txnID && (
+        {ref && (
           <p className="text-sm text-muted-foreground">
-            Transaction ID: <span className="font-mono">{txnID}</span>
-            {merchantTxnNo && <> &middot; Ref: <span className="font-mono">{merchantTxnNo}</span></>}
+            Reference: <span className="font-mono">{ref}</span>
           </p>
         )}
         <Link href="/registration#payment-details" className="inline-block mt-6 text-primary underline">

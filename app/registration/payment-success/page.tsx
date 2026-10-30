@@ -8,32 +8,73 @@ import {
   type Category,
   type Tier,
 } from "@/lib/icici-pg"
+import { db } from "@/lib/db"
 import { PrintButton } from "./print-button"
 
-function formatPaymentDateTime(raw?: string) {
-  // bank format: YYYYMMDDHHMISS
-  if (!raw || raw.length < 14) return raw
-  const y = raw.slice(0, 4), mo = raw.slice(4, 6), d = raw.slice(6, 8)
-  const h = raw.slice(8, 10), mi = raw.slice(10, 12), s = raw.slice(12, 14)
-  return `${d}/${mo}/${y} · ${h}:${mi}`
+type Registration = {
+  merchant_txn_no: string
+  txn_id: string | null
+  name: string
+  email: string
+  mobile: string
+  category: Category
+  tier: Tier
+  amount_inr: number
+  payment_mode: string | null
+  created_at: string
+  updated_at: string
 }
 
-function formatINR(amount?: string) {
-  if (!amount) return "₹0.00"
-  return `₹${Number(amount).toLocaleString("en-IN", { minimumFractionDigits: 2 })}`
+async function getRegistration(merchantTxnNo: string): Promise<Registration | null> {
+  const client = await db()
+  const result = await client.execute({
+    sql: "SELECT * FROM registrations WHERE merchant_txn_no = ?",
+    args: [merchantTxnNo],
+  })
+  return (result.rows[0] as unknown as Registration) ?? null
+}
+
+function formatDateTime(raw: string) {
+  // stored as SQLite's datetime('now'): "YYYY-MM-DD HH:MM:SS" (UTC)
+  const [date, time] = raw.split(" ")
+  if (!date || !time) return raw
+  const [y, mo, d] = date.split("-")
+  return `${d}/${mo}/${y} · ${time.slice(0, 5)}`
+}
+
+function formatINR(amount: number) {
+  return `₹${amount.toLocaleString("en-IN", { minimumFractionDigits: 2 })}`
 }
 
 export default async function PaymentSuccessPage({
   searchParams,
 }: {
-  searchParams: Promise<Record<string, string | undefined>>
+  searchParams: Promise<{ ref?: string }>
 }) {
-  const sp = await searchParams
-  const category = sp.category as Category | undefined
-  const tier = sp.tier as Tier | undefined
-  const categoryLabel = category ? CATEGORY_LABELS[category] : "Delegate"
-  const tierLabel = tier ? TIER_LABELS[tier] : "Standard"
-  const paymentModeLabel = sp.paymentMode ? (PAYMENT_MODE_LABELS[sp.paymentMode] ?? sp.paymentMode) : "Online Payment"
+  const { ref } = await searchParams
+  const reg = ref ? await getRegistration(ref) : null
+
+  if (!reg) {
+    return (
+      <main className="max-w-2xl mx-auto px-4 py-24 text-center">
+        <h1 className="text-xl font-bold mb-2">Receipt not found</h1>
+        <p className="text-muted-foreground">
+          We couldn't find a payment record for this reference. If you just paid, your bank txn ref is
+          still valid — please contact the COPEN 14 secretariat with your payment details.
+        </p>
+        <Button variant="outline" asChild className="mt-6">
+          <Link href="/">
+            <Home className="w-4 h-4 mr-2" />
+            Back to Website
+          </Link>
+        </Button>
+      </main>
+    )
+  }
+
+  const categoryLabel = CATEGORY_LABELS[reg.category]
+  const tierLabel = TIER_LABELS[reg.tier]
+  const paymentModeLabel = reg.payment_mode ? (PAYMENT_MODE_LABELS[reg.payment_mode] ?? reg.payment_mode) : "Online Payment"
 
   return (
     <main className="max-w-4xl mx-auto px-4 py-10 print:py-0 print:px-0">
@@ -71,15 +112,15 @@ export default async function PaymentSuccessPage({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-gray-50 rounded-md px-5 py-4 mt-6 text-sm">
           <div>
             <p className="text-xs font-semibold tracking-wide text-gray-500">TRANSACTION ID</p>
-            <p className="font-semibold mt-0.5">{sp.txnID || "—"}</p>
+            <p className="font-semibold mt-0.5">{reg.txn_id || "—"}</p>
           </div>
           <div>
             <p className="text-xs font-semibold tracking-wide text-gray-500">MERCHANT REFERENCE</p>
-            <p className="font-semibold mt-0.5">{sp.merchantTxnNo || "—"}</p>
+            <p className="font-semibold mt-0.5">{reg.merchant_txn_no}</p>
           </div>
           <div>
             <p className="text-xs font-semibold tracking-wide text-gray-500">DATE & TIME</p>
-            <p className="font-semibold mt-0.5">{formatPaymentDateTime(sp.paymentDateTime) || "—"}</p>
+            <p className="font-semibold mt-0.5">{formatDateTime(reg.updated_at)}</p>
           </div>
           <div>
             <p className="text-xs font-semibold tracking-wide text-gray-500">PAYMENT MODE</p>
@@ -109,7 +150,7 @@ export default async function PaymentSuccessPage({
                 <p className="text-green-700 font-medium">{tierLabel}</p>
               </td>
               <td className="py-3 px-3 align-top text-center">1</td>
-              <td className="py-3 px-3 align-top text-right font-semibold">{formatINR(sp.amount)}</td>
+              <td className="py-3 px-3 align-top text-right font-semibold">{formatINR(reg.amount_inr)}</td>
             </tr>
           </tbody>
         </table>
@@ -122,14 +163,16 @@ export default async function PaymentSuccessPage({
             </p>
             <dl className="text-sm space-y-2">
               <div className="flex justify-between">
+                <dt className="text-gray-500">Participant Name</dt>
+                <dd className="font-medium text-right">{reg.name}</dd>
+              </div>
+              <div className="flex justify-between">
                 <dt className="text-gray-500">Registered Email</dt>
-                <dd className="font-medium text-right">{sp.customerEmailID || "—"}</dd>
+                <dd className="font-medium text-right">{reg.email}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="text-gray-500">Mobile Contact</dt>
-                <dd className="font-medium text-right">
-                  {sp.customerMobileNo ? `+91 ${sp.customerMobileNo}` : "—"}
-                </dd>
+                <dd className="font-medium text-right">+91 {reg.mobile}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="text-gray-500">Registration Tier</dt>
@@ -147,7 +190,7 @@ export default async function PaymentSuccessPage({
             <div className="text-sm space-y-2">
               <div className="flex justify-between">
                 <span className="text-gray-500">Base Registration Fee</span>
-                <span className="font-medium">{formatINR(sp.amount)}</span>
+                <span className="font-medium">{formatINR(reg.amount_inr)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-500">Taxes &amp; Gateway Surcharges</span>
@@ -155,7 +198,7 @@ export default async function PaymentSuccessPage({
               </div>
               <div className="border-t border-gray-300 pt-2 mt-2 flex justify-between items-baseline">
                 <span className="font-bold">AMOUNT PAID</span>
-                <span className="font-bold text-xl">{formatINR(sp.amount)}</span>
+                <span className="font-bold text-xl">{formatINR(reg.amount_inr)}</span>
               </div>
             </div>
           </div>
@@ -183,7 +226,7 @@ export default async function PaymentSuccessPage({
         {/* Footer */}
         <div className="flex flex-col sm:flex-row justify-between gap-2 border-t border-gray-300 mt-8 pt-3 text-xs text-gray-500">
           <span>COPEN 14 Secretariat &middot; Malaviya National Institute of Technology Jaipur</span>
-          <span>Receipt ID: {sp.txnID || "—"}</span>
+          <span>Receipt ID: {reg.txn_id || reg.merchant_txn_no}</span>
           <span>Page 1 of 1</span>
         </div>
       </div>
