@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -18,7 +18,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ExternalLink, CheckCircle2, Copy, Check, ArrowRight, Loader2 } from "lucide-react"
-import type { Category, Tier } from "@/lib/icici-pg"
+import { CATEGORY_LABELS, TIER_LABELS, PRICING, PRICING_USD, type Category, type Tier } from "@/lib/icici-pg"
 
 const PAY_LINK_CLASS =
   "inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-md bg-[#0e3b79] hover:bg-[#0b2f61] text-white text-xs font-semibold whitespace-nowrap shadow-sm transition-colors shrink-0"
@@ -32,6 +32,21 @@ function PayButton(props: { category?: Category; tier?: Tier; international?: bo
   const [mobile, setMobile] = useState("")
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [rate, setRate] = useState<number | null>(null)
+  const [rateSource, setRateSource] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!open || !props.international || rate) return
+    fetch("/api/payment/rate")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.rate) {
+          setRate(data.rate)
+          setRateSource(data.source)
+        }
+      })
+      .catch(() => {})
+  }, [open, props.international, rate])
 
   if (!props.category || !props.tier) {
     return (
@@ -82,6 +97,15 @@ function PayButton(props: { category?: Category; tier?: Tier; international?: bo
           <DialogTitle>Registration Payment Details</DialogTitle>
         </DialogHeader>
         <div className="space-y-3 py-2">
+          <div className="rounded-md bg-muted/40 px-3 py-2 text-sm">
+            <p className="font-semibold">{CATEGORY_LABELS[props.category]}</p>
+            <p className="text-muted-foreground">
+              {TIER_LABELS[props.tier]} &middot;{" "}
+              {props.international
+                ? `USD ${PRICING_USD[props.category][props.tier]}`
+                : `₹${PRICING[props.category][props.tier].toLocaleString("en-IN")}`}
+            </p>
+          </div>
           <div>
             <Label htmlFor="pay-name">Full Name</Label>
             <Input id="pay-name" value={name} onChange={(e) => setName(e.target.value)} />
@@ -96,7 +120,20 @@ function PayButton(props: { category?: Category; tier?: Tier; international?: bo
           </div>
           {props.international && (
             <p className="text-xs text-muted-foreground">
-              You will be charged the INR equivalent at today's exchange rate.
+              {rate ? (
+                <>
+                  You will be charged{" "}
+                  <span className="font-semibold text-foreground">
+                    ₹{(PRICING_USD[props.category][props.tier] * rate).toLocaleString("en-IN", {
+                      maximumFractionDigits: 2,
+                    })}
+                  </span>{" "}
+                  at the live rate of 1 USD = ₹{rate.toFixed(2)}, sourced from{" "}
+                  <span className="font-medium">{rateSource}</span>.
+                </>
+              ) : (
+                "Fetching today's exchange rate…"
+              )}
             </p>
           )}
           {error && <p className="text-sm text-red-600">{error}</p>}

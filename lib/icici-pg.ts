@@ -40,6 +40,13 @@ export const TIER_LABELS: Record<Tier, string> = {
   regular: "Regular Registration",
 }
 
+export const PAYMENT_MODE_LABELS: Record<string, string> = {
+  CARD: "Card Payment",
+  NB: "Net Banking (NB)",
+  UPI: "UPI",
+  WALLET: "Wallet",
+}
+
 export function amountFor(category: Category, tier: Tier): number {
   const row = PRICING[category]
   if (!row) throw new Error(`Unknown category: ${category}`)
@@ -65,11 +72,18 @@ export function usdAmountFor(category: Category, tier: Tier): number {
 // to INR here (via Frankfurter's free, keyless ECB rate API) and charged in
 // INR; the gateway never sees USD. If the rate lookup fails, the caller
 // should surface an error rather than guess a rate.
-export async function usdToInr(usd: number): Promise<number> {
+export const RATE_SOURCE = "frankfurter.dev"
+
+export async function getUsdInrRate(): Promise<number> {
   const res = await fetch("https://api.frankfurter.dev/v1/latest?base=USD&symbols=INR")
   if (!res.ok) throw new Error("Currency conversion unavailable")
   const data = (await res.json()) as { rates: { INR: number } }
-  return Math.round(usd * data.rates.INR * 100) / 100
+  return data.rates.INR
+}
+
+export async function usdToInr(usd: number): Promise<number> {
+  const rate = await getUsdInrRate()
+  return Math.round(usd * rate * 100) / 100
 }
 
 // Spec: concat non-empty param VALUES in ascending key order, HMAC-SHA256, hex, lowercase.
