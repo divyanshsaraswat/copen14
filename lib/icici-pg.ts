@@ -10,6 +10,13 @@ const BASE_URL = process.env.ICICI_PG_BASE_URL ?? "https://pgpayuat.icicibank.co
 
 export const PG = { MERCHANT_ID, AGGREGATOR_ID, BASE_URL }
 
+// ponytail: local simulation of ICICI's side, kept only as a fallback for
+// offline testing. Default is OFF — we hit the real pgpayuat.icicibank.com
+// sandbox using the spec doc's sample UAT creds. Set ICICI_PG_MOCK=true to
+// fall back to the local mock (e.g. no network, or bank callback URL not
+// reachable from your current environment).
+export const MOCK_MODE = process.env.ICICI_PG_MOCK === "true"
+
 // National Delegates, GST-inclusive, as shown on /registration
 export const PRICING = {
   industries: { early: 16520, regular: 17700 },

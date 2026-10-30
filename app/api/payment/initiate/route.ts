@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { PG, amountFor, computeHash, type Category, type Tier } from "@/lib/icici-pg"
+import { PG, MOCK_MODE, amountFor, computeHash, type Category, type Tier } from "@/lib/icici-pg"
 
 function txnDateNow(): string {
   const d = new Date()
@@ -48,12 +48,27 @@ export async function POST(req: NextRequest) {
   }
   params.secureHash = computeHash(params)
 
+  if (MOCK_MODE) {
+    // No real bank call: hand the signed request straight to our own mock
+    // "bank" page, which will post a matching, correctly-signed response to
+    // our callback — exercising the same verification code as production.
+    const tranCtx = Buffer.from(JSON.stringify(params)).toString("base64url")
+    return NextResponse.json({
+      redirectUrl: `${origin}/payment/mock?tranCtx=${tranCtx}`,
+    })
+  }
+
   const res = await fetch(`${PG.BASE_URL}/v2/initiateSale`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(params),
   })
-  const data = await res.json()
+  let data: { responseCode?: string; redirectURI?: string; tranCtx?: string; responseDescription?: string }
+  try {
+    data = await res.json()
+  } catch {
+    return NextResponse.json({ error: "ICICI PG returned an unexpected response" }, { status: 502 })
+  }
 
   if (data.responseCode !== "R1000" || !data.redirectURI || !data.tranCtx) {
     return NextResponse.json(
