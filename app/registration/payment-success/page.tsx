@@ -1,3 +1,6 @@
+import Link from "next/link"
+import { Home } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import {
   CATEGORY_LABELS,
   TIER_LABELS,
@@ -36,6 +39,12 @@ export default async function PaymentSuccessPage({
     <main className="max-w-4xl mx-auto px-4 py-10 print:py-0 print:px-0">
       <div className="flex justify-center gap-3 mb-6 print:hidden">
         <PrintButton />
+        <Button variant="outline" asChild>
+          <Link href="/">
+            <Home className="w-4 h-4 mr-2" />
+            Back to Website
+          </Link>
+        </Button>
       </div>
 
       <div className="border border-gray-300 rounded-lg p-8 sm:p-10 bg-white text-gray-900 print:border-0 print:p-0">
