@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { Calendar, MapPin, Users, Globe } from "lucide-react"
+import { Calendar, MapPin, Users, Globe, Download } from "lucide-react"
 import Link from "next/link"
 
 export function HeroSection() {
@@ -57,22 +57,34 @@ export function HeroSection() {
             </span>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 w-full sm:w-auto"
               asChild
             >
-              <Link href="#registration">Register Now</Link>
+              <Link href="/registration">Register Now</Link>
             </Button>
 
             <Button
               size="lg"
               variant="outline"
-              className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-base px-8"
+              className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-base px-8 w-full sm:w-auto"
               asChild
             >
               <Link href="#about">Learn More</Link>
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-base px-8 w-full sm:w-auto gap-2"
+              asChild
+            >
+              <a href="/flyer.pdf" target="_blank" rel="noopener noreferrer" download="COPEN14_Flyer.pdf">
+                <Download className="w-4 h-4" />
+                <span>Download Flyer</span>
+              </a>
             </Button>
           </div>
         </div>
