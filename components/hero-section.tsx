@@ -60,7 +60,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 w-full sm:w-auto"
+              className="bg-accent text-accent-foreground hover:bg-accent/90 text-base px-8 w-full sm:w-auto font-semibold"
               asChild
             >
               <Link href="/registration">Register Now</Link>
@@ -78,14 +78,24 @@ export function HeroSection() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-base px-8 w-full sm:w-auto gap-2"
+              className="bg-white/10 text-white border-white/30 hover:bg-white/20 text-base px-6 w-full sm:w-auto gap-2"
               asChild
             >
-              <a href="/flyer.pdf" target="_blank" rel="noopener noreferrer" download="COPEN14_Flyer.pdf">
-                <Download className="w-4 h-4" />
-                <span>Download Flyer</span>
+              <a href="/flyer.pdf" target="_blank" rel="noopener noreferrer" download="COPEN14_Pre_Conference_Workshop_Flyer.pdf">
+                <Download className="w-4 h-4 text-accent" />
+                <span>Pre-Conference Workshop Flyer</span>
               </a>
             </Button>
+          </div>
+
+          <div className="mt-5 flex flex-wrap items-center justify-center gap-1.5 text-xs md:text-sm text-white/85">
+            <span>Pre-Conference Workshop on 17 Dec 2026 •</span>
+            <Link
+              href="/workshops/pre"
+              className="text-accent underline underline-offset-4 hover:text-white transition font-medium"
+            >
+              View Workshop Details & Schedule →
+            </Link>
           </div>
         </div>
       </div>
