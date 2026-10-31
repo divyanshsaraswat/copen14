@@ -114,7 +114,7 @@ export const ALL_SPONSOR_TIERS: SponsorTierData[] = [
     title: "SILVER SPONSORSHIP",
     amount: "₹ 3,00,000/- + 18% GST",
     accentColor: "border-slate-400/30 bg-slate-500/10 text-slate-600",
-    badgeText: "1 Confirmed Sponsor",
+    badgeText: "2 Confirmed Sponsors",
     benefits: [
       "10-minute keynote / introduction talk / exhibition stall",
       "Name and logo on dais, banners, brochures, and conference website",
@@ -131,6 +131,14 @@ export const ALL_SPONSOR_TIERS: SponsorTierData[] = [
         href: "http://www.mitutoyoindia.com/",
         description: "Global leader in precision measuring instruments, metrology solutions, and coordinate measuring machines.",
       },
+      {
+        id: "brns",
+        name: "Board of Research in Nuclear Sciences (BRNS)",
+        category: "Silver Sponsor",
+        logo: "/images/sponsors/brns.png",
+        href: "https://brns.res.in",
+        description: "Apex body promoting and supporting indigenous R&D in nuclear science and engineering under DAE, Govt. of India.",
+      },
     ],
   },
   {
@@ -138,13 +146,31 @@ export const ALL_SPONSOR_TIERS: SponsorTierData[] = [
     title: "BRONZE SPONSORSHIP",
     amount: "₹ 2,00,000/- + 18% GST",
     accentColor: "border-amber-800/30 bg-amber-900/10 text-amber-800",
+    badgeText: "2 Confirmed Sponsors",
     benefits: [
       "Name and logo on dais, banners, brochures, and conference website",
       "One full-page advertisement in conference souvenir / proceedings",
       "One exhibition stall (8’ × 8’)",
       "One conference registration including food and accommodation",
     ],
-    sponsors: [],
+    sponsors: [
+      {
+        id: "gravita",
+        name: "Gravita India Ltd",
+        category: "Bronze Sponsor",
+        logo: "/images/sponsors/gravita.png",
+        href: "https://www.gravitaindia.com/",
+        description: "One of India's leading multinational recycling and precision non-ferrous metals manufacturing companies, based in Jaipur.",
+      },
+      {
+        id: "drdl-drdo",
+        name: "Defence Research and Development Laboratory (DRDL - DRDO)",
+        category: "Bronze Sponsor",
+        logo: "/images/sponsors/drdo.png",
+        href: "https://www.drdo.gov.in",
+        description: "Premier missile systems and advanced defense technologies laboratory under DRDO, Ministry of Defence, Govt. of India.",
+      },
+    ],
   },
   {
     id: "exhibition-stall-sponsorship",
