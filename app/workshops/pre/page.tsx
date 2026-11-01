@@ -19,7 +19,6 @@ import {
   ExternalLink,
   BookOpen,
   Cpu,
-  User,
 } from "lucide-react"
 
 export default function PreWorkshopsPage() {
@@ -328,8 +327,12 @@ export default function PreWorkshopsPage() {
               <Card className="border border-border/80 shadow-sm hover:shadow-md transition bg-card">
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-20 h-20 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-lg shrink-0">
-                      <User className="w-8 h-8 text-primary" />
+                    <div className="w-20 h-20 rounded-xl overflow-hidden bg-muted shrink-0 border border-border">
+                      <img
+                        src="/images/speakers/johnrozario.jpeg"
+                        alt="Dr. John Rozario Jegaraj"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
                     <div className="space-y-1">
                       <h4 className="text-lg font-bold text-foreground">

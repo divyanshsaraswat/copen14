@@ -247,6 +247,19 @@ Prof. Manna has published 279 research papers and 23 book chapters and has guide
 Throughout his academic career, Prof. Manna has made significant contributions to the advancement of manufacturing science and technology, with particular emphasis on conventional and non-conventional machining processes, electrochemical machining, laser-assisted machining, and the fabrication and processing of conductive and non-conductive materials, metal matrix composites, and ceramics. His research has focused on the development and optimization of precision manufacturing techniques and the enhancement of the surface characteristics of engineering materials.
 
 In addition to his scholarly contributions, Prof. Manna has played an important role in engineering education, practical manufacturing research, and the advancement of precision engineering and modern manufacturing technologies. His contributions are reflected in his extensive research publications, patents, textbooks, academic mentorship, and supervision of research scholars. Through these endeavours, he has demonstrated a sustained commitment to advancing scientific knowledge, promoting technological innovation, and strengthening the integration of academic research with practical engineering applications.`,
+    profileUrl: "https://pec.ac.in/me/faculty/alakesh-manna",
+  },
+  {
+    name: "Sh. Mayank Patel",
+    role: "Scientist-B",
+    affiliation: "Smart Manufacturing, Precision Machine Tools & Aggregates (SMPM) Centre, CMTI Bangalore",
+    photo: "/images/speakers/mayankpatel.png",
+    bio: `Mr. Mayank Patel is a Scientist-B at the Central Manufacturing Technology Institute (CMTI), Bengaluru, and is currently pursuing his Ph.D. in Design and Manufacturing at the Indian Institute of Science (IISc), Bengaluru. He has over five years of professional experience in precision engineering and advanced manufacturing, including previous associations with Mahindra & Mahindra and Larsen & Toubro.
+
+His areas of expertise include ultra-precision machining, precision machine tool development, single-point diamond turning, and advanced surface finishing technologies. At CMTI, he has contributed to the development and validation of the Nanoshape T-250 ultra-precision diamond turning machine, fabrication of metal mirrors, and development of laser-based polishing technologies. His research interests also include additive and hybrid manufacturing.
+
+He obtained his M.S. (Research) in Mechanical Engineering from IIT Kanpur in 2021 and his B.E. in Mechanical Engineering from Government Engineering College, Patan, in 2018. He has published several research papers and received prestigious recognitions, including the INAE Innovation in Manufacturing Processes Award (2021), INAE Fourth Youth Conclave Award (2021), and Academic Excellence Award at IIT Kanpur.`,
+    profileUrl: "https://cmti.res.in/cmtiemployee/mr-mayank-patel/",
   },
 ]
 
