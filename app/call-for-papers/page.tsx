@@ -110,24 +110,6 @@ export default function CallForPapersPage() {
             IMPORTANT DATES
           </h3>
 
-          {/* Revised Deadlines Notice Box */}
-          <div className="mt-6 p-5 rounded-xl bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-300 dark:border-amber-700/50 space-y-2.5">
-            <p className="font-bold text-base text-foreground">
-              Please note the revised deadlines:
-            </p>
-            <ul className="list-disc pl-5 space-y-1.5 text-sm md:text-base text-muted-foreground">
-              <li>
-                <strong className="text-foreground font-semibold">Revised Paper Acceptance Date:</strong> 5 November 2026
-              </li>
-              <li>
-                <strong className="text-foreground font-semibold">Revised Early Bird Registration Deadline:</strong> 15 November 2026
-              </li>
-            </ul>
-            <p className="text-sm font-semibold text-destructive pt-1">
-              Please note that these are the final deadlines, and no further extensions will be made for Early Bird Registration.
-            </p>
-          </div>
-
           <div className="mt-8 space-y-6">
             <p className="text-lg">
               <span className="font-semibold">
@@ -141,7 +123,7 @@ export default function CallForPapersPage() {
 
             <p className="text-lg">
               <span className="font-semibold">
-                Paper Acceptance Date:
+                Revised Paper Acceptance Date:
               </span>{" "}
               <span className="font-semibold text-destructive">05/11/2026</span>
             </p>
@@ -159,6 +141,10 @@ export default function CallForPapersPage() {
             <p className="text-lg">
               <span className="font-semibold">Last Date of Registration:</span>{" "}
               <span className="font-semibold text-destructive">30/11/2026</span>
+            </p>
+
+            <p className="italic text-destructive">
+              * Please note that these are the final deadlines, and no further extensions will be made for Early Bird Registration.
             </p>
           </div>
 
