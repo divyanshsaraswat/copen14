@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Badge } from "@/components/ui/badge"
@@ -251,6 +252,25 @@ export default function HospitalityPage() {
                 </span>
               </div>
 
+              {/* Intro Jaipur Picture */}
+              <div className="relative w-full h-48 sm:h-64 md:h-80 lg:h-96 rounded-xl overflow-hidden shadow-md border border-amber-500/20 group">
+                <Image
+                  src="/images/hotels/intro-jaipur.webp"
+                  alt="Jaipur - The Pink City"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-black/60 backdrop-blur-md px-3 py-1 rounded-md border border-white/20 shadow-sm">
+                    <MapPin className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Jaipur, Rajasthan • The Pink City</span>
+                  </span>
+                </div>
+              </div>
+
               <div className="space-y-4 text-foreground/90 leading-relaxed">
                 <h2 className="text-2xl md:text-3xl font-serif font-bold text-foreground">
                   Dear Delegates, a warm welcome to COPEN14 at MNIT Jaipur, in the heart of the Pink City!
@@ -442,14 +462,14 @@ export default function HospitalityPage() {
             </div>
 
             {/* Campus Address Box with Direction Link */}
-            <div className="p-6 rounded-2xl bg-muted/40 border border-border/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-              <div className="flex items-start gap-3 text-center sm:text-left">
-                <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
+            <div className="p-5 sm:p-6 rounded-2xl bg-muted/40 border border-border/80 flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-3.5 sm:gap-4">
+                <div className="w-11 h-11 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
                   <h4 className="font-bold text-base text-foreground">Campus Address</h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground mt-0.5">
                     Malaviya National Institute of Technology (MNIT), JLN Marg, Jaipur, Rajasthan 302017, India
                   </p>
                 </div>
@@ -457,7 +477,7 @@ export default function HospitalityPage() {
 
               <Button
                 variant="outline"
-                className="shrink-0 gap-2 border-primary text-primary hover:bg-primary hover:text-white"
+                className="w-full sm:w-auto shrink-0 gap-2 border-primary text-primary hover:bg-primary hover:text-white"
                 asChild
               >
                 <a
