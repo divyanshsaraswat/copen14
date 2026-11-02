@@ -9,6 +9,17 @@ function txnDateNow(): string {
 }
 
 export async function POST(req: NextRequest) {
+  // `??` fallback in lib/icici-pg.ts doesn't catch an empty-but-present env
+  // var (e.g. "ICICI_PG_SECRET_KEY=" with nothing after it), which would
+  // otherwise sign live requests with a blank key and silently send them to
+  // the real bank endpoint. Fail loudly here instead.
+  if (!MOCK_MODE && !process.env.ICICI_PG_SECRET_KEY) {
+    return NextResponse.json(
+      { error: "Payment gateway is not fully configured (missing secret key)." },
+      { status: 503 },
+    )
+  }
+
   const body = await req.json()
   const { category, tier, name, email, mobile, international } = body as {
     category: Category
