@@ -63,7 +63,8 @@ export function Header() {
     { name: "Publications", href: "/publications" },
     { name: "Sponsors", href: "/sponsors" },
     { name: "Speakers", href: "/speakers" },
-    { name: "MNIT Jaipur ", href: "/about/mnit-jaipur" },
+    { name: "MNIT Jaipur", href: "/about/mnit-jaipur" },
+    { name: "Travel & Hospitality", href: "/hospitality" },
     // { name: "Glimpses", href: "/glimpses" },
   ]
 
@@ -87,9 +88,7 @@ export function Header() {
 
   const moreMenuItems = [
     // { name: "Program", href: "/program" },
-    { name: "Travel & Hospitality", href: "/hospitality" },
-    
-
+    // { name: "Travel & Hospitality", href: "/hospitality" },
     // { name: "Pre‑COPEN Events", href: "/pre-copen-events" },
     { name: "Contact Us", href: "/contact" },
   ]
@@ -122,13 +121,13 @@ export function Header() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-6 relative">
-              <Link href="/" className="text-sm font-medium hover:text-primary">Home</Link>
+            <nav className="hidden lg:flex items-center gap-2.5 xl:gap-4 2xl:gap-5 relative text-xs xl:text-sm whitespace-nowrap">
+              <Link href="/" className="font-medium hover:text-primary transition-colors">Home</Link>
               
               {/* About Dropdown */}
               <div className="relative" ref={aboutRef}>
                 <button
-                  className="flex items-center gap-1 text-sm font-medium hover:text-primary"
+                  className="flex items-center gap-1 font-medium hover:text-primary transition-colors"
                   aria-haspopup="menu"
                   aria-expanded={openDropdown === "about"}
                   onClick={() => setOpenDropdown(openDropdown === "about" ? null : "about")}
@@ -136,11 +135,11 @@ export function Header() {
                   tabIndex={0}
                   onKeyDown={e => (e.key === "Enter" || e.key === " ") && setOpenDropdown(openDropdown === "about" ? null : "about")}
                 >
-                  About <ChevronDown className="w-4 h-4" />
+                  About <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
                 </button>
                 <Dropdown open={openDropdown === "about"} refEl={aboutRef}>
                   {aboutMenuItems.map(item => (
-                    <Link key={item.name} href={item.href} className="block px-4 py-2 rounded hover:bg-gray-100" onClick={() => setOpenDropdown(null)}>
+                    <Link key={item.name} href={item.href} className="block px-4 py-2 rounded hover:bg-gray-100 text-sm" onClick={() => setOpenDropdown(null)}>
                       {item.name}
                     </Link>
                   ))}
@@ -148,7 +147,7 @@ export function Header() {
               </div>
 
               {navItems.slice(1).map(item => (
-                <Link key={item.name} href={item.href} className="text-sm font-medium hover:text-primary">
+                <Link key={item.name} href={item.href} className="font-medium hover:text-primary transition-colors">
                   {item.name}
                 </Link>
               ))}
@@ -178,7 +177,7 @@ export function Header() {
               {/* More Dropdown */}
               <div className="relative" ref={moreRef}>
                 <button
-                  className="flex items-center gap-1 text-sm font-medium hover:text-primary"
+                  className="flex items-center gap-1 font-medium hover:text-primary transition-colors"
                   aria-haspopup="menu"
                   aria-expanded={openDropdown === "more"}
                   onClick={() => setOpenDropdown(openDropdown === "more" ? null : "more")}
@@ -186,11 +185,11 @@ export function Header() {
                   tabIndex={0}
                   onKeyDown={e => (e.key === "Enter" || e.key === " ") && setOpenDropdown(openDropdown === "more" ? null : "more")}
                 >
-                  More <ChevronDown className="w-4 h-4" />
+                  More <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
                 </button>
                 <Dropdown open={openDropdown === "more"} refEl={moreRef}>
                   {moreMenuItems.map(item => (
-                    <Link key={item.name} href={item.href} className="block px-4 py-2 rounded hover:bg-gray-100" onClick={() => setOpenDropdown(null)}>
+                    <Link key={item.name} href={item.href} className="block px-4 py-2 rounded hover:bg-gray-100 text-sm" onClick={() => setOpenDropdown(null)}>
                       {item.name}
                     </Link>
                   ))}
@@ -200,11 +199,11 @@ export function Header() {
 
             {/* CTA + Mobile Toggle */}
             <div className="flex items-center space-x-2">
-              <Button className="hidden md:inline-block" asChild>
+              <Button className="hidden lg:inline-block" asChild>
                 <Link href="/registration">Register Now</Link>
               </Button>
               <button
-                className="md:hidden p-2 rounded-md hover:bg-gray-100"
+                className="lg:hidden p-2 rounded-md hover:bg-gray-100"
                 aria-label="Open menu"
                 onClick={() => setIsMobileMenuOpen((v) => !v)}
               >
@@ -216,7 +215,7 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div ref={mobileMenuRef} className="md:hidden bg-white shadow-xl px-6 py-4 absolute top-16 left-0 right-0 z-50 border-t">
+          <div ref={mobileMenuRef} className="lg:hidden bg-white shadow-xl px-6 py-4 absolute top-16 left-0 right-0 z-50 border-t max-h-[calc(100vh-4rem)] overflow-y-auto">
             <Link href="/" className="block py-2 font-medium" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
             <button
               className="w-full flex items-center justify-between py-2 font-medium"
