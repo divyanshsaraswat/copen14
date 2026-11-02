@@ -152,6 +152,52 @@ const HOTELS: Hotel[] = [
   },
 ]
 
+interface GuidanceContact {
+  id: string
+  title: string
+  description: string
+  person: string
+  phone: string
+}
+
+const GUIDANCE_CONTACTS: GuidanceContact[] = [
+  {
+    id: "1.1",
+    title: "Overall Transportation Coordination",
+    description: "For COPEN14 Guests and Delegates",
+    person: "Dr. Dinesh K. Rathore",
+    phone: "+91 82608 43176",
+  },
+  {
+    id: "1.2",
+    title: "Hospitality of Faculty & Family Delegates",
+    description: "Requiring Accommodation in MNIT Acharya Bhawan Guest Flats (subject to availability)",
+    person: "Dr. Yashwant Koli",
+    phone: "+91 98732 90034",
+  },
+  {
+    id: "1.3",
+    title: "Hospitality of Female Only Delegates",
+    description: "Requiring Girls Hostel Accommodation (subject to availability)",
+    person: "Dr. Preeti Gulia",
+    phone: "+91 95490 05491",
+  },
+  {
+    id: "1.4",
+    title: "Hospitality of Male Only Delegates",
+    description: "Requiring Boys Hostel Accommodation (subject to availability)",
+    person: "Dr. Surendra S. Godara",
+    phone: "+91 97826 05555",
+  },
+  {
+    id: "1.5",
+    title: "Hospitality of COPEN14 Guests",
+    description: "Accommodation and Travel Support being accommodated in MNIT Guest House",
+    person: "Dr. Yashwant Koli",
+    phone: "+91 98732 90034",
+  },
+]
+
 export default function HospitalityPage() {
   return (
     <main className="min-h-screen bg-background flex flex-col">
@@ -195,7 +241,7 @@ export default function HospitalityPage() {
           
           {/* Welcome Message & Travel/Accommodation Guidance Team (Before Transit and Hotels) */}
           <div className="space-y-8">
-            <div className="rounded-2xl border-2 border-orange-500/20 bg-gradient-to-br from-orange-50/70 via-amber-50/40 to-background p-6 md:p-10 shadow-sm space-y-6">
+            <div className="rounded-2xl border-2 border-orange-500/20 bg-gradient-to-br from-orange-50/70 via-amber-50/40 to-background p-4 sm:p-6 md:p-10 shadow-sm space-y-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <Badge variant="outline" className="px-3.5 py-1 text-xs font-bold border-amber-600/40 text-amber-700 dark:text-amber-300 uppercase tracking-wider w-fit">
                   Welcome to the Pink City
@@ -243,8 +289,47 @@ export default function HospitalityPage() {
                   </div>
                 </div>
 
-                {/* Sub-contacts Table */}
-                <div className="overflow-x-auto rounded-xl border border-border bg-card shadow-sm">
+                {/* Sub-contacts Directory - Responsive Dual View */}
+                
+                {/* Mobile Cards View (eliminates horizontal scrolling on mobile viewports) */}
+                <div className="space-y-3 block md:hidden">
+                  {GUIDANCE_CONTACTS.map((item) => (
+                    <div
+                      key={item.id}
+                      className="p-3.5 sm:p-4 rounded-xl border border-border bg-card shadow-xs space-y-2.5"
+                    >
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="font-mono text-xs font-bold text-muted-foreground bg-muted px-2 py-0.5 rounded border border-border/60">
+                          {item.id}
+                        </span>
+                        <a
+                          href={`tel:${item.phone.replace(/[^0-9+]/g, "")}`}
+                          className="inline-flex items-center gap-1.5 text-xs text-primary font-semibold bg-primary/10 hover:bg-primary/20 px-2.5 py-1 rounded-md transition-colors shrink-0"
+                        >
+                          <Phone className="w-3.5 h-3.5" />
+                          <span>{item.phone}</span>
+                        </a>
+                      </div>
+
+                      <div>
+                        <h5 className="font-semibold text-sm text-foreground leading-snug">
+                          {item.title}
+                        </h5>
+                        <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                          {item.description}
+                        </p>
+                      </div>
+
+                      <div className="pt-2 border-t border-border/60 text-xs flex items-center justify-between">
+                        <span className="text-muted-foreground font-medium">In-Charge:</span>
+                        <span className="font-bold text-foreground">{item.person}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Desktop Table View (clean table for md+ screens) */}
+                <div className="hidden md:block rounded-xl border border-border bg-card shadow-sm overflow-hidden">
                   <table className="w-full text-left text-sm">
                     <thead className="bg-muted/60 text-xs font-bold uppercase text-foreground/80 border-b border-border">
                       <tr>
@@ -254,115 +339,25 @@ export default function HospitalityPage() {
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-border">
-                      <tr className="hover:bg-muted/30 transition-colors">
-                        <td className="py-3.5 px-4 font-mono font-bold text-center text-muted-foreground">1.1</td>
-                        <td className="py-3.5 px-4">
-                          <span className="font-semibold text-foreground block">
-                            Overall Transportation Coordination
-                          </span>
-                          <span className="text-xs text-muted-foreground">
-                            For COPEN14 Guests and Delegates
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4">
-                          <div className="font-bold text-foreground">Dr. Dinesh K. Rathore</div>
-                          <a
-                            href="tel:+918260843176"
-                            className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline font-semibold mt-0.5"
-                          >
-                            <Phone className="w-3.5 h-3.5" />
-                            <span>+91 82608 43176</span>
-                          </a>
-                        </td>
-                      </tr>
-
-                      <tr className="hover:bg-muted/30 transition-colors">
-                        <td className="py-3.5 px-4 font-mono font-bold text-center text-muted-foreground">1.2</td>
-                        <td className="py-3.5 px-4">
-                          <span className="font-semibold text-foreground block">
-                            Hospitality of Faculty & Family Delegates
-                          </span>
-                          <span className="text-xs text-muted-foreground">
-                            Requiring Accommodation in MNIT Acharya Bhawan Guest Flats (subject to availability)
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4">
-                          <div className="font-bold text-foreground">Dr. Yashwant Koli</div>
-                          <a
-                            href="tel:+919873290034"
-                            className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline font-semibold mt-0.5"
-                          >
-                            <Phone className="w-3.5 h-3.5" />
-                            <span>+91 98732 90034</span>
-                          </a>
-                        </td>
-                      </tr>
-
-                      <tr className="hover:bg-muted/30 transition-colors">
-                        <td className="py-3.5 px-4 font-mono font-bold text-center text-muted-foreground">1.3</td>
-                        <td className="py-3.5 px-4">
-                          <span className="font-semibold text-foreground block">
-                            Hospitality of Female Only Delegates
-                          </span>
-                          <span className="text-xs text-muted-foreground">
-                            Requiring Girls Hostel Accommodation (subject to availability)
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4">
-                          <div className="font-bold text-foreground">Dr. Preeti Gulia</div>
-                          <a
-                            href="tel:+919549005491"
-                            className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline font-semibold mt-0.5"
-                          >
-                            <Phone className="w-3.5 h-3.5" />
-                            <span>+91 95490 05491</span>
-                          </a>
-                        </td>
-                      </tr>
-
-                      <tr className="hover:bg-muted/30 transition-colors">
-                        <td className="py-3.5 px-4 font-mono font-bold text-center text-muted-foreground">1.4</td>
-                        <td className="py-3.5 px-4">
-                          <span className="font-semibold text-foreground block">
-                            Hospitality of Male Only Delegates
-                          </span>
-                          <span className="text-xs text-muted-foreground">
-                            Requiring Boys Hostel Accommodation (subject to availability)
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4">
-                          <div className="font-bold text-foreground">Dr. Surendra S. Godara</div>
-                          <a
-                            href="tel:+919782605555"
-                            className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline font-semibold mt-0.5"
-                          >
-                            <Phone className="w-3.5 h-3.5" />
-                            <span>+91 97826 05555</span>
-                          </a>
-                        </td>
-                      </tr>
-
-                      <tr className="hover:bg-muted/30 transition-colors">
-                        <td className="py-3.5 px-4 font-mono font-bold text-center text-muted-foreground">1.5</td>
-                        <td className="py-3.5 px-4">
-                          <span className="font-semibold text-foreground block">
-                            Hospitality of COPEN14 Guests
-                          </span>
-                          <span className="text-xs text-muted-foreground">
-                            Accommodation and Travel Support being accommodated in MNIT Guest House
-                          </span>
-                        </td>
-                        <td className="py-3.5 px-4">
-                          <div className="font-bold text-foreground">Dr. Yashwant Koli</div>
-                          <a
-                            href="tel:+919873290034"
-                            className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline font-semibold mt-0.5"
-                          >
-                            <Phone className="w-3.5 h-3.5" />
-                            <span>+91 98732 90034</span>
-                          </a>
-                        </td>
-                      </tr>
+                      {GUIDANCE_CONTACTS.map((item) => (
+                        <tr key={item.id} className="hover:bg-muted/30 transition-colors">
+                          <td className="py-3.5 px-4 font-mono font-bold text-center text-muted-foreground">{item.id}</td>
+                          <td className="py-3.5 px-4">
+                            <span className="font-semibold text-foreground block">{item.title}</span>
+                            <span className="text-xs text-muted-foreground">{item.description}</span>
+                          </td>
+                          <td className="py-3.5 px-4">
+                            <div className="font-bold text-foreground">{item.person}</div>
+                            <a
+                              href={`tel:${item.phone.replace(/[^0-9+]/g, "")}`}
+                              className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline font-semibold mt-0.5"
+                            >
+                              <Phone className="w-3.5 h-3.5" />
+                              <span>{item.phone}</span>
+                            </a>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
