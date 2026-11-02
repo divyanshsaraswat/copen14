@@ -25,7 +25,7 @@ const PAY_LINK_CLASS =
 
 // International Delegates (USD) are converted to INR server-side before
 // hitting ICICI PG, since the gateway only documents currencyCode=356 (INR).
-function PayButton(props: { category?: Category; tier?: Tier; international?: boolean }) {
+function PayButton(props: { category?: Category; tier?: Tier; international?: boolean; disabled?: boolean }) {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -34,6 +34,8 @@ function PayButton(props: { category?: Category; tier?: Tier; international?: bo
   const [error, setError] = useState<string | null>(null)
   const [rate, setRate] = useState<number | null>(null)
   const [rateSource, setRateSource] = useState<string | null>(null)
+
+  const isDisabled = props.disabled ?? props.tier === "regular"
 
   useEffect(() => {
     if (!open || !props.international || rate) return
@@ -47,6 +49,20 @@ function PayButton(props: { category?: Category; tier?: Tier; international?: bo
       })
       .catch(() => {})
   }, [open, props.international, rate])
+
+  if (isDisabled) {
+    return (
+      <button
+        type="button"
+        disabled
+        title="Regular Registration will open after Early Bird concludes on 15th Nov"
+        className="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-md bg-muted text-muted-foreground/60 text-xs font-semibold whitespace-nowrap shadow-none cursor-not-allowed border border-border/80 shrink-0 select-none"
+      >
+        <span>Pay Now</span>
+        <ArrowRight className="w-3.5 h-3.5" />
+      </button>
+    )
+  }
 
   if (!props.category || !props.tier) {
     return (
@@ -280,7 +296,9 @@ function RegistrationProcess() {
                 <thead className="bg-muted/50 border-b border-border">
                   <tr>
                     <th className="px-4 py-3 font-semibold text-left">Category</th>
-                    <th className="px-4 py-3 font-semibold">Early Bird</th>
+                    <th className="px-4 py-3 font-semibold">
+                      Early Bird <span className="text-xs font-normal text-muted-foreground block sm:inline">(Till 15th Nov sharp)</span>
+                    </th>
                     <th className="px-4 py-3 font-semibold">Regular Registration</th>
                   </tr>
                 </thead>
@@ -302,7 +320,7 @@ function RegistrationProcess() {
                           <span className="text-muted-foreground">₹15,000 + 18% GST</span>
                           <span className="ml-1 font-bold text-foreground">= ₹17,700</span>
                         </div>
-                        <PayButton category="industries" tier="regular" />
+                        <PayButton category="industries" tier="regular" disabled />
                       </div>
                     </td>
                   </tr>
@@ -323,7 +341,7 @@ function RegistrationProcess() {
                           <span className="text-muted-foreground">₹11,000 + 18% GST</span>
                           <span className="ml-1 font-bold text-foreground">= ₹12,980</span>
                         </div>
-                        <PayButton category="academicians" tier="regular" />
+                        <PayButton category="academicians" tier="regular" disabled />
                       </div>
                     </td>
                   </tr>
@@ -344,7 +362,7 @@ function RegistrationProcess() {
                           <span className="text-muted-foreground">₹4,500 + 18% GST</span>
                           <span className="ml-1 font-bold text-foreground">= ₹5,310</span>
                         </div>
-                        <PayButton category="students" tier="regular" />
+                        <PayButton category="students" tier="regular" disabled />
                       </div>
                     </td>
                   </tr>
@@ -365,7 +383,7 @@ function RegistrationProcess() {
                           <span className="text-muted-foreground">₹4,000 + 18% GST</span>
                           <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
                         </div>
-                        <PayButton category="accompanying" tier="regular" />
+                        <PayButton category="accompanying" tier="regular" disabled />
                       </div>
                     </td>
                   </tr>
@@ -387,7 +405,9 @@ function RegistrationProcess() {
                 <thead className="bg-muted/50 border-b border-border">
                   <tr>
                     <th className="px-4 py-3 font-semibold text-left">Category</th>
-                    <th className="px-4 py-3 font-semibold">Early Bird</th>
+                    <th className="px-4 py-3 font-semibold">
+                      Early Bird <span className="text-xs font-normal text-muted-foreground block sm:inline">(Till 15th Nov sharp)</span>
+                    </th>
                     <th className="px-4 py-3 font-semibold">Regular Registration</th>
                   </tr>
                 </thead>
@@ -409,7 +429,7 @@ function RegistrationProcess() {
                           <span className="text-muted-foreground">USD 350 + 18% GST</span>
                           <span className="ml-1 font-bold text-foreground">= USD 413</span>
                         </div>
-                        <PayButton category="industries" tier="regular" international />
+                        <PayButton category="industries" tier="regular" international disabled />
                       </div>
                     </td>
                   </tr>
@@ -430,7 +450,7 @@ function RegistrationProcess() {
                           <span className="text-muted-foreground">USD 250 + 18% GST</span>
                           <span className="ml-1 font-bold text-foreground">= USD 295</span>
                         </div>
-                        <PayButton category="academicians" tier="regular" international />
+                        <PayButton category="academicians" tier="regular" international disabled />
                       </div>
                     </td>
                   </tr>
@@ -451,7 +471,7 @@ function RegistrationProcess() {
                           <span className="text-muted-foreground">USD 125 + 18% GST</span>
                           <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
                         </div>
-                        <PayButton category="students" tier="regular" international />
+                        <PayButton category="students" tier="regular" international disabled />
                       </div>
                     </td>
                   </tr>
@@ -472,7 +492,7 @@ function RegistrationProcess() {
                           <span className="text-muted-foreground">USD 125 + 18% GST</span>
                           <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
                         </div>
-                        <PayButton category="accompanying" tier="regular" international />
+                        <PayButton category="accompanying" tier="regular" international disabled />
                       </div>
                     </td>
                   </tr>
