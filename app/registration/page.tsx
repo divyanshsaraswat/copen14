@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { ExternalLink, CheckCircle2, Copy, Check, ArrowRight, Loader2 } from "lucide-react"
+import { ExternalLink, CheckCircle2, ArrowRight, Loader2, Mail, Phone, HelpCircle } from "lucide-react"
 import { CATEGORY_LABELS, TIER_LABELS, PRICING, PRICING_USD, type Category, type Tier } from "@/lib/icici-pg"
 
 const PAY_LINK_CLASS =
@@ -180,36 +180,6 @@ function Hero() {
   )
 }
 
-function BankDetailItem({ label, value }: { label: string; value: string }) {
-  const [copied, setCopied] = useState(false)
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(value)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
-
-  return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg bg-background border border-border/60 hover:border-primary/40 transition-colors gap-2 text-left">
-      <span className="text-xs md:text-sm font-medium text-muted-foreground uppercase tracking-wide">
-        {label}
-      </span>
-      <div className="flex items-center justify-between sm:justify-end gap-2">
-        <span className="text-xs md:text-sm font-bold text-foreground font-mono">
-          {value}
-        </span>
-        <button
-          onClick={handleCopy}
-          title={`Copy ${label}`}
-          className="p-1 text-muted-foreground hover:text-primary transition-colors rounded hover:bg-muted shrink-0"
-        >
-          {copied ? <Check className="w-3.5 h-3.5 text-green-600" /> : <Copy className="w-3.5 h-3.5" />}
-        </button>
-      </div>
-    </div>
-  )
-}
-
 function RegistrationProcess() {
   return (
     <section className="container mx-auto px-4 py-12 max-w-6xl space-y-10 animate-in fade-in-50 slide-in-from-bottom-2">
@@ -282,11 +252,11 @@ function RegistrationProcess() {
               </div>
             </div>
             <Badge variant="outline" className="w-fit text-xs px-3 py-1 font-semibold border-primary/30 text-primary bg-primary/5">
-              Online Gateway & Direct Transfer
+              Online Payment Gateway
             </Badge>
           </div>
           <p className="text-sm md:text-base text-muted-foreground mt-3 max-w-3xl leading-relaxed">
-            After acceptance of the paper, participants are required to pay the registration fee applicable to their category. Choose your category in the fee grid below to pay online via Payment Gateway or transfer directly into the institute bank account.
+            After acceptance of the paper, participants are required to pay the registration fee applicable to their category. Choose your category in the fee grid below to pay online via Payment Gateway.
           </p>
         </div>
 
@@ -510,32 +480,6 @@ function RegistrationProcess() {
               </table>
             </div>
           </div>
-
-          {/* Direct Bank Transfer Option */}
-          <div className="pt-6 border-t border-border space-y-4">
-            <div>
-              <span className="text-xs font-bold text-primary uppercase tracking-wider block">
-                Direct Institute Bank Transfer
-              </span>
-              <h4 className="text-base sm:text-lg font-bold text-foreground">
-                Bank Account Details for Wire / NEFT / RTGS Transfer
-              </h4>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
-                Participants can also transfer registration fees directly into the official institute bank account:
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-              <BankDetailItem label="Account Name" value="Registrar (Sponsored Research) MNIT Jaipur" />
-              <BankDetailItem label="Account Number" value="676801700388" />
-              <BankDetailItem label="Bank Name" value="ICICI Bank Ltd." />
-              <BankDetailItem label="IFSC Code" value="ICIC0006768" />
-              <BankDetailItem label="MICR Code" value="302229031" />
-              <BankDetailItem label="SWIFT Code" value="ICICINBBCTS" />
-              <BankDetailItem label="Branch Name" value="MNIT Jaipur" />
-              <BankDetailItem label="Address" value="MNIT Campus, JLN Marg, Jaipur -302017" />
-            </div>
-          </div>
         </CardContent>
       </Card>
 
@@ -592,6 +536,42 @@ function RegistrationProcess() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Payment Support / Contact Note */}
+      <div className="max-w-2xl mx-auto text-center p-6 sm:p-7 rounded-2xl bg-muted/40 border border-border/80 shadow-xs space-y-3">
+        <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary/10 text-primary mx-auto">
+          <HelpCircle className="w-5 h-5" />
+        </div>
+        <div className="space-y-1">
+          <h4 className="text-base sm:text-lg font-bold text-foreground">
+            Payment Assistance & Support
+          </h4>
+          <p className="text-xs sm:text-sm text-muted-foreground">
+            In case of any issues while making the payment, please contact:
+          </p>
+        </div>
+        <div className="pt-1">
+          <div className="font-bold text-foreground text-sm sm:text-base">
+            Dr. Dinesh Kumar Rathore
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mt-2.5 text-xs sm:text-sm">
+            <a
+              href="mailto:dkrathore.mech@mnit.ac.in"
+              className="inline-flex items-center gap-1.5 text-primary hover:underline font-semibold bg-background px-3 py-1.5 rounded-lg border border-border shadow-2xs hover:border-primary/50 transition-colors"
+            >
+              <Mail className="w-4 h-4 text-primary" />
+              <span>dkrathore.mech@mnit.ac.in</span>
+            </a>
+            <a
+              href="tel:+918260843176"
+              className="inline-flex items-center gap-1.5 text-primary hover:underline font-semibold bg-background px-3 py-1.5 rounded-lg border border-border shadow-2xs hover:border-primary/50 transition-colors"
+            >
+              <Phone className="w-4 h-4 text-primary" />
+              <span>+91 82608 43176</span>
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
