@@ -212,6 +212,15 @@ export const ALL_SPONSOR_TIERS: SponsorTierData[] = [
         href: "https://u5d.in/",
         description: "Pioneers in innovative industrial systems and engineering solutions.",
       },
+      {
+        id: "srt",
+        name: "Shree Rapid Technologies (SRT)",
+        category: "Exhibition Stall (6' × 8')",
+        stallSize: "6' × 8'",
+        logo: "/images/sponsors/srtlogo.png",
+        href: "https://www.shreerapid.com/",
+        description: "Pioneers in 3D printing, rapid prototyping, additive manufacturing, and digital engineering solutions.",
+      },
     ],
   },
 ];
@@ -458,7 +467,7 @@ export function SponsorsPageContent() {
                       </div>
 
                       {/* Smaller Cards for 6' x 8' Stall Sponsors */}
-                      <div className="grid grid-cols-2 gap-3 sm:gap-6 justify-center items-center max-w-sm sm:max-w-xl mx-auto">
+                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 justify-center items-stretch max-w-sm sm:max-w-xl md:max-w-3xl mx-auto">
                         {tier.sponsors
                           .filter((s) => s.stallSize === "6' × 8'")
                           .map((sponsor) => (
