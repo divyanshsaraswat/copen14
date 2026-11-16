@@ -27,42 +27,40 @@ export default function PreWorkshopsPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative isolate text-white">
-        <div className="h-[280px] md:h-[360px] w-full bg-[url('/images/hero-mnit-vltc.jpg')] bg-cover bg-center" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-black/80" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="container mx-auto px-4 text-center max-w-4xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/20 backdrop-blur-sm rounded-full border border-accent/30 text-accent font-semibold text-xs md:text-sm">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>COPEN-14 Pre-Conference Event</span>
-            </div>
+      <section className="relative isolate text-white py-16 sm:py-20 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-[url('/images/hero-mnit-vltc.jpg')] bg-cover bg-center" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-primary/95 via-primary/85 to-black/80" />
+        <div className="container mx-auto px-4 text-center max-w-4xl space-y-4 relative z-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-accent/20 backdrop-blur-sm rounded-full border border-accent/30 text-accent font-semibold text-xs md:text-sm">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>COPEN-14 Pre-Conference Event</span>
+          </div>
 
-            <h1 className="text-3xl md:text-5xl font-serif font-extrabold tracking-tight text-balance">
-              PRE-CONFERENCE WORKSHOP
-            </h1>
+          <h1 className="text-3xl md:text-5xl font-serif font-extrabold tracking-tight text-balance">
+            PRE-CONFERENCE WORKSHOP
+          </h1>
 
-            <p className="text-sm md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
-              14th International Conference on Precision, Meso, Micro and Nano Engineering
-            </p>
+          <p className="text-sm md:text-lg text-white/90 max-w-2xl mx-auto leading-relaxed">
+            14th International Conference on Precision, Meso, Micro and Nano Engineering
+          </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 text-xs md:text-sm text-white/90 pt-2">
-              <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
-                <Calendar className="w-4 h-4 text-accent" />
-                17 December 2026
-              </span>
-              <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
-                <Clock className="w-4 h-4 text-accent" />
-                2:00 PM – 5:45 PM
-              </span>
-              <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
-                <MapPin className="w-4 h-4 text-accent" />
-                MNIT Jaipur, India
-              </span>
-              <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
-                <Users className="w-4 h-4 text-accent" />
-                Two Parallel Tracks
-              </span>
-            </div>
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 text-xs md:text-sm text-white/90 pt-2">
+            <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-xs">
+              <Calendar className="w-4 h-4 text-accent shrink-0" />
+              17 December 2026
+            </span>
+            <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-xs">
+              <Clock className="w-4 h-4 text-accent shrink-0" />
+              2:00 PM – 5:45 PM
+            </span>
+            <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-xs">
+              <MapPin className="w-4 h-4 text-accent shrink-0" />
+              MNIT Jaipur, India
+            </span>
+            <span className="flex items-center gap-1.5 bg-white/10 px-3 py-1.5 rounded-full border border-white/20 backdrop-blur-xs">
+              <Users className="w-4 h-4 text-accent shrink-0" />
+              Two Parallel Tracks
+            </span>
           </div>
         </div>
       </section>
@@ -73,8 +71,8 @@ export default function PreWorkshopsPage() {
           
           {/* Prominent Official Flyer Download Banner */}
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-primary to-primary/90 text-primary-foreground p-6 md:p-8 shadow-xl border border-primary/20">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-              <div className="space-y-2 text-center md:text-left">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-6 relative z-10">
+              <div className="space-y-2 text-center lg:text-left">
                 <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-accent bg-accent/10 px-2.5 py-1 rounded">
                   <FileText className="w-3.5 h-3.5" />
                   Official Workshop Brochure
@@ -85,9 +83,23 @@ export default function PreWorkshopsPage() {
                 <p className="text-sm md:text-base text-primary-foreground/80 max-w-2xl">
                   Get the official PDF brochure containing track information, speaker profiles, complete schedule breakdown, and registration details.
                 </p>
+                <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs md:text-sm text-primary-foreground/90 font-medium">
+                  <span className="bg-white/10 px-3 py-1 rounded-full border border-white/20">
+                    Registration Fee: <strong className="text-accent font-bold">₹ 354/-</strong> (including GST)
+                  </span>
+                  <a
+                    href="https://forms.gle/ubmbojBjTVs1xJX26"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent underline underline-offset-4 hover:text-white transition inline-flex items-center gap-1 font-semibold"
+                  >
+                    <span>Register via Online Form</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
+              <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto shrink-0">
                 <Button
                   size="lg"
                   className="bg-accent text-accent-foreground hover:bg-accent/90 font-bold px-6 py-6 shadow-md gap-2"
@@ -533,55 +545,112 @@ export default function PreWorkshopsPage() {
             </div>
           </div>
 
-          {/* Registration & Contact Footer Card */}
-          <Card className="border-2 border-primary/20 bg-card shadow-lg rounded-2xl overflow-hidden">
-            <CardContent className="p-6 md:p-8 space-y-6">
-              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                <div className="space-y-2 text-center md:text-left">
-                  <Badge variant="secondary" className="text-xs font-semibold">
-                    Workshop Registration
-                  </Badge>
-                  <h3 className="text-2xl font-bold text-foreground">
-                    Registration & Queries
+          {/* Registration & QR Section */}
+          <div className="rounded-2xl border-2 border-primary/20 bg-gradient-to-br from-card via-card to-primary/5 shadow-xl overflow-hidden p-6 md:p-8">
+            <div className="flex flex-col lg:flex-row items-center gap-8 justify-between">
+              
+              {/* QR Code and Registration Details */}
+              <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left w-full lg:w-auto">
+                <div className="shrink-0 flex flex-col items-center">
+                  <a
+                    href="https://forms.gle/ubmbojBjTVs1xJX26"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative block p-3 bg-white rounded-2xl shadow-md border-2 border-primary/20 hover:border-primary transition"
+                    title="Click or scan with camera to register"
+                  >
+                    <Image
+                      src="/images/workshop-qr.png"
+                      alt="Workshop Registration QR Code"
+                      width={150}
+                      height={150}
+                      className="w-36 h-36 md:w-40 md:h-40 object-contain rounded-lg"
+                    />
+                    <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full whitespace-nowrap shadow-xs">
+                      Scan to Register
+                    </div>
+                  </a>
+                  <span className="text-[11px] text-muted-foreground mt-3 font-medium">
+                    Point camera or click to open
+                  </span>
+                </div>
+
+                <div className="space-y-3 max-w-lg">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded">
+                    <span>Registration • Scan QR</span>
+                  </div>
+
+                  {/* As written on top of 354 in the flyer */}
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground leading-snug">
+                    Scan to register for the workshop
                   </h3>
-                  <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 text-sm text-muted-foreground pt-1">
-                    <span className="font-semibold text-foreground">
-                      Fee: <strong className="text-primary text-base font-bold">₹ 354/-</strong> (including GST)
-                    </span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1.5">
-                      <Phone className="w-4 h-4 text-primary" />
-                      Contact: <strong>Dr. Yoshwant Koli</strong> (<a href="tel:+919873290034" className="hover:underline text-primary">+91 98732 90034</a>)
-                    </span>
+
+                  <div className="space-y-1">
+                    <p className="text-lg md:text-xl font-bold text-primary">
+                      Fee: ₹ 354/- <span className="text-sm font-medium text-muted-foreground">(including GST)</span>
+                    </p>
+                    <p className="text-xs text-muted-foreground">
+                      ₹300 + 18% GST = ₹354/-
+                    </p>
+                  </div>
+
+                  <div className="pt-1 text-sm text-foreground flex flex-wrap items-center justify-center sm:justify-start gap-1.5">
+                    <Phone className="w-4 h-4 text-primary shrink-0" />
+                    <span>Contact Person:</span>
+                    <strong>Dr. Yashwant Koli</strong>
+                    <a
+                      href="tel:+919873290034"
+                      className="text-primary hover:underline font-semibold"
+                    >
+                      (+91 98732 90034)
+                    </a>
                   </div>
                 </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0">
-                  <Button
-                    size="lg"
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 shadow gap-2"
-                    asChild
-                  >
-                    <a href="/flyer.pdf" target="_blank" rel="noopener noreferrer" download="COPEN14_Workshop_Flyer.pdf">
-                      <Download className="w-4 h-4" />
-                      <span>Download Flyer (PDF)</span>
-                    </a>
-                  </Button>
-
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="font-semibold px-6"
-                    asChild
-                  >
-                    <Link href="/registration">
-                      <span>Register for COPEN-14</span>
-                    </Link>
-                  </Button>
-                </div>
               </div>
-            </CardContent>
-          </Card>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full lg:w-auto shrink-0 justify-center">
+                <Button
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold px-6 py-6 shadow-md gap-2"
+                  asChild
+                >
+                  <a
+                    href="https://forms.gle/ubmbojBjTVs1xJX26"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>Register for Workshop (Online Form)</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </Button>
+
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-primary/30 hover:bg-primary/5 font-semibold px-6 py-6 gap-2"
+                  asChild
+                >
+                  <a href="/flyer.pdf" target="_blank" rel="noopener noreferrer" download="COPEN14_Workshop_Flyer.pdf">
+                    <Download className="w-4 h-4 text-primary" />
+                    <span>Download Flyer (PDF)</span>
+                  </a>
+                </Button>
+
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="text-muted-foreground hover:text-foreground text-xs"
+                  asChild
+                >
+                  <Link href="/registration">
+                    <span>Register for COPEN-14 Main Conference →</span>
+                  </Link>
+                </Button>
+              </div>
+
+            </div>
+          </div>
 
         </div>
       </section>
