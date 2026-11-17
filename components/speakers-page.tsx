@@ -261,6 +261,27 @@ His areas of expertise include ultra-precision machining, precision machine tool
 He obtained his M.S. (Research) in Mechanical Engineering from IIT Kanpur in 2021 and his B.E. in Mechanical Engineering from Government Engineering College, Patan, in 2018. He has published several research papers and received prestigious recognitions, including the INAE Innovation in Manufacturing Processes Award (2021), INAE Fourth Youth Conclave Award (2021), and Academic Excellence Award at IIT Kanpur.`,
     profileUrl: "https://cmti.res.in/cmtiemployee/mr-mayank-patel/",
   },
+  {
+    name: "Dr. Aravindan S",
+    role: "Professor",
+    affiliation: "Department of Mechanical Engineering, Indian Institute of Technology, Delhi",
+    photo: "/images/speakers/aravindan.png",
+    bio: `Prof. S. Aravindan is a Professor in the Department of Mechanical Engineering at the Indian Institute of Technology (IIT) Delhi. He obtained his Ph.D. from IIT Madras, following his M.E. from Annamalai University and B.E. from Bharathidasan University. His research interests span ceramics and composites, welding, micro- and nano-manufacturing, advanced manufacturing processes, and materials processing.
+
+He has made significant contributions to the fields of manufacturing science and engineering through extensive publications in leading international journals, numerous supervised research projects, and the development of innovative manufacturing technologies. Prof. Aravindan has also contributed to intellectual property generation through patents and has played an active role in academic administration, laboratory development, and mentoring of graduate researchers. His work has earned wide recognition in the manufacturing research community, particularly in advanced materials processing and micro- and nano-manufacturing.`,
+    profileUrl: "https://mech.iitd.ac.in/faculty-profile/166",
+  },
+  {
+    name: "Dr. Rakesh Kumar Bhardwaj",
+    role: "Scientist G and Group Director (MD&EG)",
+    affiliation: "Defence Electronics Applications Laboratory (DEAL), DRDO, Ministry of Defence, Govt. of India",
+    photo: "/images/speakers/rakeshkumaarbhardwaj.jpg",
+    bio: `Dr. Rakesh Kumar Bhardwaj is working as Scientist G and Group Director at Defence Electronics Applications Laboratory (DEAL) of Defence Research and Development Organisation (DRDO) at Dehradun. He has obtained his B.Tech in Mechanical Engineering from College of Engineering Thiruvananthapuram, Kerala University in 1996 and M.Tech in Production Engineering from IIT Delhi. He also completed his Ph.D. in the field of Micro and nano fabrication of THz waveguide components from IIT Delhi.
+
+He joined DRDO as Scientist B in 1997, and since then he has been working in the Design and Development of microwave and mm-Wave components ranging across X, Ku, Ka, and W bands. He is the recipient of the Padmashree M. M. Suri Project Award at IIT Delhi (2006), National Science Day Oration and Gold Medal (2007), Agni Award for Excellence in Self Reliance of Defence Technology (2011), and National Technology Day Oration and Titanium Medal (2015).
+
+He has published 51 technical papers in journals and conferences. He has also published four book chapters. His Area of Specialization is Production Engineering, CAD/CAM, Composite materials, Precision Engineering, Micro and nano manufacturing of RF Components especially Terahertz band. His current activity includes design and development mm-Wave and terahertz waveguide components within desired tolerances. He is a member of IEEE, ASME, SSME and Fellow of Institution of Engineers India and Fellow SWiCE. In addition to academics, he serves as Vice President of EcoGroup Society, Vice President of Society of Wireless Communication Engineers (SWiCE), and Secretary of the IIT Alumni Association, Dehradun Chapter. He is also associated with the Art of Living.`,
+  },
 ]
 
 export function SpeakersPageContent() {
