@@ -111,25 +111,25 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full">
       <div className={`transition ${isScrolled ? "bg-white/80 shadow-md backdrop-blur" : "bg-white"}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+        <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10">
+          <div className="flex justify-between items-center h-16 gap-3 lg:gap-4 xl:gap-8">
             {/* Logo */}
-            <Link href="/" className="flex items-center shrink-0">
-              <Image src="/images/copen.png" alt="MNIT Jaipur" width={40} height={40} className="rounded-full" />
-              <div className="ml-2">
-                <p className="font-serif font-bold text-lg text-primary">COPEN 14</p>
-                <span className="text-xs text-muted-foreground">MNIT Jaipur</span>
+            <Link href="/" className="flex items-center shrink-0 mr-2 xl:mr-4">
+              <Image src="/images/copen.png" alt="MNIT Jaipur" width={40} height={40} className="rounded-full shrink-0" />
+              <div className="ml-2.5 shrink-0 whitespace-nowrap">
+                <p className="font-serif font-bold text-base xl:text-lg text-primary leading-tight">COPEN 14</p>
+                <span className="text-[11px] xl:text-xs text-muted-foreground block leading-tight">MNIT Jaipur</span>
               </div>
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-2.5 xl:gap-4 2xl:gap-5 relative text-xs xl:text-sm whitespace-nowrap">
-              <Link href="/" className="font-medium hover:text-primary transition-colors">Home</Link>
+            <nav className="hidden lg:flex items-center justify-center flex-1 gap-1.5 xl:gap-2.5 2xl:gap-4 relative text-[11px] xl:text-[13px] 2xl:text-sm whitespace-nowrap">
+              <Link href="/" className="font-medium hover:text-primary transition-colors py-1 px-1 xl:px-1.5">Home</Link>
               
               {/* About Dropdown */}
               <div className="relative" ref={aboutRef}>
                 <button
-                  className="flex items-center gap-1 font-medium hover:text-primary transition-colors"
+                  className="flex items-center gap-0.5 xl:gap-1 font-medium hover:text-primary transition-colors py-1 px-1 xl:px-1.5"
                   aria-haspopup="menu"
                   aria-expanded={openDropdown === "about"}
                   onClick={() => setOpenDropdown(openDropdown === "about" ? null : "about")}
@@ -137,7 +137,7 @@ export function Header() {
                   tabIndex={0}
                   onKeyDown={e => (e.key === "Enter" || e.key === " ") && setOpenDropdown(openDropdown === "about" ? null : "about")}
                 >
-                  About <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
+                  About <ChevronDown className="w-3 h-3 xl:w-3.5 xl:h-3.5" />
                 </button>
                 <Dropdown open={openDropdown === "about"} refEl={aboutRef}>
                   {aboutMenuItems.map(item => (
@@ -149,7 +149,7 @@ export function Header() {
               </div>
 
               {navItems.slice(1).map(item => (
-                <Link key={item.name} href={item.href} className="font-medium hover:text-primary transition-colors">
+                <Link key={item.name} href={item.href} className="font-medium hover:text-primary transition-colors py-1 px-1 xl:px-1.5">
                   {item.name}
                 </Link>
               ))}
@@ -179,7 +179,7 @@ export function Header() {
               {/* More Dropdown */}
               <div className="relative" ref={moreRef}>
                 <button
-                  className="flex items-center gap-1 font-medium hover:text-primary transition-colors"
+                  className="flex items-center gap-0.5 xl:gap-1 font-medium hover:text-primary transition-colors py-1 px-1 xl:px-1.5"
                   aria-haspopup="menu"
                   aria-expanded={openDropdown === "more"}
                   onClick={() => setOpenDropdown(openDropdown === "more" ? null : "more")}
@@ -187,7 +187,7 @@ export function Header() {
                   tabIndex={0}
                   onKeyDown={e => (e.key === "Enter" || e.key === " ") && setOpenDropdown(openDropdown === "more" ? null : "more")}
                 >
-                  More <ChevronDown className="w-3.5 h-3.5 xl:w-4 xl:h-4" />
+                  More <ChevronDown className="w-3 h-3 xl:w-3.5 xl:h-3.5" />
                 </button>
                 <Dropdown open={openDropdown === "more"} refEl={moreRef}>
                   {moreMenuItems.map(item => (
@@ -200,8 +200,8 @@ export function Header() {
             </nav>
 
             {/* CTA + Mobile Toggle */}
-            <div className="flex items-center space-x-2">
-              <Button className="hidden lg:inline-block" asChild>
+            <div className="flex items-center space-x-2 shrink-0 ml-2">
+              <Button className="hidden lg:inline-flex text-xs xl:text-sm px-3.5 xl:px-4 h-9 font-semibold shrink-0" asChild>
                 <Link href="/registration">Register Now</Link>
               </Button>
               <button
