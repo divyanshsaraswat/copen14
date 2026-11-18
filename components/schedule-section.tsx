@@ -129,7 +129,7 @@ const SCHEDULE_DATA: DayScheduleData[] = [
 
 export function ScheduleSection() {
   const [activeTab, setActiveTab] = useState<string>("day1")
-  const [viewMode, setViewMode] = useState<"table" | "timeline">("table")
+  const [viewMode, setViewMode] = useState<"auto" | "table" | "cards">("auto")
 
   const currentDay = SCHEDULE_DATA.find((d) => d.id === activeTab) || SCHEDULE_DATA[0]
 
@@ -219,203 +219,234 @@ export function ScheduleSection() {
             })}
           </div>
 
-          {/* View Mode Toggle: Table View vs Timeline View */}
-          <div className="flex items-center gap-1.5 self-end sm:self-auto bg-slate-200/90 dark:bg-slate-800 p-1 rounded-lg text-xs">
+          {/* View Mode Toggle: Auto / Table / Cards */}
+          <div className="flex items-center gap-1 self-end sm:self-auto bg-slate-200/90 dark:bg-slate-800 p-1 rounded-lg text-xs">
+            <button
+              onClick={() => setViewMode("auto")}
+              className={`px-2.5 py-1.5 rounded-md font-semibold transition-all ${
+                viewMode === "auto"
+                  ? "bg-white dark:bg-slate-900 text-primary shadow-xs font-bold"
+                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
+              }`}
+              title="Automatically shows Cards on mobile, Table on desktop"
+            >
+              <span>Auto</span>
+            </button>
             <button
               onClick={() => setViewMode("table")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-semibold transition-all ${
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md font-semibold transition-all ${
                 viewMode === "table"
                   ? "bg-white dark:bg-slate-900 text-primary shadow-xs font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
               }`}
             >
               <TableIcon className="w-3.5 h-3.5" />
-              <span>Table View (Reference)</span>
+              <span>Table</span>
             </button>
             <button
-              onClick={() => setViewMode("timeline")}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md font-semibold transition-all ${
-                viewMode === "timeline"
+              onClick={() => setViewMode("cards")}
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md font-semibold transition-all ${
+                viewMode === "cards"
                   ? "bg-white dark:bg-slate-900 text-primary shadow-xs font-bold"
                   : "text-slate-600 dark:text-slate-400 hover:text-slate-900"
               }`}
             >
               <ListFilter className="w-3.5 h-3.5" />
-              <span>Cards View</span>
+              <span>Cards</span>
             </button>
           </div>
 
         </div>
 
         {/* ============================================================== */}
-        {/* TABLE VIEW: Matches the User's Google Sheets Format Exactly */}
+        {/* TABLE VIEW: Displays on Desktop (and forced when Table selected) */}
         {/* ============================================================== */}
-        {viewMode === "table" && (
-          <div className="rounded-xl border-2 border-slate-700 dark:border-slate-600 bg-white dark:bg-slate-900 shadow-xl overflow-hidden">
-            
-            {/* Scroll hint on small screens */}
-            <div className="block md:hidden bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-[11px] text-slate-500 text-center border-b border-slate-300 dark:border-slate-700">
-              👉 Swipe horizontally to view full table columns
-            </div>
+        <div
+          className={`rounded-xl border-2 border-slate-700 dark:border-slate-600 bg-white dark:bg-slate-900 shadow-xl overflow-hidden ${
+            viewMode === "auto"
+              ? "hidden md:block"
+              : viewMode === "table"
+              ? "block"
+              : "hidden"
+          }`}
+        >
+          {/* Scroll hint if viewed on small screen */}
+          <div className="block md:hidden bg-slate-100 dark:bg-slate-800 px-3 py-1.5 text-[11px] text-slate-500 text-center border-b border-slate-300 dark:border-slate-700">
+            👉 Swipe horizontally to view full table columns
+          </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[700px] border-collapse text-center">
-                <thead>
-                  {/* Top Level Title Banner */}
-                  <tr>
-                    <th
-                      colSpan={6}
-                      className="border-b-2 border-slate-700 dark:border-slate-600 bg-[#e8f0fe] dark:bg-blue-950/70 text-slate-900 dark:text-white py-3 px-4 font-bold text-lg md:text-xl uppercase tracking-wider"
-                    >
-                      Tentative Program Schedule
-                    </th>
-                  </tr>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[700px] border-collapse text-center">
+              <thead>
+                {/* Top Level Title Banner */}
+                <tr>
+                  <th
+                    colSpan={6}
+                    className="border-b-2 border-slate-700 dark:border-slate-600 bg-[#e8f0fe] dark:bg-blue-950/70 text-slate-900 dark:text-white py-3 px-4 font-bold text-lg md:text-xl uppercase tracking-wider"
+                  >
+                    Tentative Program Schedule
+                  </th>
+                </tr>
 
-                  {/* Day Heading Banner */}
-                  <tr>
-                    <th
-                      colSpan={6}
-                      className="border-b-2 border-slate-700 dark:border-slate-600 bg-white dark:bg-slate-900 text-[#8B2500] dark:text-amber-400 py-2.5 px-4 font-extrabold text-sm sm:text-base md:text-lg tracking-wide"
-                    >
-                      {currentDay.sheetTitle}
-                    </th>
-                  </tr>
-                </thead>
+                {/* Day Heading Banner */}
+                <tr>
+                  <th
+                    colSpan={6}
+                    className="border-b-2 border-slate-700 dark:border-slate-600 bg-white dark:bg-slate-900 text-[#8B2500] dark:text-amber-400 py-2.5 px-4 font-extrabold text-sm sm:text-base md:text-lg tracking-wide"
+                  >
+                    {currentDay.sheetTitle}
+                  </th>
+                </tr>
+              </thead>
 
-                <tbody>
-                  {currentDay.rows.map((row, idx) => {
-                    const isMultiRowInSlot = Boolean(row.secondRowInSlot)
-                    const hasSubRowTracks = Boolean(row.subRow && row.subRow.length > 0)
-                    
-                    // Total rows spanned by the Time cell
-                    let timeRowSpan = 1
-                    if (hasSubRowTracks) timeRowSpan = 2
-                    if (isMultiRowInSlot) timeRowSpan = 2
+              <tbody>
+                {currentDay.rows.map((row, idx) => {
+                  const isMultiRowInSlot = Boolean(row.secondRowInSlot)
+                  const hasSubRowTracks = Boolean(row.subRow && row.subRow.length > 0)
+                  
+                  // Total rows spanned by the Time cell
+                  let timeRowSpan = 1
+                  if (hasSubRowTracks) timeRowSpan = 2
+                  if (isMultiRowInSlot) timeRowSpan = 2
 
-                    return (
-                      <React.Fragment key={idx}>
-                        {/* Main Event Row */}
+                  return (
+                    <React.Fragment key={idx}>
+                      {/* Main Event Row */}
+                      <tr className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
+                        
+                        {/* Time Column */}
+                        <td
+                          rowSpan={timeRowSpan}
+                          className="w-[28%] md:w-[24%] border border-slate-500/80 dark:border-slate-600 py-2.5 px-3 font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 align-middle whitespace-nowrap"
+                        >
+                          {row.time}
+                        </td>
+
+                        {/* Event Cell (spans all 5 parallel session columns) */}
+                        <td
+                          colSpan={5}
+                          className={`border border-slate-500/80 dark:border-slate-600 py-2.5 px-3 text-xs sm:text-sm md:text-base tracking-wide ${getCellStyling(
+                            row.style
+                          )}`}
+                        >
+                          {row.title}
+                        </td>
+                      </tr>
+
+                      {/* Sub-row for 5 Parallel Oral Sessions (Session-1 to Session-5) */}
+                      {hasSubRowTracks && row.subRow && (
+                        <tr>
+                          {row.subRow.map((sess, sIdx) => (
+                            <td
+                              key={sIdx}
+                              className="w-[14.4%] border border-slate-500/80 dark:border-slate-600 py-2 px-1 text-xs sm:text-sm font-bold bg-[#00adef] text-black dark:bg-sky-400 dark:text-slate-950"
+                            >
+                              {sess}
+                            </td>
+                          ))}
+                        </tr>
+                      )}
+
+                      {/* Extra second row in same time slot (e.g. NAC MEETING) */}
+                      {isMultiRowInSlot && row.secondRowInSlot && (
                         <tr className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
-                          
-                          {/* Time Column */}
-                          <td
-                            rowSpan={timeRowSpan}
-                            className="w-[28%] md:w-[24%] border border-slate-500/80 dark:border-slate-600 py-2.5 px-3 font-bold text-xs sm:text-sm text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 align-middle whitespace-nowrap"
-                          >
-                            {row.time}
-                          </td>
-
-                          {/* Event Cell (spans all 5 parallel session columns) */}
                           <td
                             colSpan={5}
                             className={`border border-slate-500/80 dark:border-slate-600 py-2.5 px-3 text-xs sm:text-sm md:text-base tracking-wide ${getCellStyling(
-                              row.style
+                              row.secondRowInSlot.style
                             )}`}
                           >
-                            {row.title}
+                            {row.secondRowInSlot.title}
                           </td>
                         </tr>
+                      )}
+                    </React.Fragment>
+                  )
+                })}
+              </tbody>
+            </table>
+          </div>
 
-                        {/* Sub-row for 5 Parallel Oral Sessions (Session-1 to Session-5) */}
-                        {hasSubRowTracks && row.subRow && (
-                          <tr>
-                            {row.subRow.map((sess, sIdx) => (
-                              <td
-                                key={sIdx}
-                                className="w-[14.4%] border border-slate-500/80 dark:border-slate-600 py-2 px-1 text-xs sm:text-sm font-bold bg-[#00adef] text-black dark:bg-sky-400 dark:text-slate-950"
-                              >
-                                {sess}
-                              </td>
-                            ))}
-                          </tr>
-                        )}
-
-                        {/* Extra second row in same time slot (e.g. NAC MEETING) */}
-                        {isMultiRowInSlot && row.secondRowInSlot && (
-                          <tr className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors">
-                            <td
-                              colSpan={5}
-                              className={`border border-slate-500/80 dark:border-slate-600 py-2.5 px-3 text-xs sm:text-sm md:text-base tracking-wide ${getCellStyling(
-                                row.secondRowInSlot.style
-                              )}`}
-                            >
-                              {row.secondRowInSlot.title}
-                            </td>
-                          </tr>
-                        )}
-                      </React.Fragment>
-                    )
-                  })}
-                </tbody>
-              </table>
+          {/* Table Footer / Summary Bar */}
+          <div className="p-3 md:p-4 bg-slate-100 dark:bg-slate-800/80 border-t-2 border-slate-700 dark:border-slate-600 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600 dark:text-slate-300">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              <span>Showing official tentative timetable for <strong>{currentDay.weekday}, {currentDay.date}</strong></span>
             </div>
-
-            {/* Table Footer / Summary Bar */}
-            <div className="p-3 md:p-4 bg-slate-100 dark:bg-slate-800/80 border-t-2 border-slate-700 dark:border-slate-600 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600 dark:text-slate-300">
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span>Showing official tentative timetable for <strong>{currentDay.weekday}, {currentDay.date}</strong></span>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Venue: MNIT Jaipur Campus</span>
-              </div>
+            <div className="flex items-center gap-3">
+              <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span>Venue: MNIT Jaipur Campus</span>
             </div>
           </div>
-        )}
+        </div>
 
         {/* ============================================================== */}
-        {/* TIMELINE / CARDS VIEW (Optional alternative view for mobile) */}
+        {/* CARDS VIEW: Automatically shown on mobile / small screens */}
         {/* ============================================================== */}
-        {viewMode === "timeline" && (
-          <div className="space-y-3">
-            {currentDay.rows.map((row, idx) => (
-              <div
-                key={idx}
-                className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 shadow-sm"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded w-fit">
-                    <Clock className="w-3.5 h-3.5 text-primary" />
-                    <span>{row.time}</span>
+        <div
+          className={`space-y-3 ${
+            viewMode === "auto"
+              ? "block md:hidden"
+              : viewMode === "cards"
+              ? "block"
+              : "hidden"
+          }`}
+        >
+          {/* Day Title Ribbon for Mobile */}
+          <div className="p-3 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center shadow-xs">
+            <span className="text-xs uppercase font-extrabold text-[#8B2500] dark:text-amber-400 tracking-wide">
+              {currentDay.sheetTitle}
+            </span>
+          </div>
+
+          {currentDay.rows.map((row, idx) => (
+            <div
+              key={idx}
+              className="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-3.5 shadow-xs"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded shrink-0">
+                  <Clock className="w-3.5 h-3.5 text-primary" />
+                  <span>{row.time}</span>
+                </div>
+                <div className="text-right flex-1">
+                  <span className={`inline-block px-2.5 py-1 rounded text-xs font-bold tracking-wide border border-black/10 ${getCellStyling(row.style)}`}>
+                    {row.title}
+                  </span>
+                </div>
+              </div>
+
+              {/* 5 Parallel Tracks Chips */}
+              {row.subRow && (
+                <div className="mt-3 pt-2.5 border-t border-slate-100 dark:border-slate-800">
+                  <div className="text-[11px] font-semibold text-sky-800 dark:text-sky-300 mb-1.5 flex items-center gap-1">
+                    <Layers className="w-3.5 h-3.5" />
+                    <span>5 Parallel Technical Tracks:</span>
                   </div>
-                  <div className="flex-1 sm:text-right">
-                    <span className={`inline-block px-3 py-1 rounded text-xs sm:text-sm ${getCellStyling(row.style)}`}>
-                      {row.title}
-                    </span>
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5">
+                    {row.subRow.map((track, tIdx) => (
+                      <div
+                        key={tIdx}
+                        className="py-1 px-1.5 rounded bg-[#00adef] text-black dark:bg-sky-400 dark:text-slate-950 text-center text-xs font-bold shadow-2xs"
+                      >
+                        {track}
+                      </div>
+                    ))}
                   </div>
                 </div>
+              )}
 
-                {row.subRow && (
-                  <div className="mt-3 pt-3 border-t border-slate-100 dark:border-slate-800">
-                    <div className="text-[11px] font-semibold text-sky-800 dark:text-sky-300 mb-2 flex items-center gap-1.5">
-                      <Layers className="w-3.5 h-3.5" />
-                      <span>5 Parallel Tracks:</span>
-                    </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
-                      {row.subRow.map((track, tIdx) => (
-                        <div
-                          key={tIdx}
-                          className="py-1 px-2 rounded bg-[#00adef]/20 border border-[#00adef]/40 text-center text-xs font-bold text-sky-900 dark:text-sky-200"
-                        >
-                          {track}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {row.secondRowInSlot && (
-                  <div className="mt-2 text-right">
-                    <span className={`inline-block px-3 py-1 rounded text-xs sm:text-sm ${getCellStyling(row.secondRowInSlot.style)}`}>
-                      {row.secondRowInSlot.title}
-                    </span>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
+              {/* Second row in slot (e.g. NAC Meeting) */}
+              {row.secondRowInSlot && (
+                <div className="mt-2.5 pt-2 border-t border-dashed border-slate-200 dark:border-slate-700 flex justify-end">
+                  <span className={`inline-block px-2.5 py-1 rounded text-xs font-bold tracking-wide border border-black/10 ${getCellStyling(row.secondRowInSlot.style)}`}>
+                    {row.secondRowInSlot.title}
+                  </span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
 
         {/* Legend / Key Details */}
         <div className="mt-8 p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm">
