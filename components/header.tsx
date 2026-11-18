@@ -63,6 +63,7 @@ export function Header() {
     { name: "Publications", href: "/publications" },
     { name: "Sponsors", href: "/sponsors" },
     { name: "Speakers", href: "/speakers" },
+    { name: "Program", href: "/program" },
     { name: "MNIT Jaipur", href: "/about/mnit-jaipur" },
     { name: "Travel & Hospitality", href: "/hospitality" },
     // { name: "Glimpses", href: "/glimpses" },
@@ -87,7 +88,8 @@ export function Header() {
   // ]
 
   const moreMenuItems = [
-    // { name: "Program", href: "/program" },
+    { name: "Program Schedule", href: "/program" },
+    { name: "Pre-Conference Workshop", href: "/workshops/pre" },
     // { name: "Travel & Hospitality", href: "/hospitality" },
     // { name: "Pre‑COPEN Events", href: "/pre-copen-events" },
     { name: "Contact Us", href: "/contact" },

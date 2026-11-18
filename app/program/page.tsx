@@ -1,45 +1,59 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import ComingSoon from "@/components/coming-soon"
+import { ScheduleSection } from "@/components/schedule-section"
+import { Calendar, Clock, MapPin } from "lucide-react"
+
+export const metadata = {
+  title: "Conference Program & Schedule | COPEN 14",
+  description: "Tentative three-day program schedule for the 14th International Conference on Precision, Meso, Micro and Nano Engineering (COPEN 14) at MNIT Jaipur.",
+}
 
 export default function ProgramPage() {
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-screen flex flex-col bg-background">
       <Header />
 
-      {/* Announcement bar */}
-      <div className="w-full bg-primary/10">
-        <div className="container mx-auto px-4">
-          {/* <p className="mx-auto max-w-4xl text-center py-3 text-primary font-medium">
-            COPEN 13 - BEST PAPER AWARDS in association with Springer Nature !!!
-          </p> */}
+      {/* Program Hero Banner */}
+      <div className="relative bg-gradient-to-br from-slate-900 via-primary to-slate-900 text-white py-14 md:py-20 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(#ffffff15_1px,transparent_1px)] [background-size:16px_16px] opacity-30" />
+        
+        <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur border border-white/20 text-xs md:text-sm font-medium mb-4">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Official Conference Schedule</span>
+          </div>
+
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight text-white mb-4">
+            Conference Programme
+          </h1>
+
+          <p className="text-base md:text-xl text-slate-200 max-w-2xl mx-auto leading-relaxed">
+            14th International Conference on Precision, Meso, Micro and Nano Engineering (COPEN 14)
+          </p>
+
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-xs md:text-sm text-slate-300">
+            <div className="flex items-center gap-1.5 bg-black/20 px-3 py-1.5 rounded-full border border-white/10">
+              <Calendar className="w-4 h-4 text-amber-400" />
+              <span>18 – 20 December 2026</span>
+            </div>
+            <div className="flex items-center gap-1.5 bg-black/20 px-3 py-1.5 rounded-full border border-white/10">
+              <MapPin className="w-4 h-4 text-rose-400" />
+              <span>MNIT Jaipur, Rajasthan, India</span>
+            </div>
+            <div className="flex items-center gap-1.5 bg-black/20 px-3 py-1.5 rounded-full border border-white/10">
+              <Clock className="w-4 h-4 text-sky-400" />
+              <span>3 Days • 5 Parallel Technical Tracks</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Speakers card */}
-      <div className="relative rounded-2xl border border-slate-200 bg-white text-slate-800 flex-grow">
-        <div className="px-8 py-14 md:px-12 md:py-20 text-center">
-          <p className="uppercase tracking-wider text-xs md:text-sm text-slate-500">
-           Program
-          </p>
-
-          <h2 className="mt-3 text-3xl md:text-4xl font-semibold">
-            To Be Announced
-          </h2>
-
-          <p className="mt-4 text-sm md:text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            The complete program outline, featuring all sessions and activities, will be announced shortly.
-          </p>
-
-          <div className="mt-8 flex justify-center">
-            <span className="h-px w-16 bg-slate-300" />
-          </div>
-        </div>
+      {/* Main Schedule Content */}
+      <div className="flex-grow">
+        <ScheduleSection />
       </div>
 
       <Footer />
     </main>
   )
 }
-

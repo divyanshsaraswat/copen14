@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer"
 import { Countdown } from "@/components/countdown"
 import { OrganisedBy } from "@/components/organised-by"
 import { CarouselSection } from "@/components/CarouselSection"
+import { ProgramBanner } from "@/components/program-banner"
 
 export default function Home() {
   return (
@@ -14,6 +15,9 @@ export default function Home() {
       <Header />
 
       <HeroSection />
+
+      {/* 📅 Programme Schedule Announcement Banner */}
+      <ProgramBanner />
 
       {/* 🔥 Carousel Section */}
       <CarouselSection />
