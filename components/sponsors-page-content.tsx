@@ -403,8 +403,8 @@ export function SponsorsPageContent() {
                   <div className="space-y-8">
                     {/* 12' x 8' Category Section */}
                     <div className="space-y-4">
-                      <div className="flex items-center justify-between border-b border-border/60 pb-2">
-                        <h4 className="text-lg md:text-xl font-bold text-primary tracking-wide">
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 border-b border-border/60 pb-3 text-center">
+                        <h4 className="text-lg md:text-xl font-bold text-primary tracking-wide text-center">
                           12' × 8' Exhibition Stalls
                         </h4>
                         <Badge variant="secondary" className="text-xs font-semibold">
@@ -412,18 +412,18 @@ export function SponsorsPageContent() {
                         </Badge>
                       </div>
 
-                      <div className="flex justify-center items-center w-full">
+                      <div className="flex flex-wrap justify-center items-center gap-6 w-full mx-auto">
                         {tier.sponsors
                           .filter((s) => s.stallSize === "12' × 8'")
                           .map((sponsor) => (
                             <Card
                               key={sponsor.id}
-                              className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full max-w-sm mx-auto"
+                              className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full sm:w-[320px] md:w-[360px] max-w-sm"
                             >
                               <CardContent className="p-0 flex flex-col items-center justify-between h-full w-full">
                                 <SponsorLogoDisplay name={sponsor.name} logo={sponsor.logo} />
                                 <div className="p-6 flex flex-col flex-grow items-center justify-between text-center space-y-4 w-full">
-                                  <div className="space-y-2 flex flex-col items-center justify-center">
+                                  <div className="space-y-2 flex flex-col items-center justify-center text-center">
                                     <Badge variant="secondary" className="text-xs font-semibold">
                                       {sponsor.category}
                                     </Badge>
@@ -457,8 +457,8 @@ export function SponsorsPageContent() {
 
                     {/* 6' x 8' Category Section */}
                     <div className="space-y-4 pt-4">
-                      <div className="flex items-center justify-between border-b border-border/60 pb-2">
-                        <h4 className="text-lg md:text-xl font-bold text-primary tracking-wide">
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-2 border-b border-border/60 pb-3 text-center">
+                        <h4 className="text-lg md:text-xl font-bold text-primary tracking-wide text-center">
                           6' × 8' Exhibition Stalls
                         </h4>
                         <Badge variant="secondary" className="text-xs font-semibold">
@@ -466,33 +466,33 @@ export function SponsorsPageContent() {
                         </Badge>
                       </div>
 
-                      {/* Smaller Cards for 6' x 8' Stall Sponsors */}
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 justify-center items-stretch max-w-sm sm:max-w-xl md:max-w-3xl mx-auto">
+                      {/* Centered Cards for 6' x 8' Stall Sponsors */}
+                      <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 w-full mx-auto">
                         {tier.sponsors
                           .filter((s) => s.stallSize === "6' × 8'")
                           .map((sponsor) => (
                             <Card
                               key={sponsor.id}
-                              className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full max-w-[170px] sm:max-w-[280px] mx-auto"
+                              className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full sm:w-[280px] md:w-[320px] max-w-sm"
                             >
                               <CardContent className="p-0 flex flex-col items-center justify-between h-full w-full">
-                                <div className="w-full h-20 sm:h-28 flex items-center justify-center p-2 sm:p-3 bg-white dark:bg-muted/10 rounded-t-lg group-hover:bg-muted/20 transition-colors">
+                                <div className="w-full h-24 sm:h-32 flex items-center justify-center p-3 sm:p-4 bg-white dark:bg-muted/10 rounded-t-lg group-hover:bg-muted/20 transition-colors">
                                   <img
                                     src={sponsor.logo}
                                     alt={`${sponsor.name} logo`}
-                                    className="max-h-14 sm:max-h-20 max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-105"
+                                    className="max-h-16 sm:max-h-24 max-w-[85%] object-contain transition-transform duration-300 group-hover:scale-105"
                                   />
                                 </div>
-                                <div className="p-2.5 sm:p-4 flex flex-col flex-grow items-center justify-between text-center space-y-2 sm:space-y-3 w-full">
-                                  <div className="space-y-1 sm:space-y-1.5 flex flex-col items-center justify-center">
-                                    <Badge variant="secondary" className="text-[10px] sm:text-[11px] font-semibold py-0.5 px-1.5 sm:px-2">
+                                <div className="p-4 sm:p-5 flex flex-col flex-grow items-center justify-between text-center space-y-3 w-full">
+                                  <div className="space-y-1.5 flex flex-col items-center justify-center text-center">
+                                    <Badge variant="secondary" className="text-xs font-semibold py-0.5 px-2">
                                       {sponsor.category}
                                     </Badge>
-                                    <h5 className="font-bold text-xs sm:text-sm text-foreground leading-snug group-hover:text-primary transition-colors text-center">
+                                    <h5 className="font-bold text-sm sm:text-base text-foreground leading-snug group-hover:text-primary transition-colors text-center">
                                       {sponsor.name}
                                     </h5>
                                     {sponsor.description && (
-                                      <p className="text-[10px] sm:text-[11px] text-muted-foreground line-clamp-2 text-center leading-tight">
+                                      <p className="text-xs text-muted-foreground line-clamp-3 text-center leading-relaxed">
                                         {sponsor.description}
                                       </p>
                                     )}
@@ -503,10 +503,10 @@ export function SponsorsPageContent() {
                                       href={sponsor.href || "#"}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="inline-flex items-center justify-center gap-1 sm:gap-1.5 px-2 py-1 sm:px-3 sm:py-1.5 rounded-md text-[10px] sm:text-[11px] font-semibold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 w-full"
+                                      className="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-semibold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 w-full"
                                     >
                                       <span>View Details</span>
-                                      <ExternalLink className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                                      <ExternalLink className="w-3 h-3" />
                                     </a>
                                   </div>
                                 </div>
@@ -518,18 +518,12 @@ export function SponsorsPageContent() {
                   </div>
                 ) : (
                   <div
-                    className={`grid gap-8 justify-center items-center mx-auto ${
-                      tier.sponsors.length === 1
-                        ? "grid-cols-1 max-w-md"
-                        : tier.sponsors.length === 2
-                        ? "grid-cols-1 sm:grid-cols-2 max-w-2xl"
-                        : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-                    }`}
+                    className="flex flex-wrap justify-center items-center gap-8 w-full mx-auto"
                   >
                     {tier.sponsors.map((sponsor) => (
                       <Card
                         key={sponsor.id}
-                        className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full max-w-sm mx-auto"
+                        className="group border border-border/60 hover:border-primary/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between items-center text-center overflow-hidden bg-background w-full sm:w-[320px] md:w-[360px] max-w-sm"
                       >
                         <CardContent className="p-0 flex flex-col items-center justify-between h-full w-full">
                           <SponsorLogoDisplay name={sponsor.name} logo={sponsor.logo} />
