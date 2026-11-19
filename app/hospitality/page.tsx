@@ -29,6 +29,76 @@ interface Hotel {
   mapQuery: string
 }
 
+export interface BudgetHotel {
+  sNo: number
+  id: string
+  name: string
+  price: string
+  address: string
+  mapUrl: string
+  distance: string
+  rating: string
+  image: string
+}
+
+export const BUDGET_HOTELS: BudgetHotel[] = [
+  {
+    sNo: 1,
+    id: "blooming-beds-pearl",
+    name: "Fab Hotel Blooming Beds Pearl",
+    price: "₹ 1,300 – 1,600",
+    address: "Pearl, 2/20 C, Sector 2, Surya, Jaipur, Rajasthan 302017",
+    mapUrl: "https://maps.app.goo.gl/8u8JaLhJZjdH8rJj9",
+    distance: "2.7 Km from MNIT Jaipur",
+    rating: "4.2/5",
+    image: "/images/hotels/bloomingbeds.jpg",
+  },
+  {
+    sNo: 2,
+    id: "green-vista",
+    name: "Fab Hotel Green Vista",
+    price: "₹ 1,100 – 1,500",
+    address: "6/400, Sector 6, Malviya Nagar, Malviya Nagar, Jaipur 302017",
+    mapUrl: "https://maps.app.goo.gl/N3ZuSTeSiDtNLTHo9",
+    distance: "4.5 Km from MNIT Jaipur",
+    rating: "3.4/5",
+    image: "/images/hotels/greenvista.jpg",
+  },
+  {
+    sNo: 3,
+    id: "pravaasam-residency",
+    name: "Fab Hotel Pravaasam Residency",
+    price: "₹ 1,400 – 1,600",
+    address: "Mahalaxmi Nagar, Plot No-C-16, Thomsonian Marg, behind WTP, D-Block, Malviya Nagar, Malviya Nagar, Jaipur 302017",
+    mapUrl: "https://maps.app.goo.gl/3YaiLFYdaeZRtp7v7",
+    distance: "2.4 Km from MNIT Jaipur",
+    rating: "4.0/5",
+    image: "/images/hotels/pravaasam.jpg",
+  },
+  {
+    sNo: 4,
+    id: "hotel-keptown",
+    name: "Hotel Keptown",
+    price: "₹ 1,100 – 1,500",
+    address: "C-39, Behind World Trade Park Maha Laxmi Nagar, Jawahar Lal Nehru Marg, Jaipur, Rajasthan 302017",
+    mapUrl: "https://maps.app.goo.gl/1obftVpM2FXjdbkJA",
+    distance: "2.1 Km from MNIT Jaipur",
+    rating: "4.6/5",
+    image: "/images/hotels/keptown.jpg",
+  },
+  {
+    sNo: 5,
+    id: "connaught-house",
+    name: "The Connaught House Jaipur",
+    price: "₹ 1,700 – 2,000",
+    address: "HH91, Calgiri Marg, Block-A, Block-B, Malviya Nagar, Jaipur, Rajasthan 302017",
+    mapUrl: "https://maps.app.goo.gl/QUiPXBkGmAwgYvjB7",
+    distance: "1.5 Km from MNIT Jaipur",
+    rating: "4.4/5",
+    image: "/images/hotels/connaught.jpg",
+  },
+]
+
 const HOTELS: Hotel[] = [
   {
     id: "ksn-signature",
@@ -492,14 +562,166 @@ export default function HospitalityPage() {
             </div>
           </div>
 
-          {/* Row 2: Accommodation (Dedicated Full Row) */}
+          {/* Row 2: Budget-Friendly Hotels List (Special Section) */}
+          <div className="space-y-8 pt-6 border-t border-border">
+            <div className="text-center max-w-3xl mx-auto space-y-3">
+              <Badge variant="outline" className="px-3.5 py-1 text-xs font-bold border-emerald-600/50 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 uppercase tracking-wider">
+                Pocket Friendly • Verified Rates
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
+                Budget Hotels Near MNIT Jaipur
+              </h2>
+              <p className="text-muted-foreground text-sm md:text-base">
+                Curated affordable accommodations offering quality stay within 1.5 to 4.5 km from the MNIT Jaipur campus. All listed prices include GST.
+              </p>
+            </div>
+
+            {/* Budget Hotel Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {BUDGET_HOTELS.map((hotel) => (
+                <Card
+                  key={hotel.id}
+                  className="group flex flex-col justify-between overflow-hidden border border-border/80 hover:border-emerald-500/50 shadow-sm hover:shadow-xl transition-all duration-300 bg-card"
+                >
+                  <div>
+                    {/* Hotel Image with Badges */}
+                    <div className="relative h-48 w-full overflow-hidden bg-muted">
+                      <img
+                        src={hotel.image}
+                        alt={hotel.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      
+                      {/* Rating Badge */}
+                      <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md text-amber-300 text-xs font-bold px-2.5 py-1 rounded-md flex items-center gap-1 shadow">
+                        <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                        <span>{hotel.rating}</span>
+                      </div>
+
+                      {/* Distance Badge */}
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-medium text-white bg-black/75 backdrop-blur-sm px-2.5 py-1 rounded-md max-w-full truncate shadow">
+                          <MapPin className="w-3 h-3 text-red-400 shrink-0" />
+                          <span className="truncate">{hotel.distance}</span>
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="p-5 space-y-3">
+                      <div>
+                        <h3 className="font-bold text-lg text-foreground leading-snug group-hover:text-primary transition-colors">
+                          {hotel.name}
+                        </h3>
+                        <p className="text-xs text-muted-foreground line-clamp-2 mt-1 leading-relaxed">
+                          {hotel.address}
+                        </p>
+                      </div>
+
+                      {/* Price Section */}
+                      <div className="pt-3 border-t border-border/60 flex items-baseline justify-between">
+                        <div>
+                          <span className="text-[11px] text-muted-foreground uppercase font-semibold tracking-wider block">
+                            Price (incl. GST)
+                          </span>
+                          <span className="text-lg font-extrabold text-foreground text-emerald-600 dark:text-emerald-400">
+                            {hotel.price}
+                          </span>
+                          <span className="text-xs text-muted-foreground ml-1">/ night</span>
+                        </div>
+                        <span className="text-[11px] font-semibold text-emerald-700 dark:text-emerald-300 bg-emerald-100/70 dark:bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-300/60 dark:border-emerald-800/60">
+                          GST Included
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card Footer / Google Maps Button */}
+                  <div className="px-5 pb-5 pt-0">
+                    <Button
+                      variant="outline"
+                      className="w-full gap-2 border-emerald-600/30 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-600 hover:text-white transition-all font-semibold text-xs py-2"
+                      asChild
+                    >
+                      <a
+                        href={hotel.mapUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Navigation className="w-3.5 h-3.5" />
+                        <span>View on Google Maps</span>
+                        <ExternalLink className="w-3.5 h-3.5 ml-auto opacity-70" />
+                      </a>
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            {/* Quick Reference Comparison Table */}
+            <div className="rounded-xl border border-border bg-card shadow-sm overflow-hidden">
+              <div className="p-4 bg-muted/40 border-b border-border flex items-center justify-between">
+                <div>
+                  <h4 className="font-bold text-sm text-foreground">Budget Hotel Quick Reference</h4>
+                  <p className="text-xs text-muted-foreground">Convenient side-by-side comparison of budget stays near MNIT Jaipur</p>
+                </div>
+                <span className="text-xs text-muted-foreground font-medium hidden sm:inline">5 Properties</span>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs sm:text-sm">
+                  <thead className="bg-muted/60 text-xs font-bold uppercase text-foreground/80 border-b border-border">
+                    <tr>
+                      <th className="py-3 px-3 w-10 text-center">#</th>
+                      <th className="py-3 px-4">Hotel Name</th>
+                      <th className="py-3 px-4">Price (incl. GST)</th>
+                      <th className="py-3 px-4 hidden md:table-cell">Address</th>
+                      <th className="py-3 px-3 text-center">Distance</th>
+                      <th className="py-3 px-3 text-center">Rating</th>
+                      <th className="py-3 px-4 text-center">Location</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border">
+                    {BUDGET_HOTELS.map((item) => (
+                      <tr key={item.id} className="hover:bg-muted/30 transition-colors">
+                        <td className="py-3 px-3 font-mono font-bold text-center text-muted-foreground">{item.sNo}</td>
+                        <td className="py-3 px-4 font-bold text-foreground">{item.name}</td>
+                        <td className="py-3 px-4 font-semibold text-emerald-600 dark:text-emerald-400 whitespace-nowrap">{item.price}</td>
+                        <td className="py-3 px-4 text-xs text-muted-foreground hidden md:table-cell max-w-xs truncate">{item.address}</td>
+                        <td className="py-3 px-3 text-center whitespace-nowrap font-medium text-xs">{item.distance.replace(" from MNIT Jaipur", "")}</td>
+                        <td className="py-3 px-3 text-center whitespace-nowrap">
+                          <span className="inline-flex items-center gap-1 font-bold text-xs bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300 px-2 py-0.5 rounded">
+                            <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                            {item.rating}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 text-center">
+                          <a
+                            href={item.mapUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-xs text-primary hover:underline font-semibold"
+                          >
+                            <span>Map</span>
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          {/* Row 3: Standard & Premium Accommodation (Dedicated Full Row) */}
           <div className="space-y-10 pt-6 border-t border-border">
             <div className="text-center max-w-3xl mx-auto space-y-3">
               <Badge variant="outline" className="px-3 py-1 text-xs font-bold border-primary text-primary uppercase tracking-wider">
-                Hotel Directory
+                Standard & Premium Directory
               </Badge>
               <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
-                Accommodation Near MNIT Jaipur
+                Additional Accommodation Near MNIT Jaipur
               </h2>
               <p className="text-muted-foreground text-sm md:text-base">
                 The following hotels are conveniently located in close proximity to the MNIT campus. Special tariffs may be applicable for COPEN-14 delegates as indicated below.

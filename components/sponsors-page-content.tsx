@@ -197,8 +197,8 @@ export const ALL_SPONSOR_TIERS: SponsorTierData[] = [
       {
         id: "tequity",
         name: "Tequity Engineering",
-        category: "Exhibition Stall (6' × 8')",
-        stallSize: "6' × 8'",
+        category: "Exhibition Stall (12' × 8')",
+        stallSize: "12' × 8'",
         logo: "/images/sponsors/tequity.jpeg",
         href: "https://www.tequityengineering.in/",
         description: "Leading providers of high-precision engineering and manufacturing equipment.",
