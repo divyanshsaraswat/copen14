@@ -296,24 +296,15 @@ function RegistrationProcess() {
                 <thead className="bg-muted/50 border-b border-border">
                   <tr>
                     <th className="px-4 py-3 font-semibold text-left">Category</th>
+                    <th className="px-4 py-3 font-semibold">Regular Registration</th>
                     <th className="px-4 py-3 font-semibold">
                       Early Bird <span className="text-xs font-normal text-muted-foreground block sm:inline">(Closed - 15th Nov)</span>
                     </th>
-                    <th className="px-4 py-3 font-semibold">Regular Registration</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
                   <tr>
                     <td className="px-4 py-3.5 font-semibold text-left">Industries</td>
-                    <td className="px-4 py-3.5">
-                      <div className="flex items-center justify-between gap-3">
-                        <div className="flex-grow text-center">
-                          <span className="text-muted-foreground">₹14,000 + 18% GST</span>
-                          <span className="ml-1 font-bold text-foreground">= ₹16,520</span>
-                        </div>
-                        <PayButton category="industries" tier="early" disabled />
-                      </div>
-                    </td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
@@ -323,18 +314,18 @@ function RegistrationProcess() {
                         <PayButton category="industries" tier="regular" />
                       </div>
                     </td>
-                  </tr>
-                  <tr className="bg-muted/20">
-                    <td className="px-4 py-3.5 font-semibold text-left">Academicians</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
-                          <span className="text-muted-foreground">₹10,000 + 18% GST</span>
-                          <span className="ml-1 font-bold text-foreground">= ₹11,800</span>
+                          <span className="text-muted-foreground">₹14,000 + 18% GST</span>
+                          <span className="ml-1 font-bold text-foreground">= ₹16,520</span>
                         </div>
-                        <PayButton category="academicians" tier="early" disabled />
+                        <PayButton category="industries" tier="early" disabled />
                       </div>
                     </td>
+                  </tr>
+                  <tr className="bg-muted/20">
+                    <td className="px-4 py-3.5 font-semibold text-left">Academicians</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
@@ -344,18 +335,18 @@ function RegistrationProcess() {
                         <PayButton category="academicians" tier="regular" />
                       </div>
                     </td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-3.5 font-semibold text-left">Students</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
-                          <span className="text-muted-foreground">₹4,000 + 18% GST</span>
-                          <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
+                          <span className="text-muted-foreground">₹10,000 + 18% GST</span>
+                          <span className="ml-1 font-bold text-foreground">= ₹11,800</span>
                         </div>
-                        <PayButton category="students" tier="early" disabled />
+                        <PayButton category="academicians" tier="early" disabled />
                       </div>
                     </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3.5 font-semibold text-left">Students</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
@@ -365,18 +356,18 @@ function RegistrationProcess() {
                         <PayButton category="students" tier="regular" />
                       </div>
                     </td>
-                  </tr>
-                  <tr className="bg-muted/20">
-                    <td className="px-4 py-3.5 font-semibold text-left">Accompanying Persons</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
-                          <span className="text-muted-foreground">₹3,000 + 18% GST</span>
-                          <span className="ml-1 font-bold text-foreground">= ₹3,540</span>
+                          <span className="text-muted-foreground">₹4,000 + 18% GST</span>
+                          <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
                         </div>
-                        <PayButton category="accompanying" tier="early" disabled />
+                        <PayButton category="students" tier="early" disabled />
                       </div>
                     </td>
+                  </tr>
+                  <tr className="bg-muted/20">
+                    <td className="px-4 py-3.5 font-semibold text-left">Accompanying Persons</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
@@ -384,6 +375,15 @@ function RegistrationProcess() {
                           <span className="ml-1 font-bold text-foreground">= ₹4,720</span>
                         </div>
                         <PayButton category="accompanying" tier="regular" />
+                      </div>
+                    </td>
+                    <td className="px-4 py-3.5">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex-grow text-center">
+                          <span className="text-muted-foreground">₹3,000 + 18% GST</span>
+                          <span className="ml-1 font-bold text-foreground">= ₹3,540</span>
+                        </div>
+                        <PayButton category="accompanying" tier="early" disabled />
                       </div>
                     </td>
                   </tr>
@@ -405,24 +405,15 @@ function RegistrationProcess() {
                 <thead className="bg-muted/50 border-b border-border">
                   <tr>
                     <th className="px-4 py-3 font-semibold text-left">Category</th>
+                    <th className="px-4 py-3 font-semibold">Regular Registration</th>
                     <th className="px-4 py-3 font-semibold">
                       Early Bird <span className="text-xs font-normal text-muted-foreground block sm:inline">(Closed - 15th Nov)</span>
                     </th>
-                    <th className="px-4 py-3 font-semibold">Regular Registration</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-border">
                   <tr>
                     <td className="px-4 py-3.5 font-semibold text-left">Industries</td>
-                    <td className="px-4 py-3.5">
-                      <div className="flex items-center justify-between gap-3">
-                        <div className="flex-grow text-center">
-                          <span className="text-muted-foreground">USD 300 + 18% GST</span>
-                          <span className="ml-1 font-bold text-foreground">= USD 354</span>
-                        </div>
-                        <PayButton category="industries" tier="early" international disabled />
-                      </div>
-                    </td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
@@ -432,18 +423,18 @@ function RegistrationProcess() {
                         <PayButton category="industries" tier="regular" international />
                       </div>
                     </td>
-                  </tr>
-                  <tr className="bg-muted/20">
-                    <td className="px-4 py-3.5 font-semibold text-left">Academicians</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
-                          <span className="text-muted-foreground">USD 200 + 18% GST</span>
-                          <span className="ml-1 font-bold text-foreground">= USD 236</span>
+                          <span className="text-muted-foreground">USD 300 + 18% GST</span>
+                          <span className="ml-1 font-bold text-foreground">= USD 354</span>
                         </div>
-                        <PayButton category="academicians" tier="early" international disabled />
+                        <PayButton category="industries" tier="early" international disabled />
                       </div>
                     </td>
+                  </tr>
+                  <tr className="bg-muted/20">
+                    <td className="px-4 py-3.5 font-semibold text-left">Academicians</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
@@ -453,18 +444,18 @@ function RegistrationProcess() {
                         <PayButton category="academicians" tier="regular" international />
                       </div>
                     </td>
-                  </tr>
-                  <tr>
-                    <td className="px-4 py-3.5 font-semibold text-left">Students</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
-                          <span className="text-muted-foreground">USD 100 + 18% GST</span>
-                          <span className="ml-1 font-bold text-foreground">= USD 118</span>
+                          <span className="text-muted-foreground">USD 200 + 18% GST</span>
+                          <span className="ml-1 font-bold text-foreground">= USD 236</span>
                         </div>
-                        <PayButton category="students" tier="early" international disabled />
+                        <PayButton category="academicians" tier="early" international disabled />
                       </div>
                     </td>
+                  </tr>
+                  <tr>
+                    <td className="px-4 py-3.5 font-semibold text-left">Students</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
@@ -474,18 +465,18 @@ function RegistrationProcess() {
                         <PayButton category="students" tier="regular" international />
                       </div>
                     </td>
-                  </tr>
-                  <tr className="bg-muted/20">
-                    <td className="px-4 py-3.5 font-semibold text-left">Accompanying Persons</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
                           <span className="text-muted-foreground">USD 100 + 18% GST</span>
                           <span className="ml-1 font-bold text-foreground">= USD 118</span>
                         </div>
-                        <PayButton category="accompanying" tier="early" international disabled />
+                        <PayButton category="students" tier="early" international disabled />
                       </div>
                     </td>
+                  </tr>
+                  <tr className="bg-muted/20">
+                    <td className="px-4 py-3.5 font-semibold text-left">Accompanying Persons</td>
                     <td className="px-4 py-3.5">
                       <div className="flex items-center justify-between gap-3">
                         <div className="flex-grow text-center">
@@ -493,6 +484,15 @@ function RegistrationProcess() {
                           <span className="ml-1 font-bold text-foreground">= USD 147.5</span>
                         </div>
                         <PayButton category="accompanying" tier="regular" international />
+                      </div>
+                    </td>
+                    <td className="px-4 py-3.5">
+                      <div className="flex items-center justify-between gap-3">
+                        <div className="flex-grow text-center">
+                          <span className="text-muted-foreground">USD 100 + 18% GST</span>
+                          <span className="ml-1 font-bold text-foreground">= USD 118</span>
+                        </div>
+                        <PayButton category="accompanying" tier="early" international disabled />
                       </div>
                     </td>
                   </tr>
