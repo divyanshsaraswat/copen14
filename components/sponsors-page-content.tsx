@@ -188,8 +188,8 @@ export const ALL_SPONSOR_TIERS: SponsorTierData[] = [
       {
         id: "interface-design",
         name: "Interface Design Associates Pvt. Ltd.",
-        category: "Exhibition Stall (12' × 8')",
-        stallSize: "12' × 8'",
+        category: "Exhibition Stall (6' × 8')",
+        stallSize: "6' × 8'",
         logo: "/images/sponsors/interface.jpeg",
         href: "https://idapl.in/",
         description: "Specialists in precision design, automation, and engineering solutions.",
