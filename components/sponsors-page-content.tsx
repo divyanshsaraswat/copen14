@@ -221,6 +221,15 @@ export const ALL_SPONSOR_TIERS: SponsorTierData[] = [
         href: "https://www.shreerapid.com/",
         description: "Pioneers in 3D printing, rapid prototyping, additive manufacturing, and digital engineering solutions.",
       },
+      {
+        id: "agmatel-keysight",
+        name: "Agmatel India Pvt. Ltd. (Keysight Technologies)",
+        category: "Exhibition Stall (6' × 8')",
+        stallSize: "6' × 8'",
+        logo: "/images/sponsors/agmatel.png",
+        href: "https://agmatel.com/",
+        description: "Authorized technology partner and distributor for Keysight Technologies, specializing in advanced electronic test, measurement, and precision instrumentation.",
+      },
     ],
   },
 ];
