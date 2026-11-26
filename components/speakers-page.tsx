@@ -78,16 +78,6 @@ He is also a licensed professional engineer in Maryland, United States.`,
     profileUrl: "https://engineering.tcnj.edu/engineering-faculty/manish-paliwal/",
   },
   {
-    name: "Prof. K.P. Rajurkar",
-    role: "Emeritus Professor",
-    affiliation: "Department of Mechanical and Materials Engineering, University of Nebraska-Lincoln, USA",
-    photo: "/images/speakers/kprajurkar.png",
-    bio: `Prof. Dr. K. P. Rajurkar is an Emeritus Professor in the Department of Mechanical and Materials Engineering at University of Nebraska-Lincoln. He is internationally recognized for his pioneering contributions to advanced manufacturing processes, particularly in non-traditional machining, and precision engineering.
-
-His research has focused on electrical discharge machining (EDM), electrochemical machining (ECM), laser-assisted manufacturing, micro- and nano-manufacturing, hybrid machining processes, and intelligent manufacturing systems. Over the course of his distinguished academic career, he has made significant contributions to the development of advanced machining technologies and their industrial applications.`,
-    profileUrl: "https://engineering.unl.edu/mme/person/kp-rajurkar/",
-  },
-  {
     name: "Dr. Murali Sundaram",
     role: "Professor",
     affiliation: "University of Cincinnati, Ohio, USA",
@@ -168,18 +158,6 @@ Prof. Singh earned his Ph.D. from Georgia Institute of Technology and M.S. from 
 
 His work integrates advanced signal processing, machine learning, and manufacturing science for real-time process monitoring and chatter control in machining operations. Prof. Singh has made significant contributions to the fields of micro-manufacturing, laser processing, additive manufacturing, composite machining, and smart manufacturing systems. His research group collaborates with academia and industry to develop sustainable and high-performance manufacturing technologies for next-generation engineering applications.`,
     profileUrl: "https://www.me.iitb.ac.in/~ramesh/",
-  },
-  {
-    name: "Dr. Muvvala Gopinath",
-    role: "Associate Professor",
-    affiliation: "Department of Mechanical & Aerospace Engineering, IIT Hyderabad",
-    photo: "/images/speakers/gopinath.png",
-    bio: `Dr. Muvvala Gopinath is an Associate Professor in the Department of Mechanical and Aerospace Engineering at Indian Institute of Technology Hyderabad. He earned his M.Tech. and Ph.D. from Indian Institute of Technology Kharagpur and subsequently served as a Senior Scientific Officer before joining IIT Hyderabad.
-
-Dr. Gopinath has established a strong research program in advanced manufacturing and materials processing, with particular emphasis on laser material processing, metal additive manufacturing, laser welding, underwater laser processing, friction stir welding, and surface engineering. His research focuses on developing innovative manufacturing technologies and understanding process–structure–property relationships through real-time monitoring and control of manufacturing processes.
-
-He leads research activities in laser-based manufacturing technologies, including laser cladding, laser surface modification, additive manufacturing, and joining of advanced engineering materials.`,
-    profileUrl: "https://iith.ac.in/mae/mgopinath/",
   },
   {
     name: "Dr. G.L. Samuel",
